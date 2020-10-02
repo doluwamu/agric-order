@@ -1,6 +1,6 @@
 export const NumWithComma = (num) => {
   if (!num || typeof num !== "number") {
-    return "";
+    return 0;
   }
 
   const formatter = new Intl.NumberFormat("en");

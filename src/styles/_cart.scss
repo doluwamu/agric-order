@@ -37,8 +37,9 @@
           margin-top: 4rem;
         }
         &.item-name,
-        &.item-price {
-          font-size: 1.2rem;
+        &.item-price,
+        &.item-qty {
+          font-size: 1.1rem;
           font-weight: 600;
         }
       }

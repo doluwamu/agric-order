@@ -1,0 +1,69 @@
+.form-section {
+  width: 70%;
+  margin: 0 auto;
+  padding: 2rem;
+
+  .forms {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 1rem;
+
+    .form_header {
+      margin: 1rem 0;
+      margin-left: 1rem;
+
+      h2 {
+        font-family: var(--secondFont);
+        color: var(--subBlue);
+      }
+    }
+
+    .form_part {
+      padding: 1rem;
+      width: 80%;
+
+      .form_label {
+        padding-bottom: 0.5rem;
+
+        label {
+          font-size: 1.1rem;
+          font-family: var(--firstFont);
+          font-weight: 600;
+        }
+      }
+      input {
+        width: 90%;
+        min-height: 1.8rem;
+        outline: none;
+        padding: 0.2rem;
+
+        &.email_input,
+        &.username_input {
+          font-size: 1.2rem;
+        }
+
+        &.password_input,
+        &.password_confirmation_input {
+          font-size: 1.5rem;
+        }
+
+        &::placeholder {
+          font-size: 1rem;
+        }
+      }
+
+      .alert {
+        width: 90% !important;
+        padding: 0.2rem !important;
+      }
+    }
+  }
+
+  .form_button {
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }
+}

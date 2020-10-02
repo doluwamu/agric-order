@@ -1,0 +1,24 @@
+cart qty comments:{
+ <div className="item item-qty">
+        <span>
+        <b>Qty:</b>
+        </span>
+        <select
+        value={item.qty}
+        onChange={(e) =>
+            this.props.dispatch(
+            addToCart(item.product, e.target.value)
+            )
+        }
+        >
+        {[...Array(item.quantityInStock).keys()].map((x) => {
+            return (
+            <option key={x + 1} value={x + 1}>
+                {x + 1}
+            </option>
+            );
+        })}
+        </select>
+    </div> 
+
+};

@@ -5,8 +5,8 @@ const cart = (state = { cartItems: [] }, action) => {
       const product = state.cartItems.find((x) => x.product === item.product);
       if (product) {
         return {
-          cartItems: state.cartItems.map((x) =>
-            x.product === product.product ? item : x
+          cartItems: state.cartItems.map((cartItem) =>
+            cartItem.product === product.product ? item : cartItem
           ),
         };
       }
@@ -14,7 +14,9 @@ const cart = (state = { cartItems: [] }, action) => {
 
     case "REMOVE_CART_ITEM":
       return {
-        cartItems: state.cartItems.filter((x) => x.product !== action.product),
+        cartItems: state.cartItems.filter(
+          (cartItem) => cartItem.product !== action.product
+        ),
       };
     default:
       return state;

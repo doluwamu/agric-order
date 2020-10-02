@@ -1,8 +1,17 @@
 import React, { Component } from "react";
+import LoginForm from "components/forms/LoginForm";
 
 class LoginPage extends Component {
+  loginUser = (loginData) => {
+    alert(JSON.stringify(loginData));
+  };
+
   render() {
-    return <h1>I am login</h1>;
+    return (
+      <div className="form-section">
+        <LoginForm onSubmit={this.loginUser} />
+      </div>
+    );
   }
 }
 

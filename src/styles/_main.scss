@@ -33,20 +33,6 @@ body {
 }
 
 /* Styling for the nav bar starts */
-.all-nav {
-  width: 100%;
-  height: 100%;
-  z-index: 1111;
-  position: relative;
-  // background: red;
-}
-
-@supports (position: sticky) {
-  .all-nav {
-    position: sticky;
-    top: 0;
-  }
-}
 
 .nav-section {
   display: flex;
@@ -58,17 +44,27 @@ body {
   width: 100%;
   height: 5rem;
   padding: 0.2rem 0;
+  position: sticky;
+  top: 0;
+
+  @supports (position: sticky) {
+    .nav-section {
+      position: sticky;
+      top: 0;
+    }
+  }
 
   button {
-    display: none;
+    display: none !important;
   }
 
   header {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background: #000; */
+    // background: var(--mainBlack);
     width: 10rem;
+    z-index: 111;
 
     a {
       font-size: 1.5rem;
@@ -77,192 +73,142 @@ body {
       font-weight: 700;
       margin: 0 1rem;
       transition: all 0.5s;
-    }
-  }
-}
 
-.nav-ul {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-direction: row;
-  /* background: red; */
-  padding: 1rem 0 1rem 2rem;
-  width: 33rem;
-
-  li {
-    list-style-type: none;
-    /* background: #8b0000; */
-    margin-left: 0.3rem;
-    padding: 0.4rem;
-  }
-
-  a {
-    color: var(--mainWhite);
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 700;
-    transition: all 0.5s;
-
-    &:last-child {
-      margin-right: 1rem;
-    }
-  }
-}
-
-.cancel-icon {
-  display: none;
-  opacity: 0;
-}
-
-.aside {
-  display: none;
-}
-
-/* Styling for the nav bar ends */
-
-@media screen and (max-width: 800px) {
-  .nav-section {
-    justify-content: space-between;
-    position: sticky;
-    top: 0;
-
-    button {
-      display: block;
-      background: var(--mainGrey);
-      border: none;
-      font-size: 1.5rem;
-      color: var(--mainWhite);
-      border-radius: 0.3rem;
-      outline: none;
-      cursor: pointer;
-      margin: 0 0.9rem 0 0;
+      &:hover {
+        color: var(--orange);
+      }
     }
   }
 
   .nav-ul {
-    display: none;
-  }
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    // background: red;
+    padding: 1rem 0 1rem 2rem;
+    width: 40rem;
 
-  .aside {
-    position: absolute;
-    transform: translateY(-90rem);
-    background: #808080;
-    width: 100%;
-    height: 17rem;
-    display: none;
-    transition: all 1s;
-    display: block;
-    overflow: hidden;
-    overflow-y: scroll;
-
-    h4 {
-      // background: var(--mainRed);
-      margin: 0.5rem 0;
-      width: 3rem;
+    li {
+      list-style-type: none;
+      /* background: #8b0000; */
+      margin-left: 0.3rem;
+      padding: 0.4rem;
     }
 
-    .Link {
+    a {
       color: var(--mainWhite);
       text-decoration: none;
+      font-size: 1rem;
+      font-weight: 700;
       transition: all 0.5s;
-      width: 0.1rem;
+
+      &:last-child {
+        margin-right: 1rem;
+      }
+
+      &:hover {
+        color: var(--orange);
+      }
     }
   }
+}
 
+/* Styling for the nav bar ends */
+
+@media screen and (max-width: 900px) {
   .open {
-    transform: translateY(-0.5rem);
-    transition: all 0.5s;
+    display: flex !important;
+    justify-content: space-evenly !important;
+    align-items: center !important;
+    flex-direction: column !important;
+    animation: 1s navTransition !important;
   }
 
-  .aside_link {
-    // background: blue;
-    max-width: 15%;
-  }
-
-  .aside_link_text {
-    padding: 1rem;
-  }
-
-  .cancel-icon {
-    color: var(--mainWhite);
-    background: var(--mainGrey);
-    z-index: 111;
-    position: absolute;
-    left: 95.5%;
-    top: 1.8rem;
-    opacity: 1;
-    cursor: pointer;
-    animation: showBtn 0.5s;
-  }
-
-  .no-display {
-    display: none;
-  }
-
-  @keyframes showBtn {
+  @keyframes navTransition {
     from {
       opacity: 0.2;
     }
     to {
-      opacity: 1;
+      opacity: 0.9;
+    }
+  }
+
+  .nav-section {
+    position: sticky;
+    top: 0;
+    z-index: 111;
+
+    header {
+      // padding-right: 200px;
+      // background: var(--mainGrey);
+      margin-top: -1rem;
+      padding-top: 1rem;
+    }
+
+    button {
+      display: block !important;
+      z-index: 111;
+      background: var(--mainGrey);
+      border: none;
+      font-size: 1.5rem;
+      height: 0.3rem;
+      color: var(--mainWhite);
+      border-radius: 0.3rem;
+      outline: none;
+      cursor: pointer;
+      margin: 1.5rem 1rem 0 0;
+    }
+
+    .nav-ul {
+      display: none;
+      height: 100%;
+      width: 100%;
+      background: var(--mainGrey);
+      opacity: 0.9;
+      overflow-y: scroll;
+      position: fixed;
+      top: 3.5rem;
+      transition: all 0.5s !important;
+      z-index: -1 !important;
+
+      li {
+        margin-top: -19rem !important;
+
+        &:last-child {
+          margin-bottom: 2rem !important;
+        }
+
+        a {
+          font-size: 1.3rem;
+          font-weight: 800;
+        }
+      }
     }
   }
 }
 
 @media screen and (max-width: 700px) {
-  .cancel-icon {
-    left: 94.5%;
+  .nav-section {
+    .nav-ul {
+      li {
+        margin-right: 3rem;
+        padding: 1rem 0;
+        margin-top: -8rem !important;
+      }
+    }
   }
 }
 
-@media screen and (max-width: 600px) {
-  .cancel-icon {
-    left: 92%;
+@media screen and (max-height: 400px) {
+  .nav-section {
+    .nav-ul {
+      li {
+        margin-top: -2.5rem !important;
+      }
+    }
   }
-}
-
-@media screen and (max-width: 540px) {
-  .cancel-icon {
-    left: 94%;
-  }
-}
-
-@media screen and (max-width: 411px) {
-  .cancel-icon {
-    left: 92%;
-  }
-}
-
-@media screen and (max-width: 375px) {
-  .cancel-icon {
-    left: 91.2%;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .cancel-icon {
-    left: 90.4%;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .cancel-icon {
-    left: 90%;
-  }
-}
-
-@media screen and (max-width: 240px) {
-  .cancel-icon {
-    left: 86%;
-  }
-}
-
-.nav-section header a:hover,
-.nav-ul a:hover,
-.aside a:hover {
-  color: var(--orange);
 }
 
 /* Stylings for project buttons starts */
@@ -332,3 +278,19 @@ body {
 }
 
 /* Stylings for project buttons ends */
+
+/* Stylings for project alerts starts */
+.alert {
+  width: 100%;
+  min-height: 1rem;
+  line-height: 2.5rem;
+  font-size: 1rem;
+  color: var(--mainBlack);
+  font-weight: 500;
+
+  &.alert-danger {
+    background: rgba(240, 126, 145, 0.4);
+    opacity: 0.7;
+  }
+}
+/* Stylings for project alerts ends */

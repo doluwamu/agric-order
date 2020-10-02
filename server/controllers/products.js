@@ -1,43 +1,43 @@
-const products = require("../data/productsData");
+const Product = require("../models/product");
 
 exports.getProducts = (req, res) => {
-  return res.json(products);
+  Product.find({}, (error, foundProducts) => {
+    if (error) {
+      return Product.sendError(res, {
+        status: 422,
+        detail: "Cannot retrieve rental data!",
+      });
+    }
+
+    return res.json(foundProducts);
+  });
 };
 
 exports.getProductById = (req, res) => {
   const { productId } = req.params;
-  const product = products.find((p) => p._id === productId);
-
-  res.json(product);
+  Product.findById(productId, (error, foundProductById) => {
+    if (error) {
+      return Product.sendError(res, {
+        status: 422,
+        detail: "Cannot find rental with this id",
+      });
+    }
+    return res.json(foundProductById);
+  });
 };
 
 exports.createProduct = (req, res) => {
   const productData = req.body;
-  products.push(productData);
 
-  res.json({ message: "Product was successfully added" });
-};
-
-exports.deleteProduct = (req, res) => {
-  const { id } = req.params;
-  const productIndex = products.findIndex((p) => p._id === id);
-
-  products.splice(productIndex, 1);
-
-  res.json({
-    message: `Product with id: of ${id} has been successfully deleted`,
-  });
-};
-
-exports.updateProduct = (req, res) => {
-  const { id } = req.params;
-  const productToUpdate = req.body;
-  const productIndex = products.findIndex((p) => p._id === id);
-
-  products[productIndex].name = productToUpdate.name;
-  products[productIndex].price = productToUpdate.price;
-
-  res.json({
-    message: `Product with id: of ${id} has been successfully updated`,
+  Product.create(productData, (error, createdProduct) => {
+    if (error) {
+      return Product.sendError(res, {
+        status: 422,
+        detail: "Cannot post rental data!",
+      });
+    }
+    res.json({
+      message: `Product with id: ${createdProduct._id} was successfully created`,
+    });
   });
 };

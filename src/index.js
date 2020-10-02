@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
-import { initStore } from "components/store";
+import { initStore } from "store";
 
 library.add(fas);
 
