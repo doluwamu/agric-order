@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 class NavBar extends Component {
   render() {
-    const toggleNavLinks = () => {
+    const toggleAside = () => {
       document.querySelector(".nav-ul").classList.toggle("open");
     };
     return (
@@ -14,11 +14,16 @@ class NavBar extends Component {
           <Link to="/">AgricOrder</Link>
         </header>
 
-        <button className="nav-btn" onClick={toggleNavLinks}>
+        <button className="nav-btn" onClick={toggleAside}>
           &#9776;
         </button>
 
-        <ul className="nav-ul">
+        <ul className="nav-ul" onClick={toggleAside}>
+          {/* <li className="nav_li">
+            <p className="user" disabled>
+              Welcome User
+            </p>
+          </li> */}
           <li className="nav_li">
             <a href="#">Home</a>
           </li>

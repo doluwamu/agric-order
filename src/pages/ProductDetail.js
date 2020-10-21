@@ -5,6 +5,7 @@ import { fetchProductById, fetchProducts } from "actions";
 import ProductDetails from "components/products/ProductDetails";
 import OtherProducts from "components/products/OtherProducts";
 
+
 export class ProductDetail extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;

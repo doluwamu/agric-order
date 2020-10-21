@@ -12,6 +12,7 @@
   --mainRed: #ff0000;
   --mainYellow: #ffff00;
   --mainGrey: #808080;
+  --subGrey: rgb(220, 220, 220);
   --lightGrey: #808075;
   --gray: #c4c4c4;
   --orange: #ffa500;
@@ -33,7 +34,6 @@ body {
 }
 
 /* Styling for the nav bar starts */
-
 .nav-section {
   display: flex;
   justify-content: space-between;
@@ -46,13 +46,6 @@ body {
   padding: 0.2rem 0;
   position: sticky;
   top: 0;
-
-  @supports (position: sticky) {
-    .nav-section {
-      position: sticky;
-      top: 0;
-    }
-  }
 
   button {
     display: none !important;
@@ -88,28 +81,33 @@ body {
     flex-direction: row;
     // background: red;
     padding: 1rem 0 1rem 2rem;
-    width: 40rem;
+    width: 80%;
 
     li {
       list-style-type: none;
       /* background: #8b0000; */
       margin-left: 0.3rem;
       padding: 0.4rem;
-    }
 
-    a {
-      color: var(--mainWhite);
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 700;
-      transition: all 0.5s;
-
-      &:last-child {
-        margin-right: 1rem;
+      p {
+        color: var(--subWhite);
+        cursor: default;
       }
 
-      &:hover {
-        color: var(--orange);
+      a {
+        color: var(--mainWhite);
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 700;
+        transition: all 0.5s;
+
+        &:last-child {
+          margin-right: 1rem;
+        }
+
+        &:hover {
+          color: var(--orange);
+        }
       }
     }
   }
@@ -117,7 +115,7 @@ body {
 
 /* Styling for the nav bar ends */
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1023px) {
   .open {
     display: flex !important;
     justify-content: space-evenly !important;
@@ -128,7 +126,7 @@ body {
 
   @keyframes navTransition {
     from {
-      opacity: 0.2;
+      opacity: 0.5;
     }
     to {
       opacity: 0.9;
@@ -136,8 +134,8 @@ body {
   }
 
   .nav-section {
-    position: sticky;
-    top: 0;
+    // position: sticky;
+    // top: 0;
     z-index: 111;
 
     header {

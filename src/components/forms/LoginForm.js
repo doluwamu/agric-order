@@ -9,7 +9,7 @@ const LoginForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
       <div className="form_header">
-        <h2>Sign-In</h2>
+        <h2>Log-In</h2>
       </div>
 
       <div className="email form_part">
@@ -62,7 +62,7 @@ const LoginForm = ({ onSubmit }) => {
 
       <div className="form_button">
         <button type="submit" className="btn btn-secondary">
-          Sign in
+          log-in
         </button>
       </div>
     </form>
