@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const config = require("./config/dev");
 
 const productRoutes = require("./routes/products");
+const { provideErrorHandler } = require("./middlewares/index");
 
 const app = express();
 
@@ -25,6 +26,7 @@ mongoose.connect(
 
 // Middleware
 app.use(bodyParser.json());
+app.use(provideErrorHandler);
 
 app.use("/api/v1/products", productRoutes);
 

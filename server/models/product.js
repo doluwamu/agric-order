@@ -5,31 +5,35 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
   name: {
     type: String,
-    required: true,
+    required: ["Name is a required field"],
     maxlength: [50, "Invalid length, maximum is 50 characters"],
     lowercase: true,
   },
   image: {
     type: String,
-    required: true,
+    required: ["Image is a required field"],
+  },
+  category: {
+    type: String,
+    required: ["Category is a required field"],
   },
   price: {
     type: Number,
-    required: true,
+    required: ["Price is a required field"],
   },
   ratings: {
     type: Number,
-    required: true,
+    required: ["Ratings is a required field"],
   },
   details: {
     type: String,
-    required: true,
+    required: ["Details is a required field"],
     minlength: [8, "Invalid length, minimum is 8 characters"],
     maxlength: [150, "Invalid length, maximum is 150 characters"],
   },
   quantityInStock: {
     type: Number,
-    required: true,
+    required: ["Quantity in stock is a required field"],
   },
   available: {
     type: Boolean,
@@ -39,12 +43,5 @@ const productSchema = new Schema({
     default: Date.now,
   },
 });
-
-productSchema.statics.sendError = function (res, config) {
-  const { status, detail } = config;
-  return res.status(status).send({
-    errors: [{ title: "Rental Error!", detail }],
-  });
-};
 
 module.exports = mongoose.model("Product", productSchema);

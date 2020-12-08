@@ -1,26 +1,21 @@
 const Product = require("../models/product");
 
-exports.getProducts = (req, res) => {
-  Product.find({}, (error, foundProducts) => {
-    if (error) {
-      return Product.sendError(res, {
-        status: 422,
-        detail: "Cannot retrieve rental data!",
-      });
-    }
-
-    return res.json(foundProducts);
-  });
+exports.getProducts = async (req, res) => {
+  const { name } = req.query;
+  const query = name ? { name } : {};
+  try {
+    const product = await Product.find(query);
+    return res.json(product);
+  } catch (error) {
+    return res.mongoError(error);
+  }
 };
 
 exports.getProductById = (req, res) => {
   const { productId } = req.params;
   Product.findById(productId, (error, foundProductById) => {
     if (error) {
-      return Product.sendError(res, {
-        status: 422,
-        detail: "Cannot find rental with this id",
-      });
+      return res.mongoError(error);
     }
     return res.json(foundProductById);
   });
@@ -31,10 +26,7 @@ exports.createProduct = (req, res) => {
 
   Product.create(productData, (error, createdProduct) => {
     if (error) {
-      return Product.sendError(res, {
-        status: 422,
-        detail: "Cannot post rental data!",
-      });
+      return res.mongoError(error);
     }
     res.json({
       message: `Product with id: ${createdProduct._id} was successfully created`,
