@@ -1,5 +1,7 @@
 const express = require("express");
 
+const { onlyAuthenticatedUser } = require("../controllers/users");
+
 const router = express.Router();
 
 const {
@@ -12,6 +14,6 @@ router.get("", getProducts);
 
 router.get("/:productId", getProductById);
 
-router.post("", createProduct);
+router.post("", onlyAuthenticatedUser, createProduct);
 
 module.exports = router;

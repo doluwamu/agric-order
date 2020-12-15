@@ -26,13 +26,13 @@ exports.login = (req, res) => {
     if (foundUser.hasSamePassword(password)) {
       const token = jwt.sign(
         {
+          sub: foundUser.id,
           email,
-          password,
         },
         JWT_SECRET,
         { expiresIn: "2h" }
       );
-      return res.json({ token });
+      return res.json(token);
     } else {
       return res.sendApiError({
         title: "Invalid data",
@@ -87,11 +87,40 @@ exports.register = async (req, res) => {
 };
 
 exports.onlyAuthenticatedUser = (req, res, next) => {
-  const { token } = req.headers;
+  const token = req.headers.authorization;
   if (!token) {
-    return res.sendApiError({
-      title: "Not Authorized!",
-      detail: "Please log in to get access",
-    });
+    return userNotAuthorized(res);
   }
+  const decodedToken = parseToken(token);
+  if (!decodedToken) {
+    return userNotAuthorized(res);
+  }
+  User.findById(decodedToken.sub, (error, foundUser) => {
+    if (error) {
+      return res.mongoError(error);
+    }
+    if (foundUser) {
+      res.locals.user = foundUser;
+      next();
+    } else {
+      userNotAuthorized(res);
+    }
+  });
+};
+
+const parseToken = (token) => {
+  try {
+    const tkn = token.split(" ")[1];
+    return jwt.verify(tkn, JWT_SECRET);
+  } catch (error) {
+    return res.mongoError(error);
+  }
+};
+
+const userNotAuthorized = (res) => {
+  return res.status(401).send({
+    errors: [
+      { title: "Not Authorized!", detail: "Please log in to get access" },
+    ],
+  });
 };
