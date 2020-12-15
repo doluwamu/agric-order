@@ -1,8 +1,8 @@
 const Product = require("../models/product");
 
 exports.getProducts = async (req, res) => {
-  const { name } = req.query;
-  const query = name ? { name } : {};
+  const { category } = req.query;
+  const query = category ? { category } : {};
   try {
     const product = await Product.find(query);
     return res.json(product);

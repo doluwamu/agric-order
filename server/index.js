@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const config = require("./config/dev");
 
 const productRoutes = require("./routes/products");
+const userRoutes = require("./routes/users");
 const { provideErrorHandler } = require("./middlewares/index");
 
 const app = express();
@@ -28,7 +29,9 @@ mongoose.connect(
 app.use(bodyParser.json());
 app.use(provideErrorHandler);
 
+// Routes
 app.use("/api/v1/products", productRoutes);
+app.use("/api/v1/users", userRoutes);
 
 app.listen(PORT, () => {
   console.log("Server is listening at port:", PORT);
