@@ -2,7 +2,7 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/dev");
 
-exports.login = (req, res) => {
+exports.login = async (req, res) => {
   const { email, password } = req.body;
   if (!email || !password) {
     return res.sendApiError({
@@ -11,11 +11,8 @@ exports.login = (req, res) => {
     });
   }
 
-  User.findOne({ email }, (error, foundUser) => {
-    if (error) {
-      return res.mongoError(error);
-    }
-
+  try {
+    const foundUser = await User.findOne({ email });
     if (!foundUser) {
       return res.sendApiError({
         title: "Invalid data!",
@@ -39,7 +36,9 @@ exports.login = (req, res) => {
         detail: "Provided password is wrong",
       });
     }
-  });
+  } catch (error) {
+    return res.mongoError(error);
+  }
 };
 
 exports.register = async (req, res) => {
@@ -86,6 +85,25 @@ exports.register = async (req, res) => {
   }
 };
 
+exports.changePassword = async (req, res) => {
+  const { userId } = req.params;
+  const newPasswords = req.body;
+  // const { user } = res.locals;
+
+  try {
+    const foundUser = await User.findById(userId);
+    if (foundUser) {
+      foundUser.set(newPasswords);
+      const updatedPassword = await User.findById(userId);
+
+      await foundUser.save();
+      return res.status(200).send(updatedPassword);
+    }
+  } catch (error) {
+    return res.mongoError(error);
+  }
+};
+
 exports.onlyAuthenticatedUser = async (req, res, next) => {
   const token = req.headers.authorization;
   if (!token) {
@@ -108,18 +126,6 @@ exports.onlyAuthenticatedUser = async (req, res, next) => {
   } catch (error) {
     return res.mongoError(error);
   }
-
-  // User.findById(decodedToken.sub, (error, foundUser) => {
-  //   if (error) {
-  //     return res.mongoError(error);
-  //   }
-  //   if (foundUser) {
-  //     res.locals.user = foundUser;
-  //     next();
-  //   } else {
-  //     userNotAuthorized(res);
-  //   }
-  // });
 };
 
 const parseToken = (token) => {
