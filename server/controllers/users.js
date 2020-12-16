@@ -86,34 +86,48 @@ exports.register = async (req, res) => {
   }
 };
 
-exports.onlyAuthenticatedUser = (req, res, next) => {
+exports.onlyAuthenticatedUser = async (req, res, next) => {
   const token = req.headers.authorization;
   if (!token) {
     return userNotAuthorized(res);
   }
+
   const decodedToken = parseToken(token);
   if (!decodedToken) {
     return userNotAuthorized(res);
   }
-  User.findById(decodedToken.sub, (error, foundUser) => {
-    if (error) {
-      return res.mongoError(error);
-    }
+
+  try {
+    const foundUser = await User.findById(decodedToken.sub);
     if (foundUser) {
       res.locals.user = foundUser;
       next();
     } else {
       userNotAuthorized(res);
     }
-  });
+  } catch (error) {
+    return res.mongoError(error);
+  }
+
+  // User.findById(decodedToken.sub, (error, foundUser) => {
+  //   if (error) {
+  //     return res.mongoError(error);
+  //   }
+  //   if (foundUser) {
+  //     res.locals.user = foundUser;
+  //     next();
+  //   } else {
+  //     userNotAuthorized(res);
+  //   }
+  // });
 };
 
 const parseToken = (token) => {
   try {
-    const tkn = token.split(" ")[1];
-    return jwt.verify(tkn, JWT_SECRET);
+    // const tkn = token.split(" ")[1];
+    return jwt.verify(token.split(" ")[1], JWT_SECRET);
   } catch (error) {
-    return res.mongoError(error);
+    return null;
   }
 };
 
