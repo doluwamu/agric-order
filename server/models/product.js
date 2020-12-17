@@ -38,6 +38,7 @@ const productSchema = new Schema({
   available: {
     type: Boolean,
   },
+  owner: { type: Schema.Types.ObjectId, ref: "User" },
   createdAt: {
     type: Date,
     default: Date.now,

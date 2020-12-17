@@ -11,9 +11,9 @@ module.exports = {
 };
 ```
 
-In base folder of project run `npm install` and then `npm start` to startup dev server
+In base folder of project run `npm install` and then `npm run start-dev` to startup dev server
 
-To run api server go to `server` folder with command `cd server` and run `node index.js`
+To run api server go to `server` folder with command `cd server` and run `npm start`
 
 ## How to populate DB with default data
 

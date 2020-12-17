@@ -94,7 +94,7 @@ exports.changePassword = async (req, res) => {
     const foundUser = await User.findById(userId);
     if (foundUser) {
       foundUser.set(newPasswords);
-      const updatedPassword = await User.findById(userId);
+      const updatedPassword = await User.findById(userId).populate("password");
 
       await foundUser.save();
       return res.status(200).send(updatedPassword);

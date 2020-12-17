@@ -23,13 +23,12 @@ exports.getProductById = (req, res) => {
 
 exports.createProduct = (req, res) => {
   const productData = req.body;
+  productData.owner = res.locals.user;
 
   Product.create(productData, (error, createdProduct) => {
     if (error) {
       return res.mongoError(error);
     }
-    res.json({
-      message: `Product with id: ${createdProduct._id} was successfully created`,
-    });
+    return res.json({ createdProduct });
   });
 };
