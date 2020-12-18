@@ -5,7 +5,6 @@ import { fetchProductById, fetchProducts } from "actions";
 import ProductDetails from "components/products/ProductDetails";
 import OtherProducts from "components/products/OtherProducts";
 
-
 export class ProductDetail extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
@@ -14,7 +13,7 @@ export class ProductDetail extends Component {
   }
 
   render() {
-    const { product, products } = this.props;
+    const { product } = this.props;
 
     return product === {} ? (
       <h3>Loading...</h3>
@@ -22,17 +21,15 @@ export class ProductDetail extends Component {
       <div className="selected product-detail">
         <div className="details-page display">
           <ProductDetails product={product} />
-          <OtherProducts products={products} />
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = ({ product, products }) => {
+const mapStateToProps = ({ product }) => {
   return {
     product,
-    products,
   };
 };
 

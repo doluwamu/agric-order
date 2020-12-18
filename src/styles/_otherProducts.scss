@@ -1,0 +1,104 @@
+// Other products stylings
+// .other-products-display {
+//   margin-right: 2rem;
+
+//   .product-heading {
+//     text-align: center;
+//     font-size: 1.5rem;
+//     font-family: cursive;
+//     font-weight: 600;
+//     color: #002;
+//     padding: 1rem;
+//   }
+
+//   .other_products {
+//     display: flex;
+//     justify-content: left;
+//     align-items: flex-start;
+//     flex-direction: row;
+//     flex-wrap: nowrap;
+//     width: 90%;
+//     margin: 0 2rem 1rem;
+//     background: var(--subGrey);
+//     padding: 1rem 0 0.2rem;
+
+//     .other-products {
+//       margin: 0 0.5rem 1rem;
+//       border-bottom: 1px solid black;
+//       box-shadow: 0 0 0.2rem var(--mainBlack);
+
+//       &:last-child {
+//         margin: 0 0.5rem 1rem;
+//         width: 100%;
+//         border-bottom: 1px solid black;
+//       }
+
+//       .other-products-image {
+//         img {
+//           width: 15rem;
+//           height: 15rem;
+//         }
+//       }
+
+//       .other-products-details {
+//         .other-products-details-name {
+//           font-size: 1.1rem;
+//           font-weight: bold;
+//           color: var(--mainRed);
+//           padding-bottom: 0.3rem;
+//         }
+//         .other-products-details-price {
+//           font-size: 1.2rem;
+//           font-weight: bold;
+//           color: var(--mainBlack);
+//         }
+//       }
+//     }
+//   }
+// }
+
+// @media screen and (min-width: 1280px) {
+
+// .other_products {
+//   display: flex;
+//   justify-content: left;
+//   align-items: flex-start;
+//   flex-direction: column;
+//   overflow: hidden;
+//   max-height: 70vh;
+//   width: 25rem;
+
+//   .other-products {
+//     margin: 0.5rem 0.5rem;
+//     margin-left: 10%;
+//     width: 80%;
+
+//     &:last-child {
+//       margin: 0.5rem 0.5rem;
+//       margin-left: 10%;
+//       width: 80%;
+//     }
+
+//     .other-products-image {
+//       img {
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
+// }
+
+// @media screen and (max-width: 240px) {
+// .other-products-display {
+//   .other_products {
+//     .other-products {
+//       .other-products-image {
+//         img {
+//           width: 10rem;
+//           height: 10rem;
+//         }
+//       }
+//     }
+//   }
+// }
+// }

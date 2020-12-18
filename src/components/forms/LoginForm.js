@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 // eslint-disable-next-line
 const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -64,6 +65,15 @@ const LoginForm = ({ onSubmit }) => {
         <button type="submit" className="btn btn-secondary">
           log-in
         </button>
+      </div>
+
+      <div>
+        <p style={{ marginTop: "2rem", fontSize: "19px" }}>
+          Don't have an account?{" "}
+          <Link to="/signup" style={{ color: "blue" }}>
+            Sign up
+          </Link>
+        </p>
       </div>
     </form>
   );

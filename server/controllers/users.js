@@ -42,7 +42,7 @@ exports.login = async (req, res) => {
 };
 
 exports.register = async (req, res) => {
-  const { username, email, password, confirmationPassword } = req.body;
+  const { username, email, password, passwordConfirmation } = req.body;
 
   if (!username) {
     return res.sendApiError({
@@ -57,7 +57,7 @@ exports.register = async (req, res) => {
     });
   }
 
-  if (password !== confirmationPassword) {
+  if (password !== passwordConfirmation) {
     return res.sendApiError({
       title: "Data mismatch",
       detail: "Password must be the same as confirmation password",
