@@ -11,8 +11,14 @@ class ProductPage extends Component {
   }
 
   render() {
-    const { products } = this.props;
-    // console.log(products);
+    const { products, isFetching } = this.props;
+    if (isFetching) {
+      return (
+        <h2 style={{ fontSize: "25px", marginTop: "10%", marginLeft: "30%" }}>
+          Loading...
+        </h2>
+      );
+    }
     return (
       <div className="all_products">
         <div className="all_products_body">
@@ -26,9 +32,10 @@ class ProductPage extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ products: { dataFetched, fetchingData } }) => {
   return {
-    products: state.products,
+    products: dataFetched,
+    isFetching: fetchingData,
   };
 };
 

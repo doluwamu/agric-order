@@ -24,11 +24,11 @@ class AxiosService {
     });
   };
 
-  get AgAxios() {
+  get AgricAxios() {
     return this.axiosInstance;
   }
 }
 
-const AgricOrderAxios = new AxiosService();
+const axiosService = new AxiosService();
 
-export default AgricOrderAxios;
+export default axiosService;

@@ -1,9 +1,19 @@
+import axiosService from "../services/AxiosServices";
 import { productData } from "data";
-export const fetchProducts = () => {
-  return {
-    type: "FETCH_PRODUCTS",
-    products: productData,
-  };
+import Axios from "axios";
+
+const { AgricAxios } = axiosService;
+
+export const fetchProducts = () => (dispatch) => {
+  dispatch({
+    type: "REQUEST_DATA",
+  });
+  return Axios.get("/api/v1/products").then((res) => {
+    dispatch({
+      type: "REQUEST_DATA_COMPLETE",
+      products: res.data,
+    });
+  });
 };
 
 export const fetchProductById = (productId) => (dispatch) => {

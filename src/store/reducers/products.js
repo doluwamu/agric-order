@@ -1,10 +1,29 @@
-const products = (state = [], action) => {
-  switch (action.type) {
-    case "FETCH_PRODUCTS":
-      return action.products;
-    default:
-      return state;
-  }
+import { combineReducers } from "redux";
+const initFetchingReducer = () => {
+  const dataFetched = (state = [], action) => {
+    switch (action.type) {
+      case "REQUEST_DATA":
+        return [];
+      case "REQUEST_DATA_COMPLETE":
+        return action.products;
+      default:
+        return state;
+    }
+  };
+  const fetchingData = (state = false, action) => {
+    switch (action.type) {
+      case "REQUEST_DATA":
+        return true;
+      case "REQUEST_DATA_COMPLETE":
+        return false;
+      default:
+        return state;
+    }
+  };
+
+  return combineReducers({ dataFetched, fetchingData });
 };
+
+const products = initFetchingReducer();
 
 export default products;
