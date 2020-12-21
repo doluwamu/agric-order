@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchProductById, fetchProducts } from "actions";
 import ProductDetails from "components/products/ProductDetails";
+import Spinner from "components/shared/Spinner";
 
 export class ProductDetail extends Component {
   componentDidMount() {
@@ -15,21 +16,22 @@ export class ProductDetail extends Component {
     const { product, isFetching } = this.props;
     if (isFetching) {
       return (
-        <h2 style={{ fontSize: "25px", marginTop: "10%", marginLeft: "30%" }}>
-          Loading...
-        </h2>
+        <p style={{ marginTop: "10%", marginLeft: "30%" }}>
+          <Spinner />
+          <h2 style={{ marginTop: "5px" }}>Loading...</h2>
+        </p>
       );
     }
     console.log(product);
 
-    return product === {} ? (
-      <h3>Loading...</h3>
-    ) : (
-      <div className="selected product-detail">
-        <div className="details-page display">
-          <ProductDetails product={product} />
+    return (
+      product && (
+        <div className="selected product-detail">
+          <div className="details-page display">
+            <ProductDetails product={product} />
+          </div>
         </div>
-      </div>
+      )
     );
   }
 }

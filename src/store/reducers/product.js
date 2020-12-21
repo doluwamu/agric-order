@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-const initFetchingIdReducer = () => {
+const initProductIdReducer = () => {
   const fetchedData = (state = [], action) => {
     switch (action.type) {
       case "REQUEST_PRODUCT":
@@ -10,6 +10,7 @@ const initFetchingIdReducer = () => {
         return state;
     }
   };
+
   const datafetching = (state = false, action) => {
     switch (action.type) {
       case "REQUEST_PRODUCT":
@@ -24,7 +25,7 @@ const initFetchingIdReducer = () => {
   return combineReducers({ fetchedData, datafetching });
 };
 
-const product = initFetchingIdReducer();
+const product = initProductIdReducer();
 
 export default product;
 

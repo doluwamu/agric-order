@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NumWithComma } from "../../helpers/NumberHelpers";
 import { withRouter } from "react-router-dom";
+import { capitalize } from "helpers/Capitalize";
 
 function ProductDetails(props) {
   const { product } = props;
@@ -27,7 +28,7 @@ function ProductDetails(props) {
         <div className="product-details">
           <div className="main-details">
             <p className="product-name">
-              <b>Name:</b> <span>{product.name}</span>
+              <b>Name:</b> <span>{capitalize(product.name)}</span>
             </p>
             <p className="product-price">
               <b>Price:</b> <span>&#x20A6;{NumWithComma(product.price)}</span>
