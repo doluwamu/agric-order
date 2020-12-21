@@ -6,17 +6,21 @@ import ProductDetails from "components/products/ProductDetails";
 
 export class ProductDetail extends Component {
   componentDidMount() {
-    // const { id } = this.props.match.params;
-    const { product } = this.props;
-    if (product.length > 0) {
-      debugger;
-      this.props.dispatch(fetchProductById(product._id));
-    }
-    // this.props.dispatch(fetchProducts());
+    const { id } = this.props.match.params;
+
+    this.props.dispatch(fetchProductById(id));
   }
 
   render() {
-    const { product } = this.props;
+    const { product, isFetching } = this.props;
+    if (isFetching) {
+      return (
+        <h2 style={{ fontSize: "25px", marginTop: "10%", marginLeft: "30%" }}>
+          Loading...
+        </h2>
+      );
+    }
+    console.log(product);
 
     return product === {} ? (
       <h3>Loading...</h3>
@@ -30,10 +34,10 @@ export class ProductDetail extends Component {
   }
 }
 
-const mapStateToProps = ({ product: { dataFetched, fetchingData } }) => {
+const mapStateToProps = ({ product: { fetchedData, datafetching } }) => {
   return {
-    product: dataFetched,
-    isFetching: fetchingData,
+    product: fetchedData,
+    isFetching: datafetching,
   };
 };
 

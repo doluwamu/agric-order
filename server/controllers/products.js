@@ -11,14 +11,14 @@ exports.getProducts = async (req, res) => {
   }
 };
 
-exports.getProductById = (req, res) => {
+exports.getProductById = async (req, res) => {
   const { productId } = req.params;
-  Product.findById(productId, (error, foundProductById) => {
-    if (error) {
-      return res.mongoError(error);
-    }
+  try {
+    const foundProductById = await Product.findById(productId);
     return res.json(foundProductById);
-  });
+  } catch (error) {
+    return res.mongoError(error);
+  }
 };
 
 exports.createProduct = (req, res) => {

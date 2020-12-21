@@ -1,19 +1,16 @@
 import { combineReducers } from "redux";
-const initFetchingReducer = () => {
-  const dataFetched = (state = [], action) => {
-    debugger;
+const initFetchingIdReducer = () => {
+  const fetchedData = (state = [], action) => {
     switch (action.type) {
       case "REQUEST_PRODUCT":
-        debugger;
         return [];
       case "REQUEST_PRODUCT_COMPLETE":
-        debugger;
-        return action.products;
+        return action.data;
       default:
         return state;
     }
   };
-  const fetchingData = (state = false, action) => {
+  const datafetching = (state = false, action) => {
     switch (action.type) {
       case "REQUEST_PRODUCT":
         return true;
@@ -24,9 +21,20 @@ const initFetchingReducer = () => {
     }
   };
 
-  return combineReducers({ dataFetched, fetchingData });
+  return combineReducers({ fetchedData, datafetching });
 };
 
-const product = initFetchingReducer();
+const product = initFetchingIdReducer();
 
 export default product;
+
+// const product = (state = [], action) => {
+//   switch (action.type) {
+//     case "REQUEST_PRODUCT":
+//       return [];
+//     case "REQUEST_PRODUCT_COMPLETE":
+//       return action.product;
+//     default:
+//       return state;
+//   }
+// };

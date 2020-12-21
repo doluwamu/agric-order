@@ -19,9 +19,12 @@ export const fetchProductById = (productId) => (dispatch) => {
   dispatch({
     type: "REQUEST_PRODUCT",
   });
-  debugger;
-  return AgricAxios.get("/products/:productId", productId).then((res) => {
-    debugger;
+
+  return AgricAxios.get(`/products/${productId}`).then((res) => {
+    dispatch({
+      type: "REQUEST_PRODUCT_COMPLETE",
+      data: res.data,
+    });
   });
 };
 
