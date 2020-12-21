@@ -3,13 +3,16 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchProductById, fetchProducts } from "actions";
 import ProductDetails from "components/products/ProductDetails";
-import OtherProducts from "components/products/OtherProducts";
 
 export class ProductDetail extends Component {
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.props.dispatch(fetchProductById(id));
-    this.props.dispatch(fetchProducts());
+    // const { id } = this.props.match.params;
+    const { product } = this.props;
+    if (product.length > 0) {
+      debugger;
+      this.props.dispatch(fetchProductById(product._id));
+    }
+    // this.props.dispatch(fetchProducts());
   }
 
   render() {
@@ -27,9 +30,10 @@ export class ProductDetail extends Component {
   }
 }
 
-const mapStateToProps = ({ product }) => {
+const mapStateToProps = ({ product: { dataFetched, fetchingData } }) => {
   return {
-    product,
+    product: dataFetched,
+    isFetching: fetchingData,
   };
 };
 

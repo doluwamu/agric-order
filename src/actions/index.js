@@ -1,6 +1,5 @@
 import axiosService from "../services/AxiosServices";
 import { productData } from "data";
-import Axios from "axios";
 
 const { AgricAxios } = axiosService;
 
@@ -8,7 +7,7 @@ export const fetchProducts = () => (dispatch) => {
   dispatch({
     type: "REQUEST_DATA",
   });
-  return Axios.get("/api/v1/products").then((res) => {
+  return AgricAxios.get("/products").then((res) => {
     dispatch({
       type: "REQUEST_DATA_COMPLETE",
       products: res.data,
@@ -17,11 +16,12 @@ export const fetchProducts = () => (dispatch) => {
 };
 
 export const fetchProductById = (productId) => (dispatch) => {
-  const product = productData.find((product) => product._id === productId);
-
   dispatch({
-    type: "FETCH_PRODUCT_BY_ID",
-    product,
+    type: "REQUEST_PRODUCT",
+  });
+  debugger;
+  return AgricAxios.get("/products/:productId", productId).then((res) => {
+    debugger;
   });
 };
 
