@@ -52,3 +52,17 @@ export const removeFromCart = (productId) => (dispatch) => {
     product: productId,
   });
 };
+
+// AUTHENTICATION
+export const userRegistration = (registrationData) => (dispatch) => {
+  return AgricAxios.post("/users/register", registrationData)
+    .then(({ data }) => {
+      dispatch({
+        type: "USER_REGISTERED",
+        status: data.status,
+      });
+    })
+    .catch((error) => {
+      debugger;
+    });
+};
