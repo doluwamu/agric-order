@@ -3,6 +3,14 @@ import { productData } from "data";
 
 const { AgricAxios } = axiosService;
 
+const extractServerError = (serverError) => {
+  let errors = [{ title: "Error!", detail: "Ooops, something went wrong!" }];
+  if (serverError && serverError.data && serverError.data.errors) {
+    errors = serverError.data.errors;
+  }
+  return errors;
+};
+
 export const fetchProducts = () => (dispatch) => {
   dispatch({
     type: "REQUEST_DATA",
@@ -54,15 +62,12 @@ export const removeFromCart = (productId) => (dispatch) => {
 };
 
 // AUTHENTICATION
-export const userRegistration = (registrationData) => (dispatch) => {
+export const userRegistration = (registrationData) => {
   return AgricAxios.post("/users/register", registrationData)
     .then(({ data }) => {
-      dispatch({
-        type: "USER_REGISTERED",
-        status: data.status,
-      });
+      return data;
     })
-    .catch((error) => {
-      debugger;
+    .catch((errors) => {
+      return Promise.reject(extractServerError(errors.response));
     });
 };
