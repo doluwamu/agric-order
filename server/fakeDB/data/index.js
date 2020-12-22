@@ -10,18 +10,21 @@ exports.users = [
     username: "test1",
     email: "test1@gmail.com",
     password: "testingtest1",
+    acceptedPrivacyTerms: true,
   },
   {
     _id: user2Id,
     username: "test2",
     email: "test2@gmail.com",
     password: "testingtest2",
+    acceptedPrivacyTerms: true,
   },
   {
     _id: user3Id,
     username: "test3",
     email: "test3@gmail.com",
     password: "testingtest3",
+    acceptedPrivacyTerms: true,
   },
 ];
 

@@ -12,6 +12,7 @@ class SignUp extends Component {
   };
 
   registerUser = (loginData) => {
+    alert(JSON.stringify(loginData));
     userRegistration(loginData)
       .then(() => this.setState({ shouldRedirect: true }))
       .catch((error) => this.setState({ error }));
@@ -23,8 +24,7 @@ class SignUp extends Component {
     }
     return (
       <div className="form-section">
-        <SignupForm onSubmit={this.registerUser} />
-        <ServerError error={error} />
+        <SignupForm onSubmit={this.registerUser} error={error} />
       </div>
     );
   }

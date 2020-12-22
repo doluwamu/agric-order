@@ -2,11 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { sameAs } from "helpers/validators";
 import { Link } from "react-router-dom";
+import { ServerError } from "errors/Server";
 
 // eslint-disable-next-line
 const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const SignupForm = ({ onSubmit }) => {
+const SignupForm = ({ onSubmit, error }) => {
   const { register, errors, handleSubmit, getValues } = useForm();
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
@@ -114,10 +115,38 @@ const SignupForm = ({ onSubmit }) => {
         )}
       </div>
 
+      <div className="accept_privacy_terms form_part">
+        <input
+          ref={register({ required: true })}
+          type="checkbox"
+          name="acceptedPrivacyTerms"
+          className="privacy_terms"
+          id="acceptedPrivacyTerms"
+        />
+        <div className="form_label">
+          <label>
+            to continue, make sure you accept our{" "}
+            <Link to={"/"}>privacy terms and conditions</Link>
+          </label>
+        </div>
+
+        {errors.acceptedPrivacyTerms && (
+          <div className="alert alert-danger">
+            {errors.acceptedPrivacyTerms.type === "required" && (
+              <span>Accept privacy terms and conditions to continue!</span>
+            )}
+          </div>
+        )}
+      </div>
+
       <div className="form_button">
         <button type="submit" className="btn btn-secondary">
           Sign up
         </button>
+      </div>
+
+      <div className="form_part">
+        <ServerError error={error} />
       </div>
 
       <div>

@@ -42,7 +42,13 @@ exports.login = async (req, res) => {
 };
 
 exports.register = async (req, res) => {
-  const { username, email, password, passwordConfirmation } = req.body;
+  const {
+    username,
+    email,
+    password,
+    passwordConfirmation,
+    acceptedPrivacyTerms,
+  } = req.body;
 
   if (!username) {
     return res.sendApiError({
@@ -54,6 +60,13 @@ exports.register = async (req, res) => {
     return res.sendApiError({
       title: "Missing field",
       detail: "Email or password is missing",
+    });
+  }
+
+  if (!acceptedPrivacyTerms) {
+    return res.sendApiError({
+      title: "Missing field!",
+      detail: "Accept privacy terms to proceed!",
     });
   }
 
@@ -73,7 +86,12 @@ exports.register = async (req, res) => {
       });
     }
 
-    const user = await new User({ username, email, password });
+    const user = await new User({
+      username,
+      email,
+      password,
+      acceptedPrivacyTerms,
+    });
     user.save((error) => {
       if (error) {
         return res.mongoError(error);

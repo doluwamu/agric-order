@@ -22,6 +22,11 @@ const userSchema = new Schema({
     required: ["Password is required"],
     minlength: [8, "Minimum must be 8 characters"],
   },
+  acceptedPrivacyTerms: { type: Boolean, required: true },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 // userSchema.methods.hasSamePassword = function (providedPassword) {
