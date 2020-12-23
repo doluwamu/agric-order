@@ -3,10 +3,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class NavBar extends Component {
   render() {
-    const { isAuthenticated, username } = this.props;
+    const { isAuthenticated, username, logout } = this.props;
+
     const toggleAside = () => {
       document.querySelector(".nav-ul").classList.toggle("open");
     };
@@ -24,7 +26,8 @@ class NavBar extends Component {
           {isAuthenticated && (
             <li className="nav_li">
               <p className="user" disabled>
-                Welcome {username}
+                <div style={{ paddingBottom: "3px" }}>Welcome:</div>{" "}
+                <div>{username}</div>
               </p>
             </li>
           )}
@@ -53,8 +56,8 @@ class NavBar extends Component {
           )}
 
           {isAuthenticated && (
-            <li className="nav_li">
-              <div>Log-out</div>
+            <li className="nav_li" onClick={logout}>
+              <h3 style={{ color: "#fff" }}>Log-out</h3>
             </li>
           )}
         </ul>

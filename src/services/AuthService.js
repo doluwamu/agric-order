@@ -7,6 +7,13 @@ import { connect } from "react-redux";
 const AuthContext = createContext(null);
 
 const AuthBaseProvider = ({ children, dispatch }) => {
+  const logOut = () => {
+    localStorage.removeItem("ag_login_token");
+    dispatch({
+      type: "USER_LOGGED_OUT",
+    });
+  };
+
   const checkUserAuthentication = () => {
     const decodedToken = decodeToken(getToken());
 
@@ -16,7 +23,7 @@ const AuthBaseProvider = ({ children, dispatch }) => {
   };
 
   const getToken = () => {
-    return localStorage.getItem("login_token");
+    return localStorage.getItem("ag_login_token");
   };
 
   const tokenExpiration = (decodedToken) => {
@@ -29,7 +36,7 @@ const AuthBaseProvider = ({ children, dispatch }) => {
 
   const logIn = (loginData) => {
     return userLogin(loginData).then((token) => {
-      localStorage.setItem("login_token", token);
+      localStorage.setItem("ag_login_token", token);
       const decodedToken = decodeToken(token);
       dispatch(userLoggedIn(decodedToken));
       return token;
@@ -43,6 +50,7 @@ const AuthBaseProvider = ({ children, dispatch }) => {
   const authApi = {
     logIn,
     checkUserAuthentication,
+    logOut,
   };
 
   return (

@@ -5,6 +5,8 @@ const initAuthReducer = () => {
     switch (action.type) {
       case "USER_LOGGED_IN":
         return true;
+      case "USER_LOGGED_OUT":
+        return false;
       default:
         return state;
     }
@@ -14,6 +16,8 @@ const initAuthReducer = () => {
     switch (action.type) {
       case "USER_LOGGED_IN":
         return action.username;
+      case "USER_LOGGED_OUT":
+        return "";
       default:
         return state;
     }
