@@ -1,4 +1,4 @@
-import React, { createContext } from "react";
+import React, { createContext, useContext } from "react";
 import jwt from "jsonwebtoken";
 import moment from "moment";
 import { userLoggedIn, userLogin } from "actions";
@@ -7,20 +7,25 @@ import { connect } from "react-redux";
 const AuthContext = createContext(null);
 
 const AuthBaseProvider = ({ children, dispatch }) => {
-  const checkUserAuthentication = () => {};
+  const checkUserAuthentication = () => {
+    const decodedToken = decodeToken(getToken());
+
+    if (decodedToken && moment().isBefore(tokenExpiration(decodedToken))) {
+      dispatch(userLoggedIn(decodedToken));
+    }
+  };
 
   const getToken = () => {
     return localStorage.getItem("login_token");
   };
 
-  const tokenExpiration = (token) => {
-    const decodedToken = decodeToken(token);
-    return decodeToken.exp;
+  const tokenExpiration = (decodedToken) => {
+    return moment.unix(decodedToken.exp);
   };
 
-  const isTokenValid = (token) => {
-    return moment().isBefore(tokenExpiration(token));
-  };
+  // const isTokenValid = (decodedToken) => {
+  //   return decodedToken && moment().isBefore(tokenExpiration(decodedToken));
+  // };
 
   const logIn = (loginData) => {
     return userLogin(loginData).then((token) => {
@@ -46,6 +51,10 @@ const AuthBaseProvider = ({ children, dispatch }) => {
 };
 
 export const AuthProvider = connect()(AuthBaseProvider);
+
+export const useAuth = () => {
+  return useContext(AuthContext);
+};
 
 export const withAuth = (Component) => {
   return (props) => (
