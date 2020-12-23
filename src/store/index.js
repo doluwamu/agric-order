@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import products from "./reducers/products";
 import product from "./reducers/product";
 import cart from "./reducers/cart";
+import auth from "./reducers/auth";
 import register from "./reducers/registerStatus";
 
 export function initStore() {
@@ -11,6 +12,7 @@ export function initStore() {
     product,
     register,
     cart,
+    auth,
   });
 
   const composeEnhancers =

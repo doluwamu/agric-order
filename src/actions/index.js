@@ -77,3 +77,10 @@ export const userLogin = (loginData) => {
       Promise.reject(extractServerError(errors.response) || [])
     );
 };
+
+export const userLoggedIn = (decodedToken) => (dispatch) => {
+  dispatch({
+    type: "USER_LOGGED_IN",
+    username: decodedToken.username || "",
+  });
+};

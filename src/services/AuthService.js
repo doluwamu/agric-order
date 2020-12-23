@@ -1,15 +1,33 @@
 import React, { createContext } from "react";
 import jwt from "jsonwebtoken";
-import { userLogin } from "actions";
+import moment from "moment";
+import { userLoggedIn, userLogin } from "actions";
 import { connect } from "react-redux";
 
 const AuthContext = createContext(null);
 
-const AuthBaseProvider = ({ children }) => {
-  const signIn = (loginData) => {
+const AuthBaseProvider = ({ children, dispatch }) => {
+  const checkUserAuthentication = () => {};
+
+  const getToken = () => {
+    return localStorage.getItem("login_token");
+  };
+
+  const tokenExpiration = (token) => {
+    const decodedToken = decodeToken(token);
+    return decodeToken.exp;
+  };
+
+  const isTokenValid = (token) => {
+    return moment().isBefore(tokenExpiration(token));
+  };
+
+  const logIn = (loginData) => {
     return userLogin(loginData).then((token) => {
-      localStorage.setItem("login-token", token);
-      console.log(decodeToken(token));
+      localStorage.setItem("login_token", token);
+      const decodedToken = decodeToken(token);
+      dispatch(userLoggedIn(decodedToken));
+      return token;
     });
   };
 
@@ -18,7 +36,8 @@ const AuthBaseProvider = ({ children }) => {
   };
 
   const authApi = {
-    signIn,
+    logIn,
+    checkUserAuthentication,
   };
 
   return (

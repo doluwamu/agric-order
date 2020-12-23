@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LoginForm from "components/forms/LoginForm";
 import { withAuth } from "services/AuthService";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 class LoginPage extends Component {
   state = {
@@ -8,9 +9,8 @@ class LoginPage extends Component {
     error: [],
   };
   loginUser = (loginData) => {
-    debugger;
     this.props.auth
-      .signIn(loginData)
+      .logIn(loginData)
       .then((_) => {
         this.setState({ shouldRedirect: true });
       })
@@ -20,7 +20,12 @@ class LoginPage extends Component {
   };
 
   render() {
-    const { error } = this.state;
+    const { error, shouldRedirect } = this.state;
+
+    if (shouldRedirect) {
+      return <Redirect to={{ pathname: "/" }} />;
+    }
+
     return (
       <div className="form-section">
         <LoginForm onSubmit={this.loginUser} error={error} />

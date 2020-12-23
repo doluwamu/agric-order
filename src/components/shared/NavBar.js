@@ -1,10 +1,12 @@
 /*eslint-disable  jsx-a11y/anchor-is-valid */
 
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class NavBar extends Component {
   render() {
+    const { isAuthenticated, username } = this.props;
     const toggleAside = () => {
       document.querySelector(".nav-ul").classList.toggle("open");
     };
@@ -19,11 +21,14 @@ class NavBar extends Component {
         </button>
 
         <ul className="nav-ul" onClick={toggleAside}>
-          {/* <li className="nav_li">
-            <p className="user" disabled>
-              Welcome User
-            </p>
-          </li> */}
+          {isAuthenticated && (
+            <li className="nav_li">
+              <p className="user" disabled>
+                Welcome {username}
+              </p>
+            </li>
+          )}
+
           <li className="nav_li">
             <a href="#">Home</a>
           </li>
@@ -36,16 +41,33 @@ class NavBar extends Component {
           <li className="nav_li">
             <a href="#">Contact</a>
           </li>
-          <li className="nav_li">
-            <Link to="/signup">Sign-up</Link>
-          </li>
-          <li className="nav_li">
-            <Link to="/login">Log-in</Link>
-          </li>
+          {!isAuthenticated && (
+            <>
+              <li className="nav_li">
+                <Link to="/signup">Sign-up</Link>
+              </li>
+              <li className="nav_li">
+                <Link to="/login">Log-in</Link>
+              </li>
+            </>
+          )}
+
+          {isAuthenticated && (
+            <li className="nav_li">
+              <div>Log-out</div>
+            </li>
+          )}
         </ul>
       </nav>
     );
   }
 }
 
-export default NavBar;
+const mapStateToProps = ({ auth: { isAuthenticated, username } }) => {
+  return {
+    isAuthenticated,
+    username,
+  };
+};
+
+export default connect(mapStateToProps)(NavBar);
