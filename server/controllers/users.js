@@ -25,6 +25,7 @@ exports.login = async (req, res) => {
         {
           sub: foundUser.id,
           email,
+          username: foundUser.username,
         },
         JWT_SECRET,
         { expiresIn: "2h" }

@@ -9,6 +9,11 @@ class SignUp extends Component {
     error: [],
   };
 
+  // componentDidMount() {
+  //   this.props.dispatch({
+  //     type: "REQUEST_DATA",
+  //   });
+  // }
   registerUser = (loginData) => {
     userRegistration(loginData)
       .then(() => this.setState({ shouldRedirect: true }))

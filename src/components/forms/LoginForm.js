@@ -1,3 +1,4 @@
+import { ServerError } from "errors/Server";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -5,7 +6,7 @@ import { Link } from "react-router-dom";
 // eslint-disable-next-line
 const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit, error }) => {
   const { register, errors, handleSubmit } = useForm();
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
@@ -63,8 +64,12 @@ const LoginForm = ({ onSubmit }) => {
 
       <div className="form_button">
         <button type="submit" className="btn btn-secondary">
-          log-in
+          Log-in
         </button>
+      </div>
+
+      <div className="form_part">
+        <ServerError error={error} />
       </div>
 
       <div>

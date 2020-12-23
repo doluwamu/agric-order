@@ -64,10 +64,16 @@ export const removeFromCart = (productId) => (dispatch) => {
 // AUTHENTICATION
 export const userRegistration = (registrationData) => {
   return AgricAxios.post("/users/register", registrationData)
-    .then(({ data }) => {
-      return data;
-    })
-    .catch((errors) => {
-      return Promise.reject(extractServerError(errors.response));
-    });
+    .then(({ data }) => data)
+    .catch((errors) =>
+      Promise.reject(extractServerError(errors.response) || [])
+    );
+};
+
+export const userLogin = (loginData) => {
+  return AgricAxios.post("/users/login", loginData)
+    .then(({ data }) => data)
+    .catch((errors) =>
+      Promise.reject(extractServerError(errors.response) || [])
+    );
 };
