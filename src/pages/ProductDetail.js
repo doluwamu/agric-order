@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { fetchProductById, fetchProducts } from "actions";
+import { fetchProductById } from "actions";
 import ProductDetails from "components/products/ProductDetails";
 import Spinner from "components/shared/Spinner";
 

@@ -60,6 +60,18 @@
         padding: 0.2rem !important;
       }
     }
+
+    .form_checkbox {
+      padding: 12px 2px;
+      margin-left: 20px;
+
+      input {
+        background: red;
+        width: 18px;
+        height: 18px;
+        margin-right: 5px;
+      }
+    }
   }
 
   .form_button {

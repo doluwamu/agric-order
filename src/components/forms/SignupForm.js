@@ -115,7 +115,7 @@ const SignupForm = ({ onSubmit, error }) => {
         )}
       </div>
 
-      <div className="accept_privacy_terms form_part">
+      <div className="form_checkbox">
         <input
           ref={register({ required: true })}
           type="checkbox"
@@ -123,12 +123,14 @@ const SignupForm = ({ onSubmit, error }) => {
           className="privacy_terms"
           id="acceptedPrivacyTerms"
         />
-        <div className="form_label">
-          <label>
-            to continue, make sure you accept our{" "}
-            <Link to={"/"}>privacy terms and conditions</Link>
+        <span className="privacy">
+          <label style={{ fontSize: "19px", textDecoration: "none" }}>
+            To continue, accept our{" "}
+            <Link to={"/"} style={{ color: "blue" }}>
+              privacy terms and conditions
+            </Link>
           </label>
-        </div>
+        </span>
 
         {errors.acceptedPrivacyTerms && (
           <div className="alert alert-danger">
@@ -150,7 +152,7 @@ const SignupForm = ({ onSubmit, error }) => {
       </div>
 
       <div>
-        <p style={{ marginTop: "2rem", fontSize: "19px" }}>
+        <p style={{ fontSize: "19px" }}>
           Already have an account?{" "}
           <Link to="/login" style={{ color: "blue" }}>
             Login

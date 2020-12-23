@@ -92,12 +92,15 @@ exports.register = async (req, res) => {
       password,
       acceptedPrivacyTerms,
     });
-    user.save((error) => {
-      if (error) {
-        return res.mongoError(error);
+
+    try {
+      const savedUser = user.save();
+      if (savedUser) {
+        return res.json({ status: "registered" });
       }
-      return res.json({ status: "registered" });
-    });
+    } catch (error) {
+      return res.mongoError(error);
+    }
   } catch (error) {
     return res.mongoError(error);
   }
