@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider, useAuth } from "services/AuthService";
 import NavBar from "./components/shared/NavBar";
 import Search from "./components/shared/Search";
-import Routes from "./Routes";
+import Routes from "./routes/Routes";
 
 const Provider = ({ children }) => {
   return <AuthProvider>{children}</AuthProvider>;

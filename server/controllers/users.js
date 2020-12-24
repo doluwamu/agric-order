@@ -108,15 +108,15 @@ exports.register = async (req, res) => {
 };
 
 exports.changePassword = async (req, res) => {
-  const { userId } = req.params;
-  const newPasswords = req.body;
+  // const { userId } = req.params;
+  const { newPassword, email } = req.body;
   // const { user } = res.locals;
 
   try {
-    const foundUser = await User.findById(userId);
+    const foundUser = await User.findOne({ email });
     if (foundUser) {
-      foundUser.set(newPasswords);
-      const updatedPassword = await User.findById(userId).populate("password");
+      foundUser.set(newPassword);
+      const updatedPassword = await User.findOne({ email });
 
       await foundUser.save();
       return res.status(200).send(updatedPassword);

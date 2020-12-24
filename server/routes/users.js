@@ -7,6 +7,6 @@ const { login, register, changePassword } = require("../controllers/users");
 router.post("/login", login);
 router.post("/register", register);
 
-router.put("/:userId", changePassword);
+router.put("/password-reset", changePassword);
 
 module.exports = router;

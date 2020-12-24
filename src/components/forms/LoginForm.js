@@ -68,12 +68,22 @@ const LoginForm = ({ onSubmit, error }) => {
         </button>
       </div>
 
+      <div>
+        <p
+          style={{ fontSize: "16px", marginLeft: "15px", marginTop: "1.5rem" }}
+        >
+          <Link to="/signup" style={{ color: "blue", textDecoration: "none" }}>
+            Forgot password?
+          </Link>
+        </p>
+      </div>
+
       <div className="form_part">
         <ServerError error={error} />
       </div>
 
       <div>
-        <p style={{ marginTop: "2rem", fontSize: "19px" }}>
+        <p style={{ fontSize: "19px" }}>
           Don't have an account?{" "}
           <Link to="/signup" style={{ color: "blue" }}>
             Sign up
