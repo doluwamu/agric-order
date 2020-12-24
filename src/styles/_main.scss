@@ -89,17 +89,23 @@ body {
       margin-left: 0.3rem;
       padding: 0.4rem;
 
+      .user {
+        color: #fff;
+      }
+
       p {
         color: var(--subWhite);
         cursor: default;
       }
 
-      a {
+      a,
+      .logout_text {
         color: var(--mainWhite);
         text-decoration: none;
         font-size: 1rem;
         font-weight: 700;
         transition: all 0.5s;
+        cursor: pointer;
 
         &:last-child {
           margin-right: 1rem;

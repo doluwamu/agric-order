@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import moment from "moment";
 import { userLoggedIn, userLogin } from "actions";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const AuthContext = createContext(null);
 
@@ -12,6 +13,7 @@ const AuthBaseProvider = ({ children, dispatch }) => {
     dispatch({
       type: "USER_LOGGED_OUT",
     });
+    return <Redirect to={{ pathname: "/login" }} />;
   };
 
   const checkUserAuthentication = () => {

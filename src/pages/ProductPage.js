@@ -15,10 +15,10 @@ class ProductPage extends Component {
     const { products, isFetching } = this.props;
     if (isFetching) {
       return (
-        <p style={{ marginTop: "10%", marginLeft: "30%" }}>
+        <div style={{ marginTop: "10%", marginLeft: "30%" }}>
           <Spinner />
           <h2 style={{ marginTop: "5px" }}>Loading...</h2>
-        </p>
+        </div>
       );
     }
     return (

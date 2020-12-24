@@ -3,11 +3,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 
 class NavBar extends Component {
+  // state = {
+  //   signout: true,
+  // };
+
   render() {
     const { isAuthenticated, username, logout } = this.props;
+    // const logOut = () => {
+    //   logout();
+    //   // this.setState({ signout: true });
+    //   const { signout } = this.state;
+    //   console.log(signout);
+    //   if (signout) {
+    //     return <Redirect to={{ pathname: "/login" }} />;
+    //   }
+    // };
 
     const toggleAside = () => {
       document.querySelector(".nav-ul").classList.toggle("open");
@@ -25,10 +38,10 @@ class NavBar extends Component {
         <ul className="nav-ul" onClick={toggleAside}>
           {isAuthenticated && (
             <li className="nav_li">
-              <p className="user" disabled>
+              <div className="user" style={{ color: "#fff" }}>
                 <div style={{ paddingBottom: "3px" }}>Welcome:</div>{" "}
-                <div>{username}</div>
-              </p>
+                <div style={{ paddingTop: "3px" }}>{username}</div>
+              </div>
             </li>
           )}
 
@@ -57,7 +70,7 @@ class NavBar extends Component {
 
           {isAuthenticated && (
             <li className="nav_li" onClick={logout}>
-              <h3 style={{ color: "#fff" }}>Log-out</h3>
+              <p className="logout_text">Log-out</p>
             </li>
           )}
         </ul>
