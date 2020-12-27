@@ -1,6 +1,17 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/dev");
+const crypto = require("crypto");
+const nodemailer = require("nodemailer");
+const sendgridTransport = require("nodemailer-sendgrid-transport");
+
+const transporter = nodemailer.createTransport(
+  sendgridTransport({
+    auth: {
+      api_key: SENDGRID_API,
+    },
+  })
+);
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
@@ -108,22 +119,27 @@ exports.register = async (req, res) => {
 };
 
 exports.changePassword = async (req, res) => {
-  // const { userId } = req.params;
-  const { newPassword, email } = req.body;
-  // const { user } = res.locals;
-
-  try {
-    const foundUser = await User.findOne({ email });
-    if (foundUser) {
-      foundUser.set(newPassword);
-      const updatedPassword = await User.findOne({ email });
-
-      await foundUser.save();
-      return res.status(200).send(updatedPassword);
+  const { email } = req.body;
+  crypto.randomBytes(32, async (err, buffer) => {
+    if (err) {
+      console.log(err);
     }
-  } catch (error) {
-    return res.mongoError(error);
-  }
+    const token = buffer.toString("hex");
+    try {
+      const user = await User.findOne({ email });
+      if (!user) {
+        return res
+          .status(422)
+          .json({ error: "User dont exists with that email" });
+      }
+      user.resetToken = token;
+      user.expireToken = Date.now() + 3600000;
+      user.save();
+      return res.json({ message: "check your email" });
+    } catch (error) {
+      return res.mongoError(error);
+    }
+  });
 };
 
 exports.onlyAuthenticatedUser = async (req, res, next) => {
