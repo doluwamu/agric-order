@@ -173,6 +173,7 @@ exports.deleteAccount = async (req, res) => {
   try {
     const { userId } = req.params;
     const { user } = res.locals;
+    const { email } = req.body;
     const accountOwner = await User.findById(userId);
     if (!user || !accountOwner) {
       return res.sendApiError({
@@ -185,6 +186,21 @@ exports.deleteAccount = async (req, res) => {
       return res.sendApiError({
         title: "Invalid user!",
         detail: "You are not the owner of this account!",
+      });
+    }
+
+    if (!email) {
+      return res.sendApiError({
+        title: "Missing data!",
+        detail: "Please provide an email address!",
+      });
+    }
+
+    if (user.email !== email || accountOwner.email !== email) {
+      return res.sendApiError({
+        title: "Invalid data!",
+        detail:
+          "Provided email address does not match the account requested to be deleted!",
       });
     }
 
