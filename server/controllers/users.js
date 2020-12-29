@@ -32,18 +32,6 @@ exports.login = async (req, res) => {
       });
     }
 
-    // if (foundUser.hasSamePassword(password)) {
-    //   const token = jwt.sign(
-    //     {
-    //       sub: foundUser.id,
-    // email,
-    //       username: foundUser.username,
-    //     },
-    //     JWT_SECRET,
-    //     { expiresIn: "2h" }
-    //   );
-    //   return res.json(token);
-    // }
     if (foundUser.hasSamePassword(password)) {
       const token = jwt.sign(
         {
@@ -238,7 +226,6 @@ exports.onlyAuthenticatedUser = async (req, res, next) => {
 
 const parseToken = (token) => {
   try {
-    // const tkn = token.split(" ")[1];
     return jwt.verify(token.split(" ")[1], JWT_SECRET);
   } catch (error) {
     return null;
