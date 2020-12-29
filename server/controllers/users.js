@@ -157,16 +157,12 @@ exports.register = async (req, res) => {
 // };
 
 exports.changePassword = async (req, res) => {
-  const { userId } = req.params;
-  const { newPassword } = req.body;
-
   try {
-    // const salt = await bcrypt.genSalt(10);
-    // const password = await bcrypt.hash(newPassword, salt);
-    const user = await User.findByIdAndUpdate(
-      { _id: userId },
-      { password: newPassword }
-    );
+    const { userId } = req.params;
+    const { newPassword } = req.body;
+    const salt = await bcrypt.genSalt(10);
+    const password = await bcrypt.hash(newPassword, salt);
+    const user = await User.findByIdAndUpdate({ _id: userId }, { password });
     return res.json({ user });
   } catch (error) {
     return res.mongoError(error);
