@@ -16,4 +16,4 @@ And run `npm start` to start up the api/backend server
 
 ## How to populate DB with default data
 
-In case `dev.js` file is created you can run in `server` folder `node fakeDB/cleanDB.js` command to populate database with default data
+Once `dev.js` file is created you can run in `server` folder `node fakeDB/cleanDB.js` command to populate database with default data
