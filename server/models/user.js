@@ -35,19 +35,8 @@ const userSchema = new Schema({
 //   return bcrypt.compareSync(providedPassword, this.password);
 // };
 userSchema.methods.hasSamePassword = function (providedPassword) {
-  return bcrypt.compareSync(providedPassword, this.password);
+  return bcrypt.compare(providedPassword, this.password);
 };
-
-// userSchema.pre("save", function (next) {
-//   const user = this;
-
-//   bcrypt.genSalt(10, (err, salt) => {
-//     bcrypt.hash(user.password, salt, (err, hash) => {
-//       user.password = hash;
-//       next();
-//     });
-//   });
-// });
 
 userSchema.pre("save", function (next) {
   const user = this;
@@ -59,5 +48,16 @@ userSchema.pre("save", function (next) {
     });
   });
 });
+
+// userSchema.pre("save", function (next) {
+//   const user = this;
+
+//   bcrypt.genSalt(10, (err, salt) => {
+//     bcrypt.hash(user.password, salt, (err, hash) => {
+//       user.password = hash;
+//       next();
+//     });
+//   });
+// });
 
 module.exports = mongoose.model("User", userSchema);

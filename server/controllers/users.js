@@ -1,17 +1,18 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/dev");
-const crypto = require("crypto");
-const nodemailer = require("nodemailer");
-const sendgridTransport = require("nodemailer-sendgrid-transport");
+const bcrypt = require("bcryptjs");
+// const crypto = require("crypto");
+// const nodemailer = require("nodemailer");
+// const sendgridTransport = require("nodemailer-sendgrid-transport");
 
-const transporter = nodemailer.createTransport(
-  sendgridTransport({
-    auth: {
-      api_key: SENDGRID_API,
-    },
-  })
-);
+// const transporter = nodemailer.createTransport(
+//   sendgridTransport({
+//     auth: {
+//       api_key: SENDGRID_API,
+//     },
+//   })
+// );
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
@@ -31,6 +32,18 @@ exports.login = async (req, res) => {
       });
     }
 
+    // if (foundUser.hasSamePassword(password)) {
+    //   const token = jwt.sign(
+    //     {
+    //       sub: foundUser.id,
+    // email,
+    //       username: foundUser.username,
+    //     },
+    //     JWT_SECRET,
+    //     { expiresIn: "2h" }
+    //   );
+    //   return res.json(token);
+    // }
     if (foundUser.hasSamePassword(password)) {
       const token = jwt.sign(
         {
@@ -41,6 +54,7 @@ exports.login = async (req, res) => {
         JWT_SECRET,
         { expiresIn: "2h" }
       );
+
       return res.json(token);
     } else {
       return res.sendApiError({
@@ -118,28 +132,45 @@ exports.register = async (req, res) => {
   }
 };
 
+// exports.changePassword = async (req, res) => {
+//   const { email } = req.body;
+//   crypto.randomBytes(32, async (err, buffer) => {
+//     if (err) {
+//       console.log(err);
+//     }
+//     const token = buffer.toString("hex");
+//     try {
+//       const user = await User.findOne({ email });
+//       if (!user) {
+//         return res
+//           .status(422)
+//           .json({ error: "User dont exists with that email" });
+//       }
+//       user.resetToken = token;
+//       user.expireToken = Date.now() + 3600000;
+//       user.save();
+//       return res.json({ message: "check your email" });
+//     } catch (error) {
+// return res.mongoError(error);
+//     }
+//   });
+// };
+
 exports.changePassword = async (req, res) => {
-  const { email } = req.body;
-  crypto.randomBytes(32, async (err, buffer) => {
-    if (err) {
-      console.log(err);
-    }
-    const token = buffer.toString("hex");
-    try {
-      const user = await User.findOne({ email });
-      if (!user) {
-        return res
-          .status(422)
-          .json({ error: "User dont exists with that email" });
-      }
-      user.resetToken = token;
-      user.expireToken = Date.now() + 3600000;
-      user.save();
-      return res.json({ message: "check your email" });
-    } catch (error) {
-      return res.mongoError(error);
-    }
-  });
+  const { userId } = req.params;
+  const { newPassword } = req.body;
+
+  try {
+    // const salt = await bcrypt.genSalt(10);
+    // const password = await bcrypt.hash(newPassword, salt);
+    const user = await User.findByIdAndUpdate(
+      { _id: userId },
+      { password: newPassword }
+    );
+    return res.json({ user });
+  } catch (error) {
+    return res.mongoError(error);
+  }
 };
 
 exports.onlyAuthenticatedUser = async (req, res, next) => {

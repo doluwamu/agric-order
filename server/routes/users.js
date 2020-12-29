@@ -8,6 +8,7 @@ router.post("/login", login);
 router.post("/register", register);
 
 // router.patch("", changePassword);
-router.post("/password-reset", changePassword);
+// router.post("/password-reset", changePassword);
+router.patch("/:userId/password-reset", changePassword);
 
 module.exports = router;
