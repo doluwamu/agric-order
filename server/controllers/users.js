@@ -169,6 +169,33 @@ exports.changePassword = async (req, res) => {
   }
 };
 
+exports.deleteAccount = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { user } = res.locals;
+    const accountOwner = await User.findById(userId);
+    if (!user || !accountOwner) {
+      return res.sendApiError({
+        title: "Missing data!",
+        detail: "User does not exist!",
+      });
+    }
+
+    if (user.id !== accountOwner.id) {
+      return res.sendApiError({
+        title: "Invalid user!",
+        detail: "You are not the owner of this account!",
+      });
+    }
+
+    await user.remove();
+
+    return res.json({ message: "This account has succefully been deleted!" });
+  } catch (error) {
+    return res.mongoError(error);
+  }
+};
+
 exports.onlyAuthenticatedUser = async (req, res, next) => {
   const token = req.headers.authorization;
   if (!token) {
