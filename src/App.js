@@ -11,7 +11,6 @@ const Provider = ({ children }) => {
 
 const AgApp = () => {
   const authService = useAuth();
-  // const logOut = ;
 
   useEffect(() => {
     authService.checkUserAuthentication();

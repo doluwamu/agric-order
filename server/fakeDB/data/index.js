@@ -7,21 +7,21 @@ const user2Id = Types.ObjectId();
 exports.users = [
   {
     _id: user1Id,
-    username: "test1",
+    username: "test 1",
     email: "test1@gmail.com",
     password: "testingtest1",
     acceptedPrivacyTerms: true,
   },
   {
     _id: user2Id,
-    username: "test2",
+    username: "test 2",
     email: "test2@gmail.com",
     password: "testingtest2",
     acceptedPrivacyTerms: true,
   },
   {
     _id: user3Id,
-    username: "test3",
+    username: "test 3",
     email: "test3@gmail.com",
     password: "testingtest3",
     acceptedPrivacyTerms: true,

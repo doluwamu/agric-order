@@ -5,19 +5,30 @@ const sendMail = (message) => {
   return new Promise(async (res, rej) => {
     const transporter = nodemailer.createTransport({
       service: "gmail",
+      port: 465,
       auth: {
         user: GOOGLE_USER,
         pass: GOOGLE_PASSWORD,
       },
     });
 
-    await transporter.sendMail(message, function (err, info) {
-      if (err) {
-        rej(err);
-      } else {
+    try {
+      const info = await transporter.sendMail(message);
+      if (info) {
         res(info);
       }
-    });
+    } catch (error) {
+      rej(error);
+    }
+    transporter.close();
+
+    // await transporter.sendMail(message, function (err, info) {
+    //   if (err) {
+    //     rej(err);
+    //   } else {
+    //     res(info);
+    //   }
+    // });
   });
 };
 

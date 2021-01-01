@@ -3,17 +3,20 @@ import jwt from "jsonwebtoken";
 import moment from "moment";
 import { userLoggedIn, userLogin } from "actions";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const AuthContext = createContext(null);
 
 const AuthBaseProvider = ({ children, dispatch }) => {
+  const isAuthenticated = () => {
+    const decodedToken = decodeToken(getToken());
+    return decodedToken && isTokenValid(decodedToken);
+  };
+
   const logOut = () => {
     localStorage.removeItem("ag_login_token");
     dispatch({
       type: "USER_LOGGED_OUT",
     });
-    return <Redirect to={{ pathname: "/login" }} />;
   };
 
   const checkUserAuthentication = () => {
@@ -32,9 +35,9 @@ const AuthBaseProvider = ({ children, dispatch }) => {
     return moment.unix(decodedToken.exp);
   };
 
-  // const isTokenValid = (decodedToken) => {
-  //   return decodedToken && moment().isBefore(tokenExpiration(decodedToken));
-  // };
+  const isTokenValid = (decodedToken) => {
+    return decodedToken && moment().isBefore(tokenExpiration(decodedToken));
+  };
 
   const logIn = (loginData) => {
     return userLogin(loginData).then((token) => {
@@ -53,6 +56,8 @@ const AuthBaseProvider = ({ children, dispatch }) => {
     logIn,
     checkUserAuthentication,
     logOut,
+    isAuthenticated,
+    getToken,
   };
 
   return (
@@ -73,11 +78,3 @@ export const withAuth = (Component) => {
     </AuthContext.Consumer>
   );
 };
-
-// export const withAuth = (Component) => {
-//   return (props) => (
-//     <AuthContext.Consumer>
-//       {(authApi) => <Component {...props} auth={authApi} />}
-//     </AuthContext.Consumer>
-//   );
-// };

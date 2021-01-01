@@ -5,8 +5,9 @@ import ProductDetail from "../pages/ProductDetail";
 import LoginPage from "../pages/LoginPage";
 import CartPage from "pages/CartPage";
 import SignUp from "pages/SignUp";
-import ResetPassword from "pages/ResetPassword";
+// import ResetPassword from "pages/ResetPassword";
 import LogoutPage from "pages/LogoutPage";
+import GuestRoute from "components/auth/GuestRoute";
 
 function Routes() {
   return (
@@ -14,18 +15,27 @@ function Routes() {
       <Route path="/" exact={true}>
         <ProductPage />
       </Route>
-      <Route path="/login">
+
+      {/* <Route path="/reset-password">
+        <ResetPassword />
+      </Route> */}
+
+      <GuestRoute path="/login">
         <LoginPage />
-      </Route>
-      <Route path="/logout">
+      </GuestRoute>
+
+      <Route path="/logout/35tve6gybbreg7greuyguyf7grggter7gfd87greugerg867ye">
         <LogoutPage />
       </Route>
-      <Route path="/signup">
+
+      <GuestRoute path="/signup">
         <SignUp />
-      </Route>
+      </GuestRoute>
+
       <Route path="/product/:id">
         <ProductDetail />
       </Route>
+
       <Route path="/cart/:id?">
         <CartPage />
       </Route>
