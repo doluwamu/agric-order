@@ -6,6 +6,7 @@ import LoginPage from "../pages/LoginPage";
 import CartPage from "pages/CartPage";
 import SignUp from "pages/SignUp";
 import ResetPassword from "pages/ResetPassword";
+import LogoutPage from "pages/LogoutPage";
 
 function Routes() {
   return (
@@ -18,6 +19,9 @@ function Routes() {
       </Route>
       <Route path="/login">
         <LoginPage />
+      </Route>
+      <Route path="/logout">
+        <LogoutPage />
       </Route>
       <Route path="/signup">
         <SignUp />
