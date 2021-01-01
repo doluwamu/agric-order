@@ -14,13 +14,12 @@ const LogoutPage = () => {
           padding: "1.5rem 0",
         }}
       >
-        <h1>You have successfully logged out</h1>
+        <h1>You have successfully been logged out</h1>
 
         <Link
           to="/"
           style={{
             textDecoration: "none",
-            color: "#000",
             fontSize: "20px",
             fontWeight: "600",
             border: "1px solid #000",

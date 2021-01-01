@@ -22,7 +22,6 @@ export class ProductDetail extends Component {
         </div>
       );
     }
-    // console.log(product);
 
     return (
       product && (

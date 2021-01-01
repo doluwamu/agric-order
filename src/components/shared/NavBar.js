@@ -1,20 +1,10 @@
 /*eslint-disable  jsx-a11y/anchor-is-valid */
 
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 const NavBar = ({ isAuthenticated, username, logout }) => {
-  const logOut = () => {
-    const shouldLogOut = window.confirm("Do you want to log out?");
-    if (!shouldLogOut) {
-      return;
-    }
-    return logout;
-  };
-
-  // const
-
   const toggleAside = () => {
     document.querySelector(".nav-ul").classList.toggle("open");
   };
@@ -62,15 +52,13 @@ const NavBar = ({ isAuthenticated, username, logout }) => {
         )}
 
         {isAuthenticated && (
-          <li className="nav_li" onClick={logOut}>
-            {logout && (
-              <Link
-                to="/logout/35tve6gybbreg7greuyguyf7grggter7gfd87greugerg867ye"
-                className="logout_text"
-              >
-                Log-out
-              </Link>
-            )}
+          <li className="nav_li" onClick={logout}>
+            <Link
+              to="/logout/35tve6gybbreg7greuyguyf7grggter7gfd87greugerg867ye"
+              className="logout_text"
+            >
+              Log-out
+            </Link>
           </li>
         )}
       </ul>
