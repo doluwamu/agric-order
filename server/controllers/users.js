@@ -2,7 +2,8 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/dev");
 const bcrypt = require("bcryptjs");
-// const crypto = require("crypto");
+const { sendVerifyPasswordMail } = require("../services/mailService");
+const crypto = require("crypto");
 // const nodemailer = require("nodemailer");
 // const sendgridTransport = require("nodemailer-sendgrid-transport");
 
@@ -120,26 +121,37 @@ exports.register = async (req, res) => {
   }
 };
 
-// exports.changePassword = async (req, res) => {
+// exports.changePasswordVerification = async (req, res) => {
 //   const { email } = req.body;
-//   crypto.randomBytes(32, async (err, buffer) => {
-//     if (err) {
-//       console.log(err);
+//   crypto.randomBytes(32, async (error, buffer) => {
+//     if (error) {
+//       return res.mongoError(error);
 //     }
-//     const token = buffer.toString("hex");
+//     // const token = buffer.toString("hex");
 //     try {
 //       const user = await User.findOne({ email });
 //       if (!user) {
-//         return res
-//           .status(422)
-//           .json({ error: "User dont exists with that email" });
+//         return res.sendApiError({
+//           title: "Invalid user!",
+//           detail: "User does not exist",
+//         });
 //       }
+//       const token = jwt.sign(
+//         {
+//           sub: user.id,
+//           email: user.email,
+//           username: user.username,
+//         },
+//         JWT_SECRET,
+//         { expiresIn: "2h" }
+//       );
 //       user.resetToken = token;
-//       user.expireToken = Date.now() + 3600000;
-//       user.save();
+//       // user.expireToken = Date.now() + 3600000;
+//       await user.save();
+//       await sendVerifyPasswordMail({ toUser: user });
 //       return res.json({ message: "check your email" });
 //     } catch (error) {
-// return res.mongoError(error);
+//       return res.mongoError(error);
 //     }
 //   });
 // };
@@ -165,7 +177,7 @@ exports.deleteAccount = async (req, res) => {
     const accountOwner = await User.findById(userId);
     if (!user || !accountOwner) {
       return res.sendApiError({
-        title: "Missing data!",
+        title: "Invalid data!",
         detail: "User does not exist!",
       });
     }

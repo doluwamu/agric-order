@@ -2,6 +2,7 @@
 
 # server
 /server/config/dev.js
+/server/controllers/test.js
 /server/server.js
 
 # dependencies
@@ -12,6 +13,9 @@
 # testing
 /coverage
 /server/testing.js
+
+# Routes
+/src/routes
 
 # production
 /build
