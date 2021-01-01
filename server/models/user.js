@@ -17,7 +17,7 @@ const userSchema = new Schema({
     required: ["Email is required"],
     match: EMAIL_PATTERN,
   },
-  resetToken: String,
+  // resetToken: String,
   // expireToken: Date,
   password: {
     type: String,
