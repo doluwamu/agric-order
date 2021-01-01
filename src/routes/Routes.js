@@ -14,9 +14,6 @@ function Routes() {
       <Route path="/" exact={true}>
         <ProductPage />
       </Route>
-      <Route path="/reset-password" exact={true}>
-        <ResetPassword />
-      </Route>
       <Route path="/login">
         <LoginPage />
       </Route>
