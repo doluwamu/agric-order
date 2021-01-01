@@ -11,13 +11,10 @@ const {
   onlyAuthenticatedUser,
 } = require("../controllers/users");
 
-router.get("", getUsers);
-
 router.post("/login", login);
 router.post("/register", register);
 
 // Reseting Password
-// router.post("/password-reset-verify", changePasswordVerification);
 router.patch("/:userId/password-reset", changePassword);
 
 // Deleting account

@@ -17,8 +17,6 @@ const userSchema = new Schema({
     required: ["Email is required"],
     match: EMAIL_PATTERN,
   },
-  // resetToken: String,
-  // expireToken: Date,
   password: {
     type: String,
     required: ["Password is required"],
@@ -31,9 +29,6 @@ const userSchema = new Schema({
   },
 });
 
-// userSchema.methods.hasSamePassword = function (providedPassword) {
-//   return bcrypt.compareSync(providedPassword, this.password);
-// };
 userSchema.methods.hasSamePassword = function (providedPassword) {
   return bcrypt.compareSync(providedPassword, this.password);
 };
@@ -48,16 +43,5 @@ userSchema.pre("save", function (next) {
     });
   });
 });
-
-// userSchema.pre("save", function (next) {
-//   const user = this;
-
-//   bcrypt.genSalt(10, (err, salt) => {
-//     bcrypt.hash(user.password, salt, (err, hash) => {
-//       user.password = hash;
-//       next();
-//     });
-//   });
-// });
 
 module.exports = mongoose.model("User", userSchema);

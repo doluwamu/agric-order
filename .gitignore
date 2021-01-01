@@ -3,7 +3,9 @@
 # server
 /server/config/dev.js
 /server/controllers/test.js
+/server/routes/test.js
 /server/server.js
+/server/testing.js
 
 # dependencies
 /node_modules
@@ -12,7 +14,6 @@
 
 # testing
 /coverage
-/server/testing.js
 
 # Routes
 /src/routes

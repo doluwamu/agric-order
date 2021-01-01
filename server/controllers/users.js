@@ -121,41 +121,6 @@ exports.register = async (req, res) => {
   }
 };
 
-// exports.changePasswordVerification = async (req, res) => {
-//   const { email } = req.body;
-//   crypto.randomBytes(32, async (error, buffer) => {
-//     if (error) {
-//       return res.mongoError(error);
-//     }
-//     // const token = buffer.toString("hex");
-//     try {
-//       const user = await User.findOne({ email });
-//       if (!user) {
-//         return res.sendApiError({
-//           title: "Invalid user!",
-//           detail: "User does not exist",
-//         });
-//       }
-//       const token = jwt.sign(
-//         {
-//           sub: user.id,
-//           email: user.email,
-//           username: user.username,
-//         },
-//         JWT_SECRET,
-//         { expiresIn: "2h" }
-//       );
-//       user.resetToken = token;
-//       // user.expireToken = Date.now() + 3600000;
-//       await user.save();
-//       await sendVerifyPasswordMail({ toUser: user });
-//       return res.json({ message: "check your email" });
-//     } catch (error) {
-//       return res.mongoError(error);
-//     }
-//   });
-// };
-
 exports.changePassword = async (req, res) => {
   try {
     const { userId } = req.params;
