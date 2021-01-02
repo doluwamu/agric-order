@@ -5,5 +5,7 @@ export const RequiredField = () => {
 };
 
 export const MinLength = ({ num }) => {
-  return <span>Too short, minimum number of characters is {`${num}`}!</span>;
+  return (
+    <span>Too short, minimum number of characters should be {`${num}`}!</span>
+  );
 };

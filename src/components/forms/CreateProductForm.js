@@ -7,7 +7,8 @@ import { MinLength, RequiredField } from "helpers/FormMessage";
 // eslint-disable-next-line
 
 const CreateProductForm = ({ onSubmit }) => {
-  const { register, errors, handleSubmit, getValues } = useForm();
+  const { register, errors, handleSubmit } = useForm();
+  const nums = [4, 20];
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
       <div className="form_header">
@@ -19,7 +20,7 @@ const CreateProductForm = ({ onSubmit }) => {
           <label>Product's name:</label>
         </div>
         <input
-          ref={register({ required: true })}
+          ref={register({ required: true, minLength: nums[0] })}
           type="text"
           name="name"
           className="name_input"
@@ -29,6 +30,7 @@ const CreateProductForm = ({ onSubmit }) => {
         {errors.name && (
           <div className="alert alert-danger">
             {errors.name.type === "required" && <RequiredField />}
+            {errors.name.type === "minLength" && <MinLength num={nums[0]} />}
           </div>
         )}
       </div>
@@ -99,7 +101,7 @@ const CreateProductForm = ({ onSubmit }) => {
         <textarea
           ref={register({
             required: true,
-            minLength: 10,
+            minLength: nums[1],
           })}
           name="details"
           rows="10"
@@ -110,7 +112,7 @@ const CreateProductForm = ({ onSubmit }) => {
         {errors.details && (
           <div className="alert alert-danger">
             {errors.details.type === "required" && <RequiredField />}
-            {errors.details.type === "minLength" && <MinLength num={10} />}
+            {errors.details.type === "minLength" && <MinLength num={nums[1]} />}
           </div>
         )}
       </div>
