@@ -5,9 +5,11 @@ import ProductDetail from "../pages/ProductDetail";
 import LoginPage from "../pages/LoginPage";
 import CartPage from "pages/CartPage";
 import SignUp from "pages/SignUp";
-// import ResetPassword from "pages/ResetPassword";
 import LogoutPage from "pages/LogoutPage";
 import GuestRoute from "components/auth/GuestRoute";
+import AuthRoute from "components/auth/AuthRoute";
+// import ResetPassword from "pages/ResetPassword";
+import CreateProductPage from "pages/CreateProductPage";
 
 function Routes() {
   return (
@@ -19,6 +21,10 @@ function Routes() {
       {/* <Route path="/reset-password">
         <ResetPassword />
       </Route> */}
+
+      <AuthRoute path="/product-create">
+        <CreateProductPage />
+      </AuthRoute>
 
       <GuestRoute path="/login">
         <LoginPage />

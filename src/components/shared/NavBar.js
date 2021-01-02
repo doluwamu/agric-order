@@ -3,6 +3,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { capitalize } from "helpers/Capitalize";
 
 const NavBar = ({ isAuthenticated, username, logout }) => {
   const toggleAside = () => {
@@ -23,7 +24,7 @@ const NavBar = ({ isAuthenticated, username, logout }) => {
           <li className="nav_li">
             <div className="user" style={{ color: "#fff" }}>
               <div style={{ paddingBottom: "3px" }}>Welcome:</div>{" "}
-              <div style={{ paddingTop: "3px" }}>{username}</div>
+              <div style={{ paddingTop: "3px" }}>{capitalize(username)}</div>
             </div>
           </li>
         )}

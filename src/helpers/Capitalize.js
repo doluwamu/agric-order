@@ -3,5 +3,5 @@ export const capitalize = (words) => {
 
   const word = words.split(" ");
 
-  return word.map((w) => w[0].toUpperCase() + w.slice(1)).join("");
+  return word.map((w) => w[0].toUpperCase() + w.slice(1)).join(" ");
 };

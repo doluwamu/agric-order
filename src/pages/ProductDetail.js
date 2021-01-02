@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchProductById } from "actions";
 import ProductDetails from "components/products/ProductDetails";
 import Spinner from "components/shared/Spinner";
+import Loading from "helpers/Loading";
 
 export class ProductDetail extends Component {
   componentDidMount() {
@@ -15,12 +16,7 @@ export class ProductDetail extends Component {
   render() {
     const { product, isFetching } = this.props;
     if (isFetching) {
-      return (
-        <div style={{ marginTop: "10%", marginLeft: "30%" }}>
-          <Spinner />
-          <h2 style={{ marginTop: "5px" }}>Loading...</h2>
-        </div>
-      );
+      return <Loading />;
     }
 
     return (

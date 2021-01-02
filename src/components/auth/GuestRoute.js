@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect, Route } from "react-router-dom/cjs/react-router-dom.min";
 import { useAuth } from "services/AuthService";
 
-const AuthRoute = ({ children, ...rest }) => {
+const GuestRoute = ({ children, ...rest }) => {
   const authService = useAuth();
 
   const child = React.Children.only(children);
@@ -21,4 +21,4 @@ const AuthRoute = ({ children, ...rest }) => {
   );
 };
 
-export default AuthRoute;
+export default GuestRoute;

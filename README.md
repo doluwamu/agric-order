@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## How to run this project
 
 Create `dev.js` file in `server/config/dev.js` with content of:

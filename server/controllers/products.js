@@ -21,14 +21,14 @@ exports.getProductById = async (req, res) => {
   }
 };
 
-exports.createProduct = (req, res) => {
+exports.createProduct = async (req, res) => {
   const productData = req.body;
   productData.owner = res.locals.user;
 
-  Product.create(productData, (error, createdProduct) => {
-    if (error) {
-      return res.mongoError(error);
-    }
+  try {
+    const createdProduct = await Product.create(productData);
     return res.json({ createdProduct });
-  });
+  } catch (error) {
+    return res.mongoError(error);
+  }
 };
