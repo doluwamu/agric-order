@@ -101,7 +101,7 @@ const CreateProductForm = ({ onSubmit }) => {
 
       <div className="details form_part">
         <div className="form_label">
-          <label>Product details:</label>
+          <label>Product's detail:</label>
         </div>
         <textarea
           ref={register({
