@@ -3,7 +3,6 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchProductById } from "actions";
 import ProductDetails from "components/products/ProductDetails";
-import Spinner from "components/shared/Spinner";
 import Loading from "helpers/Loading";
 
 export class ProductDetail extends Component {

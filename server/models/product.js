@@ -23,7 +23,7 @@ const productSchema = new Schema({
   },
   ratings: {
     type: Number,
-    required: ["Ratings is a required field"],
+    // required: ["Ratings is a required field"],
   },
   details: {
     type: String,
@@ -33,10 +33,10 @@ const productSchema = new Schema({
   },
   quantityInStock: {
     type: Number,
-    required: ["Quantity in stock is a required field"],
   },
   available: {
     type: Boolean,
+    required: ["available is a required field"],
   },
   owner: { type: Schema.Types.ObjectId, ref: "User" },
   createdAt: {
