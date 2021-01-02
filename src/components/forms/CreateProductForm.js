@@ -58,7 +58,12 @@ const CreateProductForm = ({ onSubmit }) => {
         <div className="form_label">
           <label>Product category:</label>
         </div>
-        <select ref={register({ required: true })} name="category">
+        <select
+          ref={register({ required: true })}
+          name="category"
+          // style={{ width: "20%", minHeight: '' }}
+        >
+          <option>Select a category</option>
           <option>Cattle</option>
           <option>Pig</option>
           <option>Sheep</option>
@@ -104,8 +109,7 @@ const CreateProductForm = ({ onSubmit }) => {
             minLength: nums[1],
           })}
           name="details"
-          rows="10"
-          cols="100"
+          rows="6"
           id="details"
           placeholder="Give description of your product"
         ></textarea>

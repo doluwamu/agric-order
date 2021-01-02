@@ -34,11 +34,15 @@
           font-weight: 600;
         }
       }
-      input {
+      input,
+      textarea,
+      select {
         width: 90%;
         min-height: 1.8rem;
         outline: none;
         padding: 0.2rem;
+        font-size: 1.2rem;
+        resize: none;
 
         &.email_input,
         &.username_input {
@@ -53,6 +57,10 @@
         &::placeholder {
           font-size: 1rem;
         }
+      }
+
+      textarea {
+        margin-bottom: -3.3px;
       }
 
       .alert {
