@@ -4,7 +4,7 @@ const { GOOGLE_USER, GOOGLE_PASSWORD, DOMAIN } = require("../config/dev");
 const sendMail = (message) => {
   return new Promise(async (res, rej) => {
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      service: "hotmail",
       port: 465,
       auth: {
         user: GOOGLE_USER,

@@ -7,7 +7,7 @@ const {
   login,
   register,
   changePassword,
-  changePasswordVerification,
+  // changePasswordVerification,
   deleteAccount,
   onlyAuthenticatedUser,
 } = require("../controllers/users");
@@ -18,7 +18,7 @@ router.post("/login", login);
 router.post("/register", register);
 
 // Reseting Password
-router.post("/password-reset-verification", changePasswordVerification);
+// router.post("/password-reset-verification", changePasswordVerification);
 router.patch("/:userId/password-reset", changePassword);
 
 // Deleting account

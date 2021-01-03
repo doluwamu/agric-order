@@ -6,6 +6,7 @@
 /server/routes/test.js
 /server/server.js
 /server/testing.js
+/server/mailTesting.js
 
 # dependencies
 /node_modules
