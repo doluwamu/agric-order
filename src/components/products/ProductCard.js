@@ -16,6 +16,9 @@ const ProductCard = ({ products }) => {
           style={{ margin: "0 auto", width: "70%", textAlign: "center" }}
         >
           <p className="product_name">Name: {capitalize(product.name)}</p>
+          <p className="product-category">
+            <b>Category:</b> <span>{capitalize(product.category)}</span>
+          </p>
           <p className="product_price">
             Price: &#x20A6;{NumWithComma(product.price)}
           </p>

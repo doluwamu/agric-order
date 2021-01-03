@@ -30,6 +30,9 @@ function ProductDetails(props) {
             <p className="product-name">
               <b>Name:</b> <span>{capitalize(product.name)}</span>
             </p>
+            <p className="product-category">
+              <b>Category:</b> <span>{capitalize(product.category)}</span>
+            </p>
             <p className="product-price">
               <b>Price:</b> <span>&#x20A6;{NumWithComma(product.price)}</span>
             </p>

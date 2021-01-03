@@ -64,7 +64,7 @@ const CreateProductForm = ({ onSubmit }) => {
           // style={{ width: "20%", minHeight: '' }}
         >
           <option>Select a category</option>
-          <option>Cattle</option>
+          <option>Cow</option>
           <option>Pig</option>
           <option>Sheep</option>
           <option>Goat</option>
