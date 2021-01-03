@@ -13,12 +13,23 @@ exports.getProducts = async (req, res) => {
 
 exports.getProductById = async (req, res) => {
   const { productId } = req.params;
-  try {
-    const foundProductById = await Product.findById(productId);
-    return res.json(foundProductById);
-  } catch (error) {
-    return res.mongoError(error);
-  }
+
+  Product.findById(productId)
+    .populate("owner", "-password")
+    .exec((error, foundProductById) => {
+      if (error) {
+        return res.mongoError(error);
+      }
+      return res.json({ product: foundProductById });
+    });
+  //   const foundProductById = productData
+
+  //     .exec(() => {
+  //       return res.json(foundProductById);
+  //     });
+  // } catch (error) {
+  // return res.mongoError(error);
+  // }
 };
 
 exports.createProduct = async (req, res) => {
