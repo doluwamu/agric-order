@@ -33,9 +33,13 @@ function ProductDetails(props) {
             <p className="product-category">
               <b>Category:</b> <span>{capitalize(product.category)}</span>
             </p>
-            <p className="product-category">
-              <b>Owner:</b> <span>{capitalize(product.owner.username)}</span>
-            </p>
+            {product.owner && (
+              <div className="product-category">
+                <b>Owner:</b>
+                <p>{product.owner.username || ""}</p>
+                <p>{product.owner.email || ""}</p>
+              </div>
+            )}
             <p className="product-price">
               <b>Price:</b> <span>&#x20A6;{NumWithComma(product.price)}</span>
             </p>

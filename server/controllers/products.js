@@ -20,16 +20,8 @@ exports.getProductById = async (req, res) => {
       if (error) {
         return res.mongoError(error);
       }
-      return res.json({ product: foundProductById });
+      return res.json(foundProductById);
     });
-  //   const foundProductById = productData
-
-  //     .exec(() => {
-  //       return res.json(foundProductById);
-  //     });
-  // } catch (error) {
-  // return res.mongoError(error);
-  // }
 };
 
 exports.createProduct = async (req, res) => {

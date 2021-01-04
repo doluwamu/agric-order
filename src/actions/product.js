@@ -1,3 +1,4 @@
+import { extractServerError } from "actions";
 import axiosService from "../services/AxiosServices";
 
 const { AgricAxios } = axiosService;
@@ -28,4 +29,17 @@ export const fetchProductById = (productId) => (dispatch) => {
       resource: "fetch-product-by-id",
     });
   });
+};
+
+export const productCreate = (productData) => {
+  debugger;
+  return AgricAxios.post("/products", productData)
+    .then(({ data }) => {
+      debugger;
+      return data;
+    })
+    .catch((error) => {
+      debugger;
+      return Promise.reject(extractServerError(error.response || []));
+    });
 };

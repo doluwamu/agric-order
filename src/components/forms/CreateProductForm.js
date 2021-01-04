@@ -2,11 +2,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 // import { sameAs } from "helpers/validators";
 import { MinLength, RequiredField } from "helpers/FormMessage";
+import { ServerError } from "errors/Server";
 // import { ServerError } from "errors/Server";
 
 // eslint-disable-next-line
 
-const CreateProductForm = ({ onSubmit }) => {
+const CreateProductForm = ({ onSubmit, error }) => {
   const { register, errors, handleSubmit } = useForm();
   const nums = [4, 20];
   return (
@@ -64,7 +65,7 @@ const CreateProductForm = ({ onSubmit }) => {
           // style={{ width: "20%", minHeight: '' }}
         >
           <option>Select a category</option>
-          <option>Cow</option>
+          <option>Cattle</option>
           <option>Pig</option>
           <option>Sheep</option>
           <option>Goat</option>
@@ -162,9 +163,9 @@ const CreateProductForm = ({ onSubmit }) => {
         </button>
       </div>
 
-      {/* <div className="form_part">
+      <div className="form_part">
         <ServerError error={error} />
-      </div> */}
+      </div>
     </form>
   );
 };

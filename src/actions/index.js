@@ -7,7 +7,7 @@ export const extractServerError = (serverError) => {
 };
 
 // Products
-export * from "./products";
+export * from "./product";
 
 // Cart
 export * from "./cart";
