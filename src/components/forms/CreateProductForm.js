@@ -67,6 +67,7 @@ const CreateProductForm = ({ onSubmit, error }) => {
           <option>Select a category</option>
           <option>Cattle</option>
           <option>Pig</option>
+          <option>Dog</option>
           <option>Sheep</option>
           <option>Goat</option>
           <option>Poultry</option>

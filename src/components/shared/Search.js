@@ -6,7 +6,7 @@ class Search extends Component {
     return (
       <div className="search_box">
         <div className="search_section">
-          <input type="text" placeholder="Search..." />
+          <input type="text" placeholder="Search by category..." />
           <FontAwesomeIcon icon="search" />
         </div>
       </div>
