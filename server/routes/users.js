@@ -1,5 +1,4 @@
 const express = require("express");
-const { getUsers } = require("../controllers/test");
 
 const router = express.Router();
 
@@ -7,6 +6,7 @@ const {
   login,
   register,
   changePassword,
+  getUsers,
   // changePasswordVerification,
   deleteAccount,
   onlyAuthenticatedUser,

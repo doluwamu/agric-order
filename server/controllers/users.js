@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/dev");
 const bcrypt = require("bcryptjs");
 const { sendVerifyPasswordMail } = require("../services/mailService");
-const crypto = require("crypto");
+// const crypto = require("crypto");
 // const nodemailer = require("nodemailer");
 // const sendgridTransport = require("nodemailer-sendgrid-transport");
 
@@ -14,6 +14,17 @@ const crypto = require("crypto");
 //     },
 //   })
 // );
+
+exports.getUsers = async (req, res) => {
+  try {
+    const users = await User.find({});
+    if (users) {
+      return res.json({ users });
+    }
+  } catch (error) {
+    return res.mongoError(error);
+  }
+};
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
