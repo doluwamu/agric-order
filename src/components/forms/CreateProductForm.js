@@ -5,6 +5,7 @@ import { ServerError } from "errors/Server";
 import { connect } from "react-redux";
 import { fetchProductCategories } from "actions";
 import { capitalize } from "helpers/Capitalize";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 // eslint-disable-next-line
 
@@ -79,6 +80,15 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
             {errors.category.type === "required" && <RequiredField />}
           </div>
         )}
+
+        <div style={{ marginTop: "10px" }}>
+          <Link
+            to="/new-product-category"
+            style={{ color: "blue", fontSize: "17px" }}
+          >
+            Add a new category
+          </Link>
+        </div>
       </div>
 
       <div className="price form_part">
