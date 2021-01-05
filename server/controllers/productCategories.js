@@ -1,5 +1,14 @@
 const ProductCategory = require("../models/productCategory");
 
+exports.getProductCategories = async (req, res) => {
+  try {
+    const foundCategories = await ProductCategory.find({});
+    return res.json(foundCategories);
+  } catch (error) {
+    return res.mongoError(error);
+  }
+};
+
 exports.createProductCategory = async (req, res) => {
   const categoryData = req.body;
   if (!categoryData) {
