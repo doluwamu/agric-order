@@ -3,12 +3,14 @@ import { useForm } from "react-hook-form";
 import { sameAs } from "helpers/validators";
 import { Link } from "react-router-dom";
 import { ServerError } from "errors/Server";
+import { MinLength, RequiredField } from "helpers/FormMessage";
 
 // eslint-disable-next-line
 const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 const SignupForm = ({ onSubmit, error }) => {
   const { register, errors, handleSubmit, getValues } = useForm();
+  const num = [8];
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
       <div className="form_header">
@@ -29,9 +31,7 @@ const SignupForm = ({ onSubmit, error }) => {
         />
         {errors.username && (
           <div className="alert alert-danger">
-            {errors.username.type === "required" && (
-              <span>Please provide a username!</span>
-            )}
+            {errors.username.type === "required" && <RequiredField />}
           </div>
         )}
       </div>
@@ -50,9 +50,7 @@ const SignupForm = ({ onSubmit, error }) => {
         />
         {errors.email && (
           <div className="alert alert-danger">
-            {errors.email.type === "required" && (
-              <span>Please provide an email!</span>
-            )}
+            {errors.email.type === "required" && <RequiredField />}
             {errors.email.type === "pattern" && (
               <span>Invalid email format!</span>
             )}
@@ -65,7 +63,7 @@ const SignupForm = ({ onSubmit, error }) => {
           <label>Password:</label>
         </div>
         <input
-          ref={register({ required: true, minLength: 8 })}
+          ref={register({ required: true, minLength: num[0] })}
           type="password"
           name="password"
           className="password_input"
@@ -74,12 +72,8 @@ const SignupForm = ({ onSubmit, error }) => {
         />
         {errors.password && (
           <div className="alert alert-danger">
-            {errors.password.type === "required" && (
-              <span>Please provide a password!</span>
-            )}
-            {errors.password.type === "minLength" && (
-              <span>Password must be at least 8 characters!</span>
-            )}
+            {errors.password.type === "required" && <RequiredField />}
+            {errors.password.type === "minLength" && <MinLength num={num[0]} />}
           </div>
         )}
       </div>
@@ -91,7 +85,7 @@ const SignupForm = ({ onSubmit, error }) => {
         <input
           ref={register({
             required: true,
-            minLength: 8,
+            minLength: num[0],
             validate: { sameAs: sameAs("password", getValues) },
           })}
           type="password"
@@ -103,10 +97,10 @@ const SignupForm = ({ onSubmit, error }) => {
         {errors.passwordConfirmation && (
           <div className="alert alert-danger">
             {errors.passwordConfirmation.type === "required" && (
-              <span>Please confirm your password!</span>
+              <RequiredField />
             )}
             {errors.passwordConfirmation.type === "minLength" && (
-              <span>Password confirmation must be at least 8 characters!</span>
+              <MinLength num={num[0]} />
             )}
             {errors.passwordConfirmation.type === "sameAs" && (
               <span>Password confirmation must match password!</span>
@@ -135,7 +129,7 @@ const SignupForm = ({ onSubmit, error }) => {
         {errors.acceptedPrivacyTerms && (
           <div className="alert alert-danger">
             {errors.acceptedPrivacyTerms.type === "required" && (
-              <span>Accept privacy terms and conditions to continue!</span>
+              <RequiredField />
             )}
           </div>
         )}

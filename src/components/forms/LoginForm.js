@@ -1,4 +1,5 @@
 import { ServerError } from "errors/Server";
+import { MinLength, RequiredField } from "helpers/FormMessage";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
@@ -8,6 +9,7 @@ const EMAIL_PATTERN = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".
 
 const LoginForm = ({ onSubmit, error }) => {
   const { register, errors, handleSubmit } = useForm();
+  const num = [8];
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
       <div className="form_header">
@@ -28,9 +30,7 @@ const LoginForm = ({ onSubmit, error }) => {
         />
         {errors.email && (
           <div className="alert alert-danger">
-            {errors.email.type === "required" && (
-              <span>Please provide an email!</span>
-            )}
+            {errors.email.type === "required" && <RequiredField />}
             {errors.email.type === "pattern" && (
               <span>Invalid email format!</span>
             )}
@@ -43,7 +43,7 @@ const LoginForm = ({ onSubmit, error }) => {
           <label>Password:</label>
         </div>
         <input
-          ref={register({ required: true, minLength: 8 })}
+          ref={register({ required: true, minLength: num[0] })}
           type="password"
           name="password"
           className="password_input"
@@ -52,12 +52,8 @@ const LoginForm = ({ onSubmit, error }) => {
         />
         {errors.password && (
           <div className="alert alert-danger">
-            {errors.password.type === "required" && (
-              <span>Please provide a password!</span>
-            )}
-            {errors.password.type === "minLength" && (
-              <span>Password must be at least 8 characters!</span>
-            )}
+            {errors.password.type === "required" && <RequiredField />}
+            {errors.password.type === "minLength" && <MinLength num={num[0]} />}
           </div>
         )}
       </div>

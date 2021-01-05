@@ -1,12 +1,12 @@
-// import { ServerError } from "errors/Server";
-import { RequiredField } from "helpers/FormMessage";
 import React from "react";
+import { RequiredField } from "helpers/FormMessage";
+import { ServerError } from "errors/Server";
 import { useForm } from "react-hook-form";
 // import { Link } from "react-router-dom";
 
 // eslint-disable-next-line
 
-const NewProductCategoryForm = ({ onSubmit }) => {
+const NewProductCategoryForm = ({ onSubmit, error }) => {
   const { register, errors, handleSubmit } = useForm();
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
@@ -62,6 +62,10 @@ const NewProductCategoryForm = ({ onSubmit }) => {
         </button>
       </div>
 
+      <div className="form_part">
+        <ServerError error={error} />
+      </div>
+
       <div style={{ marginTop: "20px", lineHeight: "23px", fontSize: "17px" }}>
         <p>
           Please do not create a category with a similar category already
@@ -70,10 +74,6 @@ const NewProductCategoryForm = ({ onSubmit }) => {
         <p>For example, creating cow category when cattle already exists.</p>
         <p>Thank you.</p>
       </div>
-
-      {/* <div className="form_part">
-        <ServerError error={error} />
-      </div> */}
     </form>
   );
 };

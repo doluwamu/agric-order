@@ -33,12 +33,8 @@ export const fetchProductById = (productId) => (dispatch) => {
 
 export const productCreate = (productData) => {
   return AgricAxios.post("/products", productData)
-    .then(({ data }) => {
-      return data;
-    })
-    .catch((error) => {
-      return Promise.reject(extractServerError(error.response || []));
-    });
+    .then(({ data }) => data)
+    .catch((error) => Promise.reject(extractServerError(error.response || [])));
 };
 
 // Product categories
@@ -51,4 +47,10 @@ export const fetchProductCategories = () => (dispatch) => {
       resource: "fetch-products",
     });
   });
+};
+
+export const createProductCategory = (categoryData) => {
+  return AgricAxios.post("/product-categories", categoryData)
+    .then(({ data }) => data)
+    .catch((errors) => Promise.reject(extractServerError(errors.response)));
 };
