@@ -2,7 +2,6 @@ import React from "react";
 import { RequiredField } from "helpers/FormMessage";
 import { ServerError } from "errors/Server";
 import { useForm } from "react-hook-form";
-// import { Link } from "react-router-dom";
 
 // eslint-disable-next-line
 
@@ -45,6 +44,7 @@ const NewProductCategoryForm = ({ onSubmit, error }) => {
         >
           <option>Animal</option>
           <option>Plant</option>
+          <option>Egg</option>
           <option>Machinery</option>
           <option>Other</option>
         </select>
@@ -66,7 +66,7 @@ const NewProductCategoryForm = ({ onSubmit, error }) => {
         <ServerError error={error} />
       </div>
 
-      <div style={{ marginTop: "20px", lineHeight: "23px", fontSize: "17px" }}>
+      <div style={{ marginTop: "-5px", lineHeight: "23px", fontSize: "17px" }}>
         <p>
           Please do not create a category with a similar category already
           existing.

@@ -7,7 +7,7 @@ export const ServerError = ({ error }) => {
         error.length > 0 &&
         error.map((e) => {
           return (
-            <div className="alert alert-danger" key={e.title}>
+            <div id="alert-danger" className="alert alert-danger" key={e.title}>
               <span>{e.detail}</span>
             </div>
           );
