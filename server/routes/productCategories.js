@@ -9,8 +9,8 @@ const {
   getProductCategories,
 } = require("../controllers/productCategories");
 
-router.get("/product", getProductCategories);
+router.get("", getProductCategories);
 
-router.post("/product-category", onlyAuthenticatedUser, createProductCategory);
+router.post("", onlyAuthenticatedUser, createProductCategory);
 
 module.exports = router;

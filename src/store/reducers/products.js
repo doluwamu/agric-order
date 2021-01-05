@@ -2,11 +2,14 @@ import { combineReducers } from "redux";
 
 const initProductReducer = () => {
   const dataFetched = (state = [], action) => {
+    debugger;
     switch (action.type) {
       case "REQUEST_DATA":
         return [];
       case "REQUEST_DATA_COMPLETE":
         return action.products;
+      case "FETCHED_PRODUCT_CATEGORIES":
+        return action.categories;
       default:
         return state;
     }
@@ -16,6 +19,7 @@ const initProductReducer = () => {
     switch (action.type) {
       case "REQUEST_DATA":
         return true;
+      case "FETCHED_PRODUCT_CATEGORIES":
       case "REQUEST_DATA_COMPLETE":
         return false;
       default:

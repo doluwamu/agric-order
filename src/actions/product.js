@@ -43,3 +43,17 @@ export const productCreate = (productData) => {
       return Promise.reject(extractServerError(error.response || []));
     });
 };
+
+// Product categories
+
+export const fetchProductCategories = () => (dispatch) => {
+  return AgricAxios.get("/product-categories").then((res) => {
+    debugger;
+    dispatch({
+      type: "FETCHED_PRODUCT_CATEGORIES",
+      categories: res.data,
+      resource: "fetch-products",
+    });
+    debugger;
+  });
+};
