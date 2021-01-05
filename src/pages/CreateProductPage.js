@@ -19,7 +19,7 @@ class CreateProductPage extends Component {
     if (shouldRedirect) {
       return <Redirect to={{ pathname: "/" }} />;
     }
-    console.log(this.props);
+    // console.log(this.props);
     return (
       <div className="form-section">
         <CreateProductForm onSubmit={this.createProduct} error={error} />

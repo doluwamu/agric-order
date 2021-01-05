@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 // import { sameAs } from "helpers/validators";
 import { MinLength, RequiredField } from "helpers/FormMessage";
 import { ServerError } from "errors/Server";
+import { connect } from "react-redux";
+import { fetchProductCategories } from "actions";
+import { capitalize } from "helpers/Capitalize";
 // import { ServerError } from "errors/Server";
 
 // eslint-disable-next-line
 
-const CreateProductForm = ({ onSubmit, error }) => {
+const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
+  useEffect(() => {
+    dispatch(fetchProductCategories());
+  }, [fetchProductCategories]);
+
   const { register, errors, handleSubmit } = useForm();
   const nums = [4, 20];
+  console.log(categories);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
       <div className="form_header">
@@ -62,18 +70,14 @@ const CreateProductForm = ({ onSubmit, error }) => {
         <select
           ref={register({ required: true })}
           name="category"
+          placeholder="Select a category"
           // style={{ width: "20%", minHeight: '' }}
         >
-          <option>Select a category</option>
-          <option>Cattle</option>
-          <option>Pig</option>
-          <option>Dog</option>
-          <option>Sheep</option>
-          <option>Goat</option>
-          <option>Poultry</option>
-          <option>Fish</option>
-          <option>Furits</option>
-          <option>Vegetable</option>
+          {/* <option>Select a category</option> */}
+          {categories &&
+            categories.map((category) => {
+              return <option>{capitalize(category.categoryName)}</option>;
+            })}
         </select>
         {errors.category && (
           <div className="alert alert-danger">
@@ -171,4 +175,11 @@ const CreateProductForm = ({ onSubmit, error }) => {
   );
 };
 
-export default CreateProductForm;
+const mapStateToProps = ({ productCategories: { categoriesFetched } }) => {
+  debugger;
+  return {
+    categories: categoriesFetched,
+  };
+};
+
+export default connect(mapStateToProps)(CreateProductForm);

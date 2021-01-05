@@ -47,6 +47,7 @@ export const productCreate = (productData) => {
 // Product categories
 
 export const fetchProductCategories = () => (dispatch) => {
+  debugger;
   return AgricAxios.get("/product-categories").then((res) => {
     debugger;
     dispatch({
