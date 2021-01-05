@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-// import { sameAs } from "helpers/validators";
 import { MinLength, RequiredField } from "helpers/FormMessage";
 import { ServerError } from "errors/Server";
 import { connect } from "react-redux";
 import { fetchProductCategories } from "actions";
 import { capitalize } from "helpers/Capitalize";
-// import { ServerError } from "errors/Server";
 
 // eslint-disable-next-line
 
@@ -70,13 +68,17 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
         <select
           ref={register({ required: true })}
           name="category"
-          placeholder="Select a category"
+          // placeholder="select"
           // style={{ width: "20%", minHeight: '' }}
         >
-          {/* <option>Select a category</option> */}
+          <option placeholder="select a category"></option>
           {categories &&
             categories.map((category) => {
-              return <option>{capitalize(category.categoryName)}</option>;
+              return (
+                <option key={category._id}>
+                  {capitalize(category.categoryName)}
+                </option>
+              );
             })}
         </select>
         {errors.category && (
@@ -176,7 +178,6 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
 };
 
 const mapStateToProps = ({ productCategories: { categoriesFetched } }) => {
-  debugger;
   return {
     categories: categoriesFetched,
   };

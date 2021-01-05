@@ -32,14 +32,11 @@ export const fetchProductById = (productId) => (dispatch) => {
 };
 
 export const productCreate = (productData) => {
-  debugger;
   return AgricAxios.post("/products", productData)
     .then(({ data }) => {
-      debugger;
       return data;
     })
     .catch((error) => {
-      debugger;
       return Promise.reject(extractServerError(error.response || []));
     });
 };
@@ -47,14 +44,11 @@ export const productCreate = (productData) => {
 // Product categories
 
 export const fetchProductCategories = () => (dispatch) => {
-  debugger;
   return AgricAxios.get("/product-categories").then((res) => {
-    debugger;
     dispatch({
       type: "FETCHED_PRODUCT_CATEGORIES",
       categories: res.data,
       resource: "fetch-products",
     });
-    debugger;
   });
 };
