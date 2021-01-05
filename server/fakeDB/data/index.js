@@ -68,3 +68,22 @@ exports.products = [
     available: true,
   },
 ];
+
+exports.productCategories = [
+  {
+    categoryName: "cattle",
+    categoryType: "animal",
+  },
+  {
+    categoryName: "pig",
+    categoryType: "animal",
+  },
+  {
+    categoryName: "goat",
+    categoryType: "animal",
+  },
+  {
+    categoryName: "Sheep",
+    categoryType: "animal",
+  },
+];
