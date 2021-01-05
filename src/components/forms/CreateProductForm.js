@@ -15,7 +15,6 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
 
   const { register, errors, handleSubmit } = useForm();
   const nums = [4, 20];
-  console.log(categories);
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
       <div className="form_header">
@@ -63,15 +62,9 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
 
       <div className="category form_part">
         <div className="form_label">
-          <label>Product category:</label>
+          <label>Select product category:</label>
         </div>
-        <select
-          ref={register({ required: true })}
-          name="category"
-          // placeholder="select"
-          // style={{ width: "20%", minHeight: '' }}
-        >
-          <option placeholder="select a category"></option>
+        <select ref={register({ required: true })} name="category">
           {categories &&
             categories.map((category) => {
               return (
