@@ -11,6 +11,7 @@ import AuthRoute from "components/auth/AuthRoute";
 // import ResetPassword from "pages/ResetPassword";
 import CreateProductPage from "pages/CreateProductPage";
 import NewProductCategoryPage from "pages/NewProductCategoryPage";
+import ProductSearchPage from "pages/ProductSearchPage";
 
 function Routes() {
   return (
@@ -22,6 +23,10 @@ function Routes() {
       {/* <Route path="/reset-password">
         <ResetPassword />
       </Route> */}
+
+      <Route path="/:category">
+        <ProductSearchPage />
+      </Route>
 
       <AuthRoute path="/product-create">
         <CreateProductPage />

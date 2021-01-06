@@ -4,11 +4,12 @@ import axiosService from "../services/AxiosServices";
 const { AgricAxios } = axiosService;
 
 // Products
-export const fetchProducts = () => (dispatch) => {
+export const fetchProducts = (category) => (dispatch) => {
+  const query = category ? `/products?category=${category}` : "/products";
   dispatch({
     type: "REQUEST_DATA",
   });
-  return AgricAxios.get("/products").then((res) => {
+  return AgricAxios.get(query).then((res) => {
     dispatch({
       type: "REQUEST_DATA_COMPLETE",
       products: res.data,
