@@ -4,21 +4,44 @@ import { fetchProducts } from "actions";
 import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 import ProductCard from "components/products/ProductCard";
 import { capitalize } from "helpers/Capitalize";
+import Loading from "helpers/Loading";
 
-const ProductSearchPage = ({ dispatch, match, products }) => {
+const ProductSearchPage = ({
+  dispatch,
+  match: {
+    params: { category },
+  },
+  products,
+  isFetching,
+}) => {
   useEffect(() => {
-    dispatch(fetchProducts(match.params.category));
-  }, [fetchProducts]);
-  console.log(match);
+    dispatch(fetchProducts(category));
+  }, [dispatch, category]);
+
+  if (isFetching) {
+    return <Loading />;
+  }
+
+  // const noProductFound = () => {
+  //   return products.length === 0 && !isFetching;
+  // };
 
   return (
     <div className="all_products">
       <div className="all_products_body">
-        <header className="products_header">
-          {capitalize(match.params.category)}
-        </header>
-        <div className="products">
-          <ProductCard products={products} />
+        <header className="products_header">{capitalize(category)}</header>
+        <div>
+          {products.length > 0 && !isFetching ? (
+            <div className="products">
+              <ProductCard products={products} />
+            </div>
+          ) : (
+            <h2
+              style={{ textAlign: "center", marginTop: "3rem", color: "red" }}
+            >
+              There is no product for this search
+            </h2>
+          )}
         </div>
       </div>
     </div>

@@ -24,10 +24,6 @@ function Routes() {
         <ResetPassword />
       </Route> */}
 
-      <Route path="/:category">
-        <ProductSearchPage />
-      </Route>
-
       <AuthRoute path="/product-create">
         <CreateProductPage />
       </AuthRoute>
@@ -54,6 +50,10 @@ function Routes() {
 
       <Route path="/cart/:id?">
         <CartPage />
+      </Route>
+
+      <Route path="/:category">
+        <ProductSearchPage />
       </Route>
     </Switch>
   );

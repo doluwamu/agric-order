@@ -12,7 +12,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
   useEffect(() => {
     dispatch(fetchProductCategories());
-  }, [fetchProductCategories]);
+  }, [dispatch]);
 
   const { register, errors, handleSubmit } = useForm();
   const nums = [4, 20];

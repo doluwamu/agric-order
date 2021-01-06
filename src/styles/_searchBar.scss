@@ -8,22 +8,28 @@
     padding: 0.5rem 0.4rem;
     outline: none;
     height: 1rem;
-    width: 40%;
+    min-width: 10rem;
     border: none;
     border-radius: 0.2rem 0 0 0.2rem;
+    font-size: 0.95rem;
+
+    &::placeholder {
+      font-size: 0.95rem;
+    }
   }
 
-  .fa-search {
-    background: var(--mainGrey);
-    color: var(--mainYellow);
+  button {
+    // background: var(--mainGrey);
+    color: var(--mainBlack);
     padding: 0.5rem;
-    height: 1rem;
+    height: 2.1rem;
     cursor: pointer;
     transition: all 0.5s;
     border-radius: 0 0.2rem 0.2rem 0;
+    outline: none;
 
-    &:hover {
-      background: var(--subBlue);
-    }
+    // &:hover {
+    //   background: var(--subBlue);
+    // }
   }
 }
