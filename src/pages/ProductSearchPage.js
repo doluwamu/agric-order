@@ -22,10 +22,6 @@ const ProductSearchPage = ({
     return <Loading />;
   }
 
-  // const noProductFound = () => {
-  //   return products.length === 0 && !isFetching;
-  // };
-
   return (
     <div className="all_products">
       <div className="all_products_body">
