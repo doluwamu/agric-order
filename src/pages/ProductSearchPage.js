@@ -18,7 +18,7 @@ const ProductSearchPage = ({
     dispatch(fetchProducts(category));
   }, [dispatch, category]);
 
-  if (isFetching) {
+  if (isFetching || !category) {
     return <Loading />;
   }
 
@@ -35,7 +35,7 @@ const ProductSearchPage = ({
             <h2
               style={{ textAlign: "center", marginTop: "3rem", color: "red" }}
             >
-              There is no product for this search
+              There is no product with the category of "{capitalize(category)}"
             </h2>
           )}
         </div>

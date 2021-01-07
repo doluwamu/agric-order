@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const Search = () => {
+const ProductSearch = () => {
   const history = useHistory();
   const [category, setCategory] = useState("");
 
@@ -30,4 +30,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default ProductSearch;

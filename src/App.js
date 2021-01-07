@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider, useAuth } from "services/AuthService";
 import NavBar from "./components/shared/NavBar";
-import Search from "./components/shared/Search";
+import ProductSearch from "./components/products/ProductSearch";
 import Routes from "./routes/Routes";
 
 const Provider = ({ children }) => {
@@ -20,7 +20,7 @@ const AgApp = () => {
     <Router>
       <NavBar logout={authService.logOut} />
 
-      <Search />
+      <ProductSearch />
 
       <Routes />
     </Router>

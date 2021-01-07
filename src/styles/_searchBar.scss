@@ -4,28 +4,33 @@
   background: rgba(0, 0, 0, 0.2);
   padding: 1rem;
 
-  input {
-    padding: 0.5rem 0.4rem;
-    outline: none;
-    height: 1rem;
-    min-width: 10rem;
-    border: none;
-    border-radius: 0.2rem 0 0 0.2rem;
-    font-size: 0.95rem;
+  form {
+    background: red;
+    width: 100%;
 
-    &::placeholder {
+    input {
+      padding: 0.5rem 0.4rem;
+      outline: none;
+      height: 1rem;
+      min-width: 10rem;
+      border: none;
+      border-radius: 0.2rem 0 0 0.2rem;
       font-size: 0.95rem;
-    }
-  }
 
-  button {
-    // background: var(--mainGrey);
-    color: var(--mainBlack);
-    padding: 0.5rem;
-    height: 2.1rem;
-    cursor: pointer;
-    transition: all 0.5s;
-    border-radius: 0 0.2rem 0.2rem 0;
-    outline: none;
+      &::placeholder {
+        font-size: 0.95rem;
+      }
+    }
+
+    button {
+      // background: var(--mainGrey);
+      color: var(--mainBlack);
+      padding: 0.5rem;
+      height: 2.1rem;
+      cursor: pointer;
+      transition: all 0.5s;
+      border-radius: 0 0.2rem 0.2rem 0;
+      outline: none;
+    }
   }
 }
