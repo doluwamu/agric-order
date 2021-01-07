@@ -21,14 +21,13 @@
       flex-flow: row wrap;
       padding: 2rem 0;
       margin: 0 auto;
-      max-width: 70rem;
+      max-width: 100%;
       // background: #002;
 
       .product {
-        margin: 1.2rem 1.1rem;
-        // margin-left: 2.1rem;
+        margin: 1.2rem 0.2rem;
         padding-bottom: 1rem;
-        width: 18rem;
+        width: 100%;
         border-bottom: 0.1rem solid #000;
         border-radius: 3px;
         overflow: hidden;
@@ -38,7 +37,7 @@
 
         img {
           width: 100%;
-          height: 15rem;
+          height: 17rem;
         }
 
         .product_name {
@@ -59,34 +58,59 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
-  .product {
-    margin: 1rem 3rem;
-  }
-}
-
-@media screen and (width: 768px) {
+@media screen and (min-width: 670px) {
   .products {
-    width: 700px;
-    max-width: 700px;
-    margin: 0 auto;
+    width: 70rem;
 
     .product {
-      margin: 1rem;
-      margin-left: 9rem;
+      margin: 1rem 1.1rem !important;
+      width: 18rem !important;
+
+      img {
+        width: 100%;
+        height: 15rem !important;
+      }
     }
   }
 }
 
-// @media screen and (max-width: 767px) {
+// @media screen and (width: 768px) {
 //   .products {
-//     width: 550px;
-//     // background: #002;
-//     // margin-left: 50rem;
+//     width: 700px;
+//     max-width: 700px;
+//     margin: 0 auto;
 
 //     .product {
-//       margin: 0.9rem auto;
-//       width: 51%;
+//       margin: 1rem;
+//       margin-left: 9rem;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 800px) {
+//   .products {
+//     // background-color: red;
+//     display: flex;
+//     justify-content: space-evenly;
+//     align-items: flex-start;
+//     flex-flow: row wrap;
+//     padding: 2rem 0;
+//     margin: 0 auto;
+//     width: 100%;
+//     // max-width: 70rem;
+//     // background: #002;
+
+//     .product {
+//       margin: 1.2rem 0.5rem;
+//       // margin-left: 2.1rem;
+//       padding-bottom: 1rem;
+//       width: 100%;
+//       border-bottom: 0.1rem solid #000;
+//       border-radius: 3px;
+//       overflow: hidden;
+//       box-shadow: 0 0 0.2rem #000;
+//       background: #eee;
+//       transition: all 0.5s;
 //     }
 //   }
 // }

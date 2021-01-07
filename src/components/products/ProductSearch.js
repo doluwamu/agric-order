@@ -21,7 +21,7 @@ const ProductSearch = () => {
             type="text"
             value={category}
             onChange={handleChange}
-            placeholder="Search product by category..."
+            placeholder="Search by category..."
           />
           <button style={{ marginRight: "2rem" }}>Search</button>
         </form>

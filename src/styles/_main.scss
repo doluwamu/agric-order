@@ -195,6 +195,9 @@ body {
 
 @media screen and (max-width: 700px) {
   .nav-section {
+    position: relative;
+    top: 0;
+
     .nav-ul {
       li {
         margin-right: 3rem;
