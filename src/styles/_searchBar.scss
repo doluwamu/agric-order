@@ -2,17 +2,13 @@
 .search_box {
   position: sticky;
   top: 5.4rem;
-  // z-index: 111;
 
   .search_section {
     display: flex;
     background: rgba(0, 0, 0, 0.2);
     padding: 1rem;
-    // position: sticky;
-    // top: 100rem !important;
 
-    form {
-      // background: red;
+    div {
       width: 100%;
 
       input {
@@ -30,9 +26,7 @@
       }
 
       button {
-        // background: var(--mainGrey);
         color: var(--mainBlack);
-        // padding: 0.5rem;
         width: 4rem;
         height: 2.1rem;
         cursor: pointer;

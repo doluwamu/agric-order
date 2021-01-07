@@ -5,26 +5,32 @@ const ProductSearch = () => {
   const history = useHistory();
   const [category, setCategory] = useState("");
 
-  const handleSubmit = () => {
+  const handleSearch = () => {
     category && history.push(`/${category}`);
+    setCategory("");
   };
 
-  const handleChange = (event) => {
-    setCategory(event.target.value);
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
     <div className="search_box">
       <div className="search_section">
-        <form onSubmit={handleSubmit}>
+        <div>
           <input
+            onKeyPress={handleKeyPress}
             type="text"
             value={category}
-            onChange={handleChange}
+            onChange={(e) => setCategory(e.target.value)}
             placeholder="Search by category..."
           />
-          <button style={{ marginRight: "2rem" }}>Search</button>
-        </form>
+          <button onClick={handleSearch} style={{ marginRight: "2rem" }}>
+            Search
+          </button>
+        </div>
       </div>
     </div>
   );
