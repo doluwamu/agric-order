@@ -8,10 +8,11 @@ import SignUp from "pages/SignUp";
 import LogoutPage from "pages/LogoutPage";
 import GuestRoute from "components/auth/GuestRoute";
 import AuthRoute from "components/auth/AuthRoute";
-// import ResetPassword from "pages/ResetPassword";
+import ResetPassword from "pages/ResetPassword";
 import CreateProductPage from "pages/CreateProductPage";
 import NewProductCategoryPage from "pages/NewProductCategoryPage";
 import ProductSearchPage from "pages/ProductSearchPage";
+import GetUserPage from "pages/GetUserPage";
 
 function Routes() {
   return (
@@ -20,9 +21,13 @@ function Routes() {
         <ProductPage />
       </Route>
 
-      {/* <Route path="/reset-password">
+      <GuestRoute path="/get-user">
+        <GetUserPage />
+      </GuestRoute>
+
+      <GuestRoute path="/reset-password">
         <ResetPassword />
-      </Route> */}
+      </GuestRoute>
 
       <AuthRoute path="/product-create">
         <CreateProductPage />

@@ -26,3 +26,13 @@ export const userLoggedIn = (decodedToken) => (dispatch) => {
     username: decodedToken.username || "",
   });
 };
+
+export const getUserByEmail = (userData) => {
+  return AgricAxios.post("/users/get-user", userData)
+    .then(({ data }) => {
+      sessionStorage.setItem("user_id", data);
+    })
+    .catch((errors) => {
+      Promise.reject(extractServerError(errors.response) || []);
+    });
+};
