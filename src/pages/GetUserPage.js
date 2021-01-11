@@ -1,8 +1,6 @@
 import { getUserByEmail } from "actions";
 import GetUserForm from "components/forms/GetUserForm";
 import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 class GetUserPage extends Component {
   state = {
@@ -13,18 +11,21 @@ class GetUserPage extends Component {
   getUser = (userData) => {
     getUserByEmail(userData)
       .then((_) => {
-        debugger;
         return this.setState({ shouldRedirect: true });
       })
       .catch((error) => this.setState({ error }));
   };
 
-  render() {
-    const { error, shouldRedirect } = this.state;
+  componentDidUpdate() {
+    const { shouldRedirect } = this.state;
 
     if (shouldRedirect) {
-      return <Redirect to={{ pathname: "/reset-password" }} />;
+      this.props.history.push("/reset-password");
     }
+  }
+
+  render() {
+    const { error } = this.state;
 
     return (
       <div className="form-section">
@@ -34,4 +35,4 @@ class GetUserPage extends Component {
   }
 }
 
-export default connect()(GetUserPage);
+export default GetUserPage;

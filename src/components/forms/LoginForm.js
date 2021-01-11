@@ -68,7 +68,10 @@ const LoginForm = ({ onSubmit, error }) => {
         <p
           style={{ fontSize: "16px", marginLeft: "15px", marginTop: "1.5rem" }}
         >
-          <Link to="/signup" style={{ color: "blue", textDecoration: "none" }}>
+          <Link
+            to="/get-user"
+            style={{ color: "blue", textDecoration: "none" }}
+          >
             Forgot password?
           </Link>
         </p>

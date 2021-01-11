@@ -20,7 +20,7 @@ router.post("/login", login);
 router.post("/register", register);
 
 // Reseting Password
-router.patch("/:userId/password-reset", changePassword);
+router.post("/:userId/password-reset", changePassword);
 // router.post("/password-reset-verification", changePasswordVerification);
 
 // Deleting account

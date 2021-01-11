@@ -35,7 +35,7 @@ const ProductSearchPage = ({
             <h2
               style={{ textAlign: "center", marginTop: "3rem", color: "red" }}
             >
-              There is no product with the category of "{capitalize(category)}"
+              There is no product or page of "{capitalize(category)}" found
             </h2>
           )}
         </div>

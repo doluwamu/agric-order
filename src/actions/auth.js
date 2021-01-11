@@ -30,10 +30,17 @@ export const userLoggedIn = (decodedToken) => (dispatch) => {
 export const getUserByEmail = (userData) => {
   return AgricAxios.post("/users/get-user", userData)
     .then(({ data }) => {
-      debugger;
       sessionStorage.setItem("user_id", data);
       return data;
     })
+    .catch((errors) =>
+      Promise.reject(extractServerError(errors.response) || [])
+    );
+};
+
+export const PasswordReset = (resetData, userId) => {
+  return AgricAxios.post(`/users/${userId}/password-reset`, resetData)
+    .then(({ data }) => data)
     .catch((errors) =>
       Promise.reject(extractServerError(errors.response) || [])
     );

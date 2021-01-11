@@ -178,7 +178,25 @@ exports.register = async (req, res) => {
 exports.changePassword = async (req, res) => {
   try {
     const { userId } = req.params;
-    const { newPassword } = req.body;
+    const { newPassword, passwordConfirmation } = req.body;
+    if (!newPassword) {
+      return res.sendApiError({
+        title: "Missing data!",
+        detail: "Provide your new password!",
+      });
+    }
+    if (!passwordConfirmation) {
+      return res.sendApiError({
+        title: "Missing data!",
+        detail: "Confirm your new password!",
+      });
+    }
+    if (newPassword !== passwordConfirmation) {
+      return res.sendApiError({
+        title: "Data Mismatch!",
+        detail: "Your new password must match confirmation password!",
+      });
+    }
     const salt = await bcrypt.genSalt(10);
     const password = await bcrypt.hash(newPassword, salt);
     const user = await User.findByIdAndUpdate({ _id: userId }, { password });
