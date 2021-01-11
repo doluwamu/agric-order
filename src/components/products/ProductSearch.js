@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
@@ -19,7 +20,7 @@ const ProductSearch = () => {
   return (
     <div className="search_box">
       <div className="search_section">
-        <div>
+        <div className="search_input">
           <input
             onKeyPress={handleKeyPress}
             type="text"
@@ -28,7 +29,7 @@ const ProductSearch = () => {
             placeholder="Search by category..."
           />
           <button onClick={handleSearch} style={{ marginRight: "2rem" }}>
-            Search
+            <FontAwesomeIcon icon="search" />
           </button>
         </div>
       </div>
