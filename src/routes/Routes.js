@@ -21,12 +21,12 @@ function Routes() {
         <ProductPage />
       </Route>
 
-      <GuestRoute path="/get-user">
-        <GetUserPage />
-      </GuestRoute>
-
       <GuestRoute path="/reset-password">
         <ResetPassword />
+      </GuestRoute>
+
+      <GuestRoute path="/get-user">
+        <GetUserPage />
       </GuestRoute>
 
       <AuthRoute path="/product-create">

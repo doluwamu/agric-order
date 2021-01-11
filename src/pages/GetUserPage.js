@@ -12,7 +12,10 @@ class GetUserPage extends Component {
 
   getUser = (userData) => {
     getUserByEmail(userData)
-      .then((_) => this.setState({ shouldRedirect: true }))
+      .then((_) => {
+        debugger;
+        return this.setState({ shouldRedirect: true });
+      })
       .catch((error) => this.setState({ error }));
   };
 

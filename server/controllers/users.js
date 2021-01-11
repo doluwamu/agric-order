@@ -36,12 +36,7 @@ exports.getUserByEmail = async (req, res) => {
   }
   try {
     const user = await User.findOne({ email });
-    if (!user) {
-      return res.sendApiError({
-        title: "Invalid email!",
-        detail: "User with this email doesn't exist",
-      });
-    }
+
     if (user) {
       const token = jwt.sign(
         {
@@ -51,9 +46,13 @@ exports.getUserByEmail = async (req, res) => {
         { expiresIn: "1h" }
       );
 
-      // return res.json(token);
       return res.json(jwt.decode(token).userId);
     }
+
+    return res.sendApiError({
+      title: "Invalid email!",
+      detail: "User with this email doesn't exist",
+    });
   } catch (error) {
     return res.mongoError(error);
   }
