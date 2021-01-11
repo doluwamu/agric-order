@@ -6,7 +6,7 @@ export const addToCart = (productId, qty) => (dispatch) => {
 
   dispatch({
     type: "ADD_ITEM_TO_CART",
-    cart: {
+    item: {
       product: data._id,
       name: data.name,
       image: data.image,
