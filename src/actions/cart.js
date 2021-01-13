@@ -1,14 +1,10 @@
 // import { productData } from "product";
-
+import Cookie from "js-cookie";
 // Cart: todo(fix)
-export const addToCart = (product, productId) => (dispatch) => {
-  // console.log(product);
-  debugger;
+export const addToCart = (product, productId) => (dispatch, getState) => {
   const productData = [{ ...product }];
-  debugger;
   const data = productData.find((prod) => prod._id === productId);
   console.log(data);
-  debugger;
 
   dispatch({
     type: "ADD_ITEM_TO_CART",
@@ -23,11 +19,19 @@ export const addToCart = (product, productId) => (dispatch) => {
       owner: data.owner,
     },
   });
+  const {
+    cart: { cartItems },
+  } = getState();
+  Cookie.set("cartItems", JSON.stringify(cartItems));
 };
 
-export const removeFromCart = (productId) => (dispatch) => {
+export const removeFromCart = (productId) => (dispatch, getState) => {
   dispatch({
     type: "REMOVE_CART_ITEM",
     product: productId,
   });
+  const {
+    cart: { cartItems },
+  } = getState();
+  Cookie.set("cartItems", JSON.stringify(cartItems));
 };

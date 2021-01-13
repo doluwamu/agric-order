@@ -2,12 +2,15 @@ const cart = (state = { cartItems: [] }, action) => {
   switch (action.type) {
     case "ADD_ITEM_TO_CART":
       const item = action.item;
-      const product = state.cartItems.find((x) => x.product === item.product);
+      const product = state.cartItems.find(
+        (cartItem) => cartItem.product === item.product
+      );
       if (product) {
         return {
-          cartItems: state.cartItems.map((cartItem) =>
-            cartItem.product === product.product ? item : cartItem
-          ),
+          ...state,
+          cartItems: state.cartItems.map((cartItem) => {
+            return cartItem.product === product.product ? item : cartItem;
+          }),
         };
       }
       return { cartItems: [...state.cartItems, item] };

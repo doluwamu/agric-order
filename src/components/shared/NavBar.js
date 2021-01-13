@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { capitalize } from "helpers/Capitalize";
 
-const NavBar = ({ isAuthenticated, username, logout }) => {
+const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
   const toggleAside = () => {
     document.querySelector(".nav-ul").classList.toggle("open");
   };
@@ -75,7 +75,7 @@ const NavBar = ({ isAuthenticated, username, logout }) => {
                     borderRadius: "10px",
                   }}
                 >
-                  0
+                  {cartItems.length}
                 </span>
               </Link>
             </li>
@@ -86,10 +86,15 @@ const NavBar = ({ isAuthenticated, username, logout }) => {
   );
 };
 
-const mapStateToProps = ({ auth: { isAuthenticated, username } }) => {
+const mapStateToProps = ({
+  auth: { isAuthenticated, username },
+  cart: { cartItems },
+}) => {
+  // debugger;
   return {
     isAuthenticated,
     username,
+    cartItems,
   };
 };
 

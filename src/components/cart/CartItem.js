@@ -7,12 +7,14 @@ const CartItem = ({ cartItems, dispatch }) => {
     dispatch(removeFromCart(id));
   };
 
+  // let i = 0;
   // const { cart } = props;
   // const { cartItems } = cart;
 
   return (
     <div className="cart">
       {cartItems.map((item) => {
+        // localStorage.setItem(`cart_item_${i++}`, JSON.stringify(item));
         return (
           <div className="cart-item" key={item.product}>
             <div className="item item-image">

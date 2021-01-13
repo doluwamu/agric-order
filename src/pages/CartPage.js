@@ -28,9 +28,9 @@ class CartPage extends Component {
     );
   }
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = ({ cart }) => {
   return {
-    cart: state.cart,
+    cart,
   };
 };
 
