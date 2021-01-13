@@ -9,13 +9,20 @@ export const fetchProducts = (category) => (dispatch) => {
   dispatch({
     type: "REQUEST_DATA",
   });
-  return AgricAxios.get(query).then((res) => {
-    dispatch({
-      type: "REQUEST_DATA_COMPLETE",
-      products: res.data,
-      resource: "fetch-products",
+  return AgricAxios.get(query)
+    .then((res) => {
+      dispatch({
+        type: "REQUEST_DATA_COMPLETE",
+        products: res.data,
+        resource: "fetch-products",
+      });
+    })
+    .catch(({ message }) => {
+      dispatch({
+        type: "REQUEST_DATA_FAILED",
+        message,
+      });
     });
-  });
 };
 
 export const fetchProductById = (productId) => (dispatch) => {
