@@ -3,19 +3,24 @@ import { NumWithComma } from "../../helpers/NumberHelpers";
 import { withRouter } from "react-router-dom";
 import { capitalize } from "helpers/Capitalize";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { connect } from "react-redux";
+import { addToCart } from "actions";
+// import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function ProductDetails({ product }) {
+function ProductDetails({ product, dispatch }) {
   const history = useHistory();
-  // const { product } = props;
+  // const { product, dispatch } = props;
   // const [qty, setQty] = useState(1);
 
   // const handleQtyChange = (event) => {
   //   setQty(event.target.value);
   // };
+  // console.log(props);
 
   const handleAddToCart = () => {
-    history.push(`/cart`);
+    dispatch(addToCart(product, product._id));
+    return history.push("/cart");
   };
 
   return (
@@ -41,8 +46,8 @@ function ProductDetails({ product }) {
             </p>
             {product.owner && (
               <div className="product-owner detail">
-                <b>Owner:</b>
-                <div>{capitalize(product.owner.username) || ""}</div>
+                <b>Owner: </b>
+                <span>{capitalize(product.owner.username) || ""}</span>
                 <div>{product.owner.email || ""}</div>
               </div>
             )}
@@ -89,4 +94,6 @@ function ProductDetails({ product }) {
   );
 }
 
-export default withRouter(ProductDetails);
+const ProductDetailsWithRouter = withRouter(ProductDetails);
+
+export default connect()(ProductDetailsWithRouter);

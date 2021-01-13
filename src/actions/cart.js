@@ -1,8 +1,14 @@
-import { productData } from "data";
+// import { productData } from "product";
 
 // Cart: todo(fix)
-export const addToCart = (productId, qty) => (dispatch) => {
-  const data = productData.find((product) => product._id === productId);
+export const addToCart = (product, productId) => (dispatch) => {
+  // console.log(product);
+  debugger;
+  const productData = [{ ...product }];
+  debugger;
+  const data = productData.find((prod) => prod._id === productId);
+  console.log(data);
+  debugger;
 
   dispatch({
     type: "ADD_ITEM_TO_CART",
@@ -12,7 +18,9 @@ export const addToCart = (productId, qty) => (dispatch) => {
       image: data.image,
       price: data.price,
       quantityInStock: data.quantityInStock,
-      qty,
+      category: data.category,
+      ratings: data.ratings,
+      owner: data.owner,
     },
   });
 };

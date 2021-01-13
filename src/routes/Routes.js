@@ -53,9 +53,9 @@ function Routes() {
         <ProductDetail />
       </Route>
 
-      <Route path="/cart">
+      <AuthRoute path="/cart">
         <CartPage />
-      </Route>
+      </AuthRoute>
 
       <Route path="/:category">
         <ProductSearchPage />

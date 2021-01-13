@@ -14,6 +14,7 @@ export class ProductDetail extends Component {
 
   render() {
     const { product, isFetching } = this.props;
+    console.log(product);
     if (isFetching) {
       return <Loading />;
     }
@@ -31,6 +32,7 @@ export class ProductDetail extends Component {
 }
 
 const mapStateToProps = ({ product: { fetchedData, datafetching } }) => {
+  // console.log(fetchedData);
   return {
     product: fetchedData,
     isFetching: datafetching,
