@@ -32,7 +32,7 @@
         overflow: hidden;
         box-shadow: 0 0 0.2rem var(--mainBlack);
         background: #eee;
-        transition: all 0.5s;
+        transition: all 0.4s;
 
         img {
           width: 100%;
@@ -57,7 +57,7 @@
   }
 }
 
-@media screen and (width: 768px) {
+@media screen and (max-width: 1023px) {
   .products {
     // background: #002;
     max-width: 41rem !important;
@@ -81,8 +81,9 @@
 @media screen and (max-width: 650px) {
   .products {
     max-width: 490px !important;
-    background: red;
     .product {
+      // margin: 1rem 1.3rem !important;
+      width: 100% !important;
       img {
         height: 13rem !important;
       }
