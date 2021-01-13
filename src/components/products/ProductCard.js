@@ -1,7 +1,7 @@
 import React from "react";
 import { NumWithComma } from "../../helpers/NumberHelpers";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize } from "helpers/Capitalize";
 
 const ProductCard = ({ products }) => {
@@ -13,17 +13,17 @@ const ProductCard = ({ products }) => {
         </Link>
         <div
           className="product_detail"
-          style={{ margin: "0 auto", width: "70%", textAlign: "center" }}
+          style={{ margin: "5px 5px", width: "70%", textAlign: "left" }}
         >
           <p className="product_name">Name: {capitalize(product.name)}</p>
-          <p className="product-category">
+          <p className="product_category">
             <b>Category:</b> <span>{capitalize(product.category)}</span>
           </p>
           <p className="product_price">
             Price: &#x20A6;{NumWithComma(product.price)}
           </p>
         </div>
-        <div className="add-to-cart" style={{ width: "60%", margin: "0 auto" }}>
+        {/* <div className="add-to-cart" style={{ width: "60%", margin: "0 auto" }}>
           <button
             className="btn btn-secondary"
             style={{
@@ -35,7 +35,7 @@ const ProductCard = ({ products }) => {
           >
             Add to cart <FontAwesomeIcon icon="shopping-cart" />
           </button>
-        </div>
+        </div> */}
       </div>
     );
   });

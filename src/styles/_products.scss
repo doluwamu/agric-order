@@ -31,18 +31,19 @@
           height: 20rem;
         }
 
-        .product_name {
-          color: var(--mainRed);
-          font-size: 0.9rem;
-          font-weight: 600;
-          padding: 0.2rem 0;
-        }
+        .product_detail {
+          .product_name,
+          .product_category,
+          .product_price {
+            font-weight: bold;
+            padding: 0.2rem 0;
+            font-size: 1rem;
+          }
 
-        .product_price {
-          color: var(--mainBlack);
-          font-size: 1.2rem;
-          font-weight: bold;
-          padding: 0.2rem 0;
+          .product_price {
+            color: var(--mainRed);
+            font-size: 1.2rem;
+          }
         }
       }
     }
