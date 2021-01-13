@@ -9,6 +9,9 @@ const NavBar = ({ isAuthenticated, username, logout }) => {
   const toggleAside = () => {
     document.querySelector(".nav-ul").classList.toggle("open");
   };
+  const removeAside = () => {
+    document.querySelector(".nav-ul").classList.remove("open");
+  };
   return (
     <nav className="nav-section">
       <header className="nav_header">
@@ -19,7 +22,7 @@ const NavBar = ({ isAuthenticated, username, logout }) => {
         &#9776;
       </button>
 
-      <ul className="nav-ul" onClick={toggleAside}>
+      <ul className="nav-ul" onClick={removeAside}>
         {isAuthenticated && (
           <li className="nav_li">
             <div className="user" style={{ color: "#fff" }}>
