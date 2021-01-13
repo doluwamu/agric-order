@@ -34,7 +34,7 @@ const CartItem = ({ cartItems, dispatch }) => {
               <span>&#x20A6;{NumWithComma(item.price)}</span>
             </div>
 
-            <div className="item item-qty">Qty: {item.qty}</div>
+            <div className="item item-qty">Quantity: {item.qty}</div>
 
             {/* Qty:
             <select
