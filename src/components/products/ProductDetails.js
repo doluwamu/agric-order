@@ -5,7 +5,7 @@ import { capitalize } from "helpers/Capitalize";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function ProductDetails({ product, match }) {
+function ProductDetails({ product }) {
   const history = useHistory();
   // const { product } = props;
   // const [qty, setQty] = useState(1);
@@ -20,6 +20,9 @@ function ProductDetails({ product, match }) {
 
   return (
     <div className="container">
+      <header className="products_header" style={{ marginBottom: "1rem" }}>
+        {capitalize(product.name)}
+      </header>
       <div className="elements">
         <div className="image-detail">
           <img
