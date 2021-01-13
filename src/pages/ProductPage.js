@@ -27,6 +27,12 @@ class ProductPage extends Component {
       <div className="all_products">
         <div className="all_products_body">
           <header className="products_header">Check out our animals</header>
+          <header
+            className="products_header"
+            style={{ fontSize: "20px", fontWeight: "bold" }}
+          >
+            Click on desired product to continue shopping
+          </header>
           <div className="products">
             <ProductCard products={products} />
           </div>
