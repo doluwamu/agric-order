@@ -4,7 +4,6 @@ import Cookie from "js-cookie";
 export const addToCart = (product, productId) => (dispatch, getState) => {
   const productData = [{ ...product }];
   const data = productData.find((prod) => prod._id === productId);
-  console.log(data);
 
   dispatch({
     type: "ADD_ITEM_TO_CART",

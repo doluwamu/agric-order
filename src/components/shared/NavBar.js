@@ -57,14 +57,6 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
 
         {isAuthenticated && (
           <>
-            <li className="nav_li" onClick={logout}>
-              <Link
-                to="/logout/35tve6gybbreg7greuyguyf7grggter7gfd87greugerg867ye"
-                className="logout_text"
-              >
-                Log-out
-              </Link>
-            </li>
             <li className="nav_li">
               <Link to="/cart" className="logout_text">
                 Cart{" "}
@@ -72,11 +64,20 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
                   style={{
                     background: "#000",
                     padding: "3px 5px",
-                    borderRadius: "10px",
+                    borderRadius: "5px",
                   }}
                 >
                   {cartItems.length}
                 </span>
+              </Link>
+            </li>
+
+            <li className="nav_li" onClick={logout}>
+              <Link
+                to="/logout/35tve6gybbreg7greuyguyf7grggter7gfd87greugerg867ye"
+                className="logout_text"
+              >
+                Log-out
               </Link>
             </li>
           </>
