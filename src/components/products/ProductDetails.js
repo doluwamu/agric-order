@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NumWithComma } from "../../helpers/NumberHelpers";
 import { withRouter } from "react-router-dom";
 import { capitalize } from "helpers/Capitalize";
@@ -11,15 +11,15 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 function ProductDetails({ product, dispatch }) {
   const history = useHistory();
   // const { product, dispatch } = props;
-  // const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState(1);
 
-  // const handleQtyChange = (event) => {
-  //   setQty(event.target.value);
-  // };
+  const handleQtyChange = (event) => {
+    setQty(event.target.value);
+  };
   // console.log(props);
 
   const handleAddToCart = () => {
-    dispatch(addToCart(product, product._id));
+    dispatch(addToCart(product, product._id, qty));
     return history.push("/cart");
   };
 
@@ -66,7 +66,7 @@ function ProductDetails({ product, dispatch }) {
               <b>Details:</b> <span>{product.details}</span>
             </p>
 
-            {/* <b>Qty</b>
+            <b>Qty</b>
             <select value={qty} onChange={handleQtyChange}>
               {[...Array(product.quantityInStock).keys()].map((x) => {
                 return (
@@ -75,7 +75,7 @@ function ProductDetails({ product, dispatch }) {
                   </option>
                 );
               })}
-            </select> */}
+            </select>
           </div>
 
           {product.quantityInStock > 0 && (

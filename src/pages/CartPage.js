@@ -23,7 +23,7 @@ class CartPage extends Component {
     return (
       <div className="cart-items">
         <CartItem cartItems={cartItems} dispatch={this.props.dispatch} />
-        <CalcCartItems props={this.props} />
+        <CalcCartItems cartItems={cartItems} />
       </div>
     );
   }
