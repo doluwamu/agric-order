@@ -32,7 +32,7 @@
         overflow: hidden;
         box-shadow: 0 0 0.2rem var(--mainBlack);
         background: #eee;
-        transition: all 0.4s;
+        // transition: all 0.4s;
 
         img {
           width: 100%;
@@ -59,16 +59,11 @@
 
 @media screen and (max-width: 1023px) {
   .products {
-    // background: #002;
-    max-width: 41rem !important;
+    max-width: 41.3rem !important;
 
     .product {
       margin: 1rem 1.3rem !important;
       width: 18rem !important;
-
-      &:first-child {
-        margin-left: 1rem !important;
-      }
 
       img {
         width: 100%;
@@ -82,8 +77,13 @@
   .products {
     max-width: 490px !important;
     .product {
-      // margin: 1rem 1.3rem !important;
+      margin: 1rem 1.3rem !important;
       width: 100% !important;
+
+      &:first-child {
+        margin-left: 1.3rem !important;
+      }
+
       img {
         height: 13rem !important;
       }
@@ -120,9 +120,21 @@
       margin: 1rem 1.3rem !important;
       width: 18rem !important;
 
-      &:first-child {
-        margin-left: 0.5rem !important;
+      img {
+        width: 100%;
+        height: 15rem !important;
       }
+    }
+  }
+}
+
+@media screen and (min-width: 1350px) {
+  .products {
+    width: 83rem !important;
+
+    .product {
+      margin: 1rem 1.3rem !important;
+      width: 18rem !important;
 
       img {
         width: 100%;
