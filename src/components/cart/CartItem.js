@@ -1,13 +1,12 @@
 import React from "react";
 import { NumWithComma } from "helpers/NumberHelpers";
-import { addToCart, removeFromCart } from "actions";
+import { removeFromCart } from "actions";
+import { capitalize } from "helpers/Capitalize";
 
 const CartItem = ({ cartItems, dispatch }) => {
   const handleRemoveItemFromCart = (id) => {
     dispatch(removeFromCart(id));
   };
-
-  // const [qty, setQty] = useState(1);
 
   // const handleChange = (e) => {
   //   setQty(e.target.value);
@@ -17,6 +16,7 @@ const CartItem = ({ cartItems, dispatch }) => {
   // const { cart } = props;
   // const { cartItems } = cart;
 
+  // const [qty, setQty] = useState(null);
   return (
     <div className="cart">
       {cartItems.map((item) => {
@@ -27,25 +27,28 @@ const CartItem = ({ cartItems, dispatch }) => {
             </div>
             <div className="item item-name">
               <b>Name: </b>
-              <span>{item.name}</span>
+              <span>{capitalize(item.name)}</span>
             </div>
             <div className="item item-price">
               <b>Price: </b>
               <span>&#x20A6;{NumWithComma(item.price)}</span>
             </div>
-            Qty:
+
+            <div className="item item-qty">Qty: {item.qty}</div>
+
+            {/* Qty:
             <select
               value={item.qty}
-              onChange={(e) =>
-                dispatch(addToCart(item.product, e.target.value))
-              }
+              onChange={(e) => {
+                dispatch(addToCart(item.product, item._id, e.target.value));
+              }}
             >
               {[...Array(item.quantityInStock).keys()].map((x) => (
                 <option key={x + 1} value={x + 1}>
                   {x + 1}
                 </option>
               ))}
-            </select>
+            </select> */}
             <div className="item item-button">
               <button
                 className="btn btn-primary"

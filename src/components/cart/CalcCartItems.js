@@ -2,6 +2,7 @@ import React from "react";
 import { NumWithComma } from "helpers/NumberHelpers";
 
 const CalcCartItems = ({ cartItems }) => {
+  // debugger;
   // const { cart } = props;
   // const { cartItems } = cart;
   return (
@@ -10,10 +11,8 @@ const CalcCartItems = ({ cartItems }) => {
         <h3 className="cart-totals">
           <p>{cartItems.length} Product(s) added to Cart</p>
           <p>
-            Quantity:{" "}
-            {NumWithComma(
-              cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0)
-            )}
+            Quantity:
+            {cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0)}{" "}
           </p>
           <p>
             Cost: &#x20A6;
