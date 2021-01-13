@@ -30,13 +30,20 @@ export const fetchProductById = (productId) => (dispatch) => {
     type: "REQUEST_PRODUCT",
   });
 
-  return AgricAxios.get(`/products/${productId}`).then((res) => {
-    dispatch({
-      type: "REQUEST_PRODUCT_COMPLETE",
-      data: res.data,
-      resource: "fetch-product-by-id",
+  return AgricAxios.get(`/products/${productId}`)
+    .then((res) => {
+      dispatch({
+        type: "REQUEST_PRODUCT_COMPLETE",
+        data: res.data,
+        resource: "fetch-product-by-id",
+      });
+    })
+    .catch(({ message }) => {
+      dispatch({
+        type: "REQUEST_PRODUCT_FAILED",
+        message,
+      });
     });
-  });
 };
 
 export const productCreate = (productData) => {

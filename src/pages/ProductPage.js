@@ -6,6 +6,7 @@ import { fetchProducts } from "actions";
 import ProductCard from "components/products/ProductCard";
 
 import Loading from "helpers/Loading";
+import ConnectionError from "errors/ConnectionError";
 
 class ProductPage extends Component {
   componentDidMount() {
@@ -19,12 +20,7 @@ class ProductPage extends Component {
     }
 
     if (dataFetchingFail && dataFetchingFail.length > 0) {
-      return (
-        <div style={{ marginTop: "150px", textAlign: "center" }}>
-          <h2>Ooops, you are not online!</h2>
-          <b>Check your connection and try again later</b>
-        </div>
-      );
+      return <ConnectionError />;
     }
 
     return (
