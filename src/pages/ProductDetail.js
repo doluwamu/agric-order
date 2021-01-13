@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { fetchProductById } from "actions";
 import ProductDetails from "components/products/ProductDetails";
 import Loading from "helpers/Loading";
+import { capitalize } from "helpers/Capitalize";
 
 export class ProductDetail extends Component {
   componentDidMount() {
@@ -21,6 +22,9 @@ export class ProductDetail extends Component {
     return (
       product && (
         <div className="selected product-detail">
+          <header className="products_header">
+            {capitalize(product.name)}
+          </header>
           <div className="details-page display">
             <ProductDetails product={product} />
           </div>

@@ -53,7 +53,7 @@ function Routes() {
         <ProductDetail />
       </Route>
 
-      <Route path="/cart/:id?">
+      <Route path="/cart">
         <CartPage />
       </Route>
 

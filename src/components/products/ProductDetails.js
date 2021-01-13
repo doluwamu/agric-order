@@ -1,18 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import { NumWithComma } from "../../helpers/NumberHelpers";
 import { withRouter } from "react-router-dom";
 import { capitalize } from "helpers/Capitalize";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-function ProductDetails(props) {
-  const { product } = props;
-  const [qty, setQty] = useState(1);
+function ProductDetails({ product, match }) {
+  const history = useHistory();
+  // const { product } = props;
+  // const [qty, setQty] = useState(1);
 
-  const handleQtyChange = (event) => {
-    setQty(event.target.value);
-  };
+  // const handleQtyChange = (event) => {
+  //   setQty(event.target.value);
+  // };
 
   const handleAddToCart = () => {
-    props.history.push(`/cart/${props.match.params.id}?qty=${qty}`);
+    history.push(`/cart`);
   };
 
   return (
@@ -27,23 +30,23 @@ function ProductDetails(props) {
         </div>
         <div className="product-details">
           <div className="main-details">
-            <p className="product-name">
+            <p className="product-name detail">
               <b>Name:</b> <span>{capitalize(product.name)}</span>
             </p>
-            <p className="product-category">
+            <p className="product-category detail">
               <b>Category:</b> <span>{capitalize(product.category)}</span>
             </p>
             {product.owner && (
-              <div className="product-category">
+              <div className="product-owner detail">
                 <b>Owner:</b>
-                <p>{product.owner.username || ""}</p>
-                <p>{product.owner.email || ""}</p>
+                <div>{capitalize(product.owner.username) || ""}</div>
+                <div>{product.owner.email || ""}</div>
               </div>
             )}
-            <p className="product-price">
+            <p className="product-price detail">
               <b>Price:</b> <span>&#x20A6;{NumWithComma(product.price)}</span>
             </p>
-            <b className="status">
+            <b className="status detail">
               Status:{" "}
               {product.quantityInStock > 0 ? (
                 <span className="status_available">In stock</span>
@@ -51,11 +54,11 @@ function ProductDetails(props) {
                 <span className="status_unavailable">Out of stock</span>
               )}
             </b>
-            <p className="product-description">
+            <p className="product-description detail">
               <b>Details:</b> <span>{product.details}</span>
             </p>
 
-            <b>Qty</b>
+            {/* <b>Qty</b>
             <select value={qty} onChange={handleQtyChange}>
               {[...Array(product.quantityInStock).keys()].map((x) => {
                 return (
@@ -64,7 +67,7 @@ function ProductDetails(props) {
                   </option>
                 );
               })}
-            </select>
+            </select> */}
           </div>
 
           {product.quantityInStock > 0 && (
@@ -73,7 +76,7 @@ function ProductDetails(props) {
                 onClick={handleAddToCart}
                 className="btn btn-secondary add_to_cart"
               >
-                Add to cart
+                Add to cart <FontAwesomeIcon icon="shopping-cart" />
               </button>
             </div>
           )}
