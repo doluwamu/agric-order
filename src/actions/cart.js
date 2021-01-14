@@ -1,7 +1,12 @@
 // import { productData } from "product";
 import Cookie from "js-cookie";
 // Cart: todo(fix)
-export const addToCart = (product, productId, qty) => (dispatch, getState) => {
+export const addToCart = (product, productId, qty=1) => (dispatch, getState) => {
+
+  // dispatch({
+  //   type:'REQUEST_CART_ITEMS'
+  // })
+
   const productData = [{ ...product }];
   const data = productData.find((prod) => prod._id === productId);
 
