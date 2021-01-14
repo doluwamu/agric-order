@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { addToCart } from "actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize } from "helpers/Capitalize";
+import { BreakWordFragment } from "helpers/WordLimits";
 
 const ProductCard = ({ products, dispatch }) => {
   return products.map((product) => {
@@ -17,11 +18,14 @@ const ProductCard = ({ products, dispatch }) => {
         </Link>
         <div
           className="product_detail"
-          style={{ margin: "5px 5px", width: "70%", textAlign: "left" }}
+          style={{ margin: "5px", width: "100%", textAlign: "left" }}
         >
           <p className="product_name">Name: {capitalize(product.name)}</p>
           <p className="product_category">
             <b>Category:</b> <span>{capitalize(product.category)}</span>
+          </p>
+          <p className="product_category">
+            <b>Detail:</b> <span>{BreakWordFragment(product.details)}</span>
           </p>
           <p className="product_price">
             Price: &#x20A6;{NumWithComma(product.price)}
