@@ -123,11 +123,8 @@ body {
 
 @media screen and (max-width: 1360px) {
   .open {
-    display: flex !important;
-    justify-content: space-evenly !important;
-    align-items: center !important;
-    flex-direction: column !important;
-    animation: 1s navTransition !important;
+    display: block !important;
+    transform: translateY(0) !important;
   }
 
   @keyframes navTransition {
@@ -140,13 +137,7 @@ body {
   }
 
   .nav-section {
-    // position: sticky;
-    // top: 0;
-    z-index: 111;
-
     header {
-      // padding-right: 200px;
-      // background: var(--mainGrey);
       margin-top: -1rem;
       padding-top: 1rem;
     }
@@ -166,50 +157,30 @@ body {
     }
 
     .nav-ul {
-      display: none;
-      height: 100%;
+      max-height: 40%;
       width: 100%;
+      overflow-y: scroll;
       background: var(--mainGrey);
+      transform: translateY(-90rem);
       opacity: 0.9;
       overflow-y: scroll;
       position: fixed;
       top: 3.5rem;
       transition: all 0.5s !important;
-      z-index: -1 !important;
 
       li {
-        margin-top: -19rem !important;
+        margin-top: 1.3rem !important;
+        margin-left: -1rem !important;
+        // background: red;
 
         &:last-child {
-          margin-bottom: 2rem !important;
+          margin-bottom: 0.1rem !important;
         }
 
         a {
-          font-size: 1.3rem;
-          font-weight: 800;
+          font-size: 1.1rem;
+          font-weight: 600;
         }
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .nav-section {
-    .nav-ul {
-      li {
-        margin-right: 3rem;
-        padding: 1rem 0;
-        margin-top: -8rem !important;
-      }
-    }
-  }
-}
-
-@media screen and (max-height: 400px) {
-  .nav-section {
-    .nav-ul {
-      li {
-        margin-top: -2.5rem !important;
       }
     }
   }
