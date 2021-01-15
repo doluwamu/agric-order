@@ -15,15 +15,6 @@ const CartItem = ({ cartItems, dispatch }) => {
     dispatch(removeFromCart(id));
   };
 
-  // const handleChange = (e) => {
-  //   setQty(e.target.value);
-  // };
-
-  // let i = 0;
-  // const { cart } = props;
-  // const { cartItems } = cart;
-
-  // const [qty, setQty] = useState(null);
   return (
     <div className="cart">
       {cartItems.map((item) => {
@@ -43,21 +34,8 @@ const CartItem = ({ cartItems, dispatch }) => {
               <span>&#x20A6;{NumWithComma(item.price)}</span>
             </div>
 
-            <div className="item item-qty">Quantity: {item.qty}</div>
+            <div className="item item-qty">Qty: {item.qty}</div>
 
-            {/* Qty:
-            <select
-              value={item.qty}
-              onChange={(e) => {
-                dispatch(addToCart(item.product, item._id, e.target.value));
-              }}
-            >
-              {[...Array(item.quantityInStock).keys()].map((x) => (
-                <option key={x + 1} value={x + 1}>
-                  {x + 1}
-                </option>
-              ))}
-            </select> */}
             <div className="item item-button">
               <button
                 className="btn btn-primary"

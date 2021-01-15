@@ -10,13 +10,11 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProductDetails({ product, dispatch }) {
   const history = useHistory();
-  // const { product, dispatch } = props;
   const [qty, setQty] = useState(1);
 
   const handleQtyChange = (event) => {
     setQty(event.target.value);
   };
-  // console.log(props);
 
   const handleAddToCart = () => {
     dispatch(addToCart(product, product._id, qty));
