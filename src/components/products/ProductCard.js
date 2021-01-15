@@ -24,7 +24,7 @@ const ProductCard = ({ products, dispatch }) => {
           <p className="product_category">
             <b>Category:</b> <span>{capitalize(product.category)}</span>
           </p>
-          <p className="product_category">
+          <p className="product_detail">
             <b>Detail:</b> <span>{BreakWordFragment(product.details)}</span>
           </p>
           <p className="product_price">

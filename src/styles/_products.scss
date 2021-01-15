@@ -34,10 +34,15 @@
         .product_detail {
           .product_name,
           .product_category,
+          .product_detail,
           .product_price {
             font-weight: bold;
             padding: 0.2rem 0;
             font-size: 1rem;
+          }
+
+          .product_category {
+            color: var(--mainRed);
           }
 
           .product_price {

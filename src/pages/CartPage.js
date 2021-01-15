@@ -21,10 +21,24 @@ class CartPage extends Component {
     const { cart } = this.props;
     const { cartItems } = cart;
     return (
-      <div className="cart-items">
-        <CartItem cartItems={cartItems} dispatch={this.props.dispatch} />
-        <CalcCartItems cartItems={cartItems} />
-      </div>
+      <>
+        <header
+          className="products_header"
+          style={{
+            position: "absolute",
+            top: "12rem",
+            left: "4rem",
+            maxWidth: "20rem",
+            marginBottom: "1.5rem",
+          }}
+        >
+          Your cart
+        </header>
+        <div className="cart-items">
+          <CartItem cartItems={cartItems} dispatch={this.props.dispatch} />
+          <CalcCartItems cartItems={cartItems} />
+        </div>
+      </>
     );
   }
 }

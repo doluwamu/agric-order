@@ -1,5 +1,6 @@
 /* Stylings for SearchBar */
 .search_box {
+  z-index: 11;
   .search_section {
     display: flex;
     background: rgba(0, 0, 0, 0.8);
