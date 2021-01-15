@@ -3,7 +3,7 @@ import { NumWithComma } from "../../helpers/NumberHelpers";
 import { Link } from "react-router-dom";
 import { addToCart } from "actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { capitalize } from "helpers/Capitalize";
+import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { BreakWordFragment } from "helpers/WordLimits";
 
 const ProductCard = ({ products, dispatch }) => {
@@ -25,7 +25,10 @@ const ProductCard = ({ products, dispatch }) => {
             <b>Category:</b> <span>{capitalize(product.category)}</span>
           </p>
           <p className="product_detail">
-            <b>Detail:</b> <span>{BreakWordFragment(product.details)}</span>
+            <b>Detail:</b>{" "}
+            <span>
+              {BreakWordFragment(firstLetterCapitalize(product.details))}
+            </span>
           </p>
           <p className="product_price">
             Price: &#x20A6;{NumWithComma(product.price)}

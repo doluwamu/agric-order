@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NumWithComma } from "../../helpers/NumberHelpers";
 import { withRouter } from "react-router-dom";
-import { capitalize } from "helpers/Capitalize";
+import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
 import { addToCart } from "actions";
@@ -63,7 +63,8 @@ function ProductDetails({ product, dispatch }) {
               )}
             </b>
             <p className="product-description detail">
-              <b>Details:</b> <span>{product.details}</span>
+              <b>Details:</b>{" "}
+              <span>{firstLetterCapitalize(product.details)}</span>
             </p>
 
             <b>Qty</b>
