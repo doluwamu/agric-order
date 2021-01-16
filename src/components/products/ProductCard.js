@@ -1,16 +1,16 @@
 import React from "react";
 import { NumWithComma } from "../../helpers/NumberHelpers";
 import { Link } from "react-router-dom";
-import { addToCart } from "actions";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { addToCart } from "actions";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { BreakWordFragment } from "helpers/WordLimits";
 
 const ProductCard = ({ products, dispatch }) => {
   return products.map((product) => {
-    const handleAddToCart = () => {
-      dispatch(addToCart(product, product._id));
-    };
+    // const handleAddToCart = () => {
+    //   dispatch(addToCart(product, product._id));
+    // };
     return (
       <div className="product" key={product._id}>
         <Link to={`/product/${product._id}`}>
@@ -37,7 +37,7 @@ const ProductCard = ({ products, dispatch }) => {
             Ratings: {product.ratings ? product.ratings : 0}
           </p> */}
         </div>
-        <div className="add-to-cart" style={{ width: "90%", margin: "0 auto" }}>
+        {/* <div className="add-to-cart" style={{ width: "90%", margin: "0 auto" }}>
           <button
             className="btn btn-secondary"
             style={{
@@ -50,7 +50,7 @@ const ProductCard = ({ products, dispatch }) => {
           >
             Add to cart <FontAwesomeIcon icon="shopping-cart" />
           </button>
-        </div>
+        </div> */}
       </div>
     );
   });
