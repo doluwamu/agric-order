@@ -60,31 +60,54 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
             <li className="nav_li">
               <Link to="/signup">Sign-up</Link>
             </li>
+
             <li className="nav_li">
               <Link to="/login">Log-in</Link>
             </li>
+
+            <li className="nav_li" onClick={() => history.push("/login")}>
+              <p
+                title="Please login to see the items you added to the cart"
+                className="logout_text"
+              >
+                Cart{" "}
+                <span
+                  style={{
+                    background: "#000",
+                    padding: "3px 5px",
+                    borderRadius: "5px",
+                  }}
+                >
+                  0
+                </span>
+              </p>
+            </li>
           </>
         )}
-
-        <li className="nav_li">
-          <Link to="/cart" className="logout_text">
-            Cart{" "}
-            <span
-              style={{
-                background: "#000",
-                padding: "3px 5px",
-                borderRadius: "5px",
-              }}
-            >
-              {cartItems.length}
-            </span>
-          </Link>
-        </li>
 
         {isAuthenticated && (
           <>
             <li className="nav_li" onClick={logOut}>
               <p className="logout_text">Log-out</p>
+            </li>
+
+            <li className="nav_li">
+              <Link to="/cart" className="cart_text">
+                Cart{" "}
+                <span
+                  style={{
+                    background: "#000",
+                    padding: "3px 5px",
+                    borderRadius: "5px",
+                  }}
+                >
+                  {cartItems &&
+                    cartItems.reduce(
+                      (a, c) => parseInt(a) + parseInt(c.qty),
+                      0
+                    )}
+                </span>
+              </Link>
             </li>
           </>
         )}

@@ -85,18 +85,18 @@ body {
 
   .nav-ul {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: right;
     align-items: center;
     flex-wrap: wrap;
     flex-direction: row;
     // background: red;
     padding: 1rem 0 1rem 2rem;
-    width: 80%;
+    min-width: 40%;
 
     li {
       list-style-type: none;
-      /* background: #8b0000; */
-      margin-left: 0.3rem;
+      // background: #8b0000;
+      margin-left: 3rem;
       padding: 0.4rem;
 
       .user {
@@ -109,7 +109,8 @@ body {
       }
 
       a,
-      .logout_text {
+      .logout_text,
+      .cart_text {
         color: var(--mainWhite);
         text-decoration: none;
         font-size: 1rem;
@@ -243,7 +244,7 @@ body {
   }
 
   &.btn-success {
-    background: var(--orange);
+    // background: var(--orange);
     color: var(--mainBlack);
     border: 2px solid var(--darkOrange);
     border-radius: 0.2rem;
@@ -255,7 +256,7 @@ body {
     &:hover,
     &:active,
     &:focus {
-      background: var(--darkOrange);
+      background: var(--orange);
       box-shadow: 0 0 0.5rem var(--darkOrange);
       opacity: 0.9;
     }

@@ -33,6 +33,9 @@ const ProductCard = ({ products, dispatch }) => {
           <p className="product_price">
             Price: &#x20A6;{NumWithComma(product.price)}
           </p>
+          {/* <p className="product_price">
+            Ratings: {product.ratings ? product.ratings : 0}
+          </p> */}
         </div>
         <div className="add-to-cart" style={{ width: "90%", margin: "0 auto" }}>
           <button

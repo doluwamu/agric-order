@@ -41,9 +41,9 @@ function Routes() {
         <LoginPage />
       </GuestRoute>
 
-      <Route path="/logout">
+      <AuthRoute path="/logout">
         <LogoutPage />
-      </Route>
+      </AuthRoute>
 
       <GuestRoute path="/signup">
         <SignUp />
