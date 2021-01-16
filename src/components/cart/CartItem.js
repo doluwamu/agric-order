@@ -7,7 +7,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const CartItem = ({ cartItems, dispatch }) => {
   const handleRemoveItemFromCart = (id) => {
     const permission = window.confirm(
-      "Are you sure you want to delete this product?"
+      "Are you sure you want to delete this product from the cart?"
     );
     if (!permission) {
       return;

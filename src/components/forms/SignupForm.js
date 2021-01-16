@@ -121,7 +121,7 @@ const SignupForm = ({ onSubmit, error }) => {
           <label style={{ fontSize: "19px", textDecoration: "none" }}>
             To continue, accept our{" "}
             <Link to={"/"} style={{ color: "blue" }}>
-              privacy terms and conditions
+              privacy policy
             </Link>
           </label>
         </span>

@@ -41,7 +41,7 @@ function Routes() {
         <LoginPage />
       </GuestRoute>
 
-      <Route path="/logout/35tve6gybbreg7greuyguyf7grggter7gfd87greugerg867ye">
+      <Route path="/logout">
         <LogoutPage />
       </Route>
 
@@ -53,9 +53,9 @@ function Routes() {
         <ProductDetail />
       </Route>
 
-      <AuthRoute path="/cart">
+      <Route path="/cart">
         <CartPage />
-      </AuthRoute>
+      </Route>
 
       <Route path="/:category">
         <ProductSearchPage />

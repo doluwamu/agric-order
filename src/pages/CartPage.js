@@ -27,9 +27,9 @@ class CartPage extends Component {
           style={{
             position: "absolute",
             top: "12rem",
-            left: "4rem",
+            left: "40%",
             maxWidth: "20rem",
-            marginBottom: "1.5rem",
+            marginBottom: "2.5rem",
           }}
         >
           Your cart
