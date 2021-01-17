@@ -24,10 +24,10 @@
         padding: 2rem 1rem;
         width: 40rem;
         max-width: 80rem;
-        // border-bottom: 0.1rem solid var(--mainBlack);
+        border-bottom: 1px solid var(--mainBlack);
         border-radius: 3px;
         overflow: hidden;
-        box-shadow: 0 0 0.2rem var(--mainBlack);
+        // box-shadow: 0 0 0.2rem var(--mainBlack);
         background: #eee;
         transition: all 0.2s;
 
@@ -37,11 +37,6 @@
         }
 
         .product-details {
-          padding: 2rem 0;
-          // background-color: green;
-          margin: 70px 5px;
-          width: 100%;
-          text-align: left;
           .product_name,
           .product_category,
           .product_detail,
@@ -91,6 +86,14 @@
   .products {
     .product {
       flex-wrap: nowrap !important;
+
+      .product-details {
+        padding: 2rem 0 !important;
+        margin: 70px 5px !important;
+        width: 100% !important;
+        text-align: left !important;
+        // background-color: green;
+      }
     }
   }
 }

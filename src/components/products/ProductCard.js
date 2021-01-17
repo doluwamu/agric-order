@@ -2,7 +2,7 @@ import React from "react";
 import { NumWithComma } from "../../helpers/NumberHelpers";
 import { Link } from "react-router-dom";
 // import { addToCart } from "actions";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { BreakWordFragment } from "helpers/WordLimits";
 
@@ -30,9 +30,16 @@ const ProductCard = ({ products, dispatch }) => {
           <p className="product_price">
             Price: &#x20A6;{NumWithComma(product.price)}
           </p>
-          {/* <p className="product_price">
-            Ratings: {product.ratings ? product.ratings : 0}
-          </p> */}
+          <Link
+            style={{
+              color: "blue",
+              paddingTop: "6rem",
+              textDecoration: "none",
+            }}
+            to={`/product/${product._id}`}
+          >
+            See more details <FontAwesomeIcon icon="arrow-right" />
+          </Link>
         </div>
         {/* <div className="add-to-cart" style={{ width: "90%", margin: "0 auto" }}>
           <button
