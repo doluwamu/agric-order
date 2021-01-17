@@ -16,10 +16,7 @@ const ProductCard = ({ products, dispatch }) => {
         <Link to={`/product/${product._id}`}>
           <img src={product.image} alt="product" />
         </Link>
-        <div
-          className="product_detail"
-          style={{ margin: "5px", width: "100%", textAlign: "left" }}
-        >
+        <div className="product-details">
           <p className="product_name">Name: {capitalize(product.name)}</p>
           <p className="product_category">
             <b>Category:</b> <span>{capitalize(product.category)}</span>

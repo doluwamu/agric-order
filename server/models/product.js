@@ -29,8 +29,8 @@ const productSchema = new Schema({
   details: {
     type: String,
     required: ["Details is a required field"],
-    minlength: [8, "Invalid length, minimum is 8 characters"],
-    maxlength: [150, "Invalid length, maximum is 150 characters"],
+    minlength: [8, "Invalid length, minimum for details is 8 characters"],
+    // maxlength: [150, "Invalid length, maximum for details is 150 characters"],
     lowercase: true,
   },
   quantityInStock: {

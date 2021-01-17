@@ -1,6 +1,6 @@
 ## How to run this project
 
-Create `dev.js` file in `server/config/dev.js` with content of:
+Create `dev.js` file in `server/config` folder with content of:
 
 ```javascript
 module.exports = {
