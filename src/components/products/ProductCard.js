@@ -30,16 +30,17 @@ const ProductCard = ({ products, dispatch }) => {
           <p className="product_price">
             Price: &#x20A6;{NumWithComma(product.price)}
           </p>
-          <Link
-            style={{
-              color: "blue",
-              paddingTop: "6rem",
-              textDecoration: "none",
-            }}
-            to={`/product/${product._id}`}
-          >
-            See more details <FontAwesomeIcon icon="arrow-right" />
-          </Link>
+          <p style={{ marginTop: "0.5rem" }}>
+            <Link
+              style={{
+                color: "blue",
+                textDecoration: "none",
+              }}
+              to={`/product/${product._id}`}
+            >
+              See more details <FontAwesomeIcon icon="arrow-right" />
+            </Link>
+          </p>
         </div>
         {/* <div className="add-to-cart" style={{ width: "90%", margin: "0 auto" }}>
           <button

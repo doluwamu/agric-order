@@ -8,7 +8,7 @@ const CalcCartItems = ({ cartItems }) => {
         <h3 className="cart-totals">
           <p>{cartItems.length} Product(s) added to cart</p>
           <p>
-            Quantities:{" "}
+            Quantity:{" "}
             {cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0)}{" "}
           </p>
           <p>

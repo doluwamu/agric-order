@@ -8,7 +8,7 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: ["Username is required"],
-    minlength: [4, "Minimum must be 4 characters"],
+    minlength: [4, "Minimum for username is 4 characters"],
   },
   email: {
     type: String,
@@ -21,7 +21,7 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: ["Password is required"],
-    minlength: [8, "Minimum must be 8 characters"],
+    minlength: [8, "Minimum for password is 8 characters"],
   },
   acceptedPrivacyTerms: { type: Boolean, required: true },
   createdAt: {

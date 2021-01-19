@@ -6,7 +6,7 @@ const productSchema = new Schema({
   name: {
     type: String,
     required: ["Name is a required field"],
-    maxlength: [50, "Invalid length, maximum is 50 characters"],
+    maxlength: [50, "Invalid length, maximum for name is 50 characters"],
     lowercase: true,
   },
   image: {

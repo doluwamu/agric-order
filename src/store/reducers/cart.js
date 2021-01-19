@@ -2,6 +2,7 @@ const cart = (state = { cartItems: [] }, action) => {
   switch (action.type) {
     case "ADD_ITEM_TO_CART":
       const item = action.item;
+
       const product = state.cartItems.find(
         (cartItem) => cartItem.product === item.product
       );

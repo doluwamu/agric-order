@@ -8,6 +8,7 @@ import SignUp from "pages/SignUp";
 import LogoutPage from "pages/LogoutPage";
 import GuestRoute from "components/auth/GuestRoute";
 import AuthRoute from "components/auth/AuthRoute";
+import LogoutRoute from "components/auth/LogoutRoute";
 import ResetPassword from "pages/ResetPassword";
 import CreateProductPage from "pages/CreateProductPage";
 import NewProductCategoryPage from "pages/NewProductCategoryPage";
@@ -41,9 +42,9 @@ function Routes() {
         <LoginPage />
       </GuestRoute>
 
-      <AuthRoute path="/logout">
+      <LogoutRoute path="/logout">
         <LogoutPage />
-      </AuthRoute>
+      </LogoutRoute>
 
       <GuestRoute path="/signup">
         <SignUp />

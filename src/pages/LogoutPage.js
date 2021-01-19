@@ -17,7 +17,7 @@ const LogoutPage = () => {
         <h1>You have successfully been logged out</h1>
 
         <Link
-          to="/"
+          to="/login"
           style={{
             textDecoration: "none",
             fontSize: "20px",
