@@ -2,18 +2,9 @@ const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET } = require("../config/dev");
 const bcrypt = require("bcryptjs");
-// const { sendVerifyPasswordMail } = require("../services/mailService");
-// const crypto = require("crypto");
-// const nodemailer = require("nodemailer");
-// const sendgridTransport = require("nodemailer-sendgrid-transport");
+const { sendVerifyPasswordMail } = require("../services/mailService");
+const nodemailer = require("nodemailer");
 
-// const transporter = nodemailer.createTransport(
-//   sendgridTransport({
-//     auth: {
-//       api_key: SENDGRID_API,
-//     },
-//   })
-// );
 
 exports.getUsers = async (req, res) => {
   try {
