@@ -6,7 +6,10 @@ const CalcCartItems = ({ cartItems }) => {
     <div className="cart-calc" style={{ marginBottom: "3rem" }}>
       <div className="calc">
         <h3 className="cart-totals">
-          <p>{cartItems.length} Product(s) added to cart</p>
+          <p>
+            {cartItems.length} {cartItems.length > 1 ? "Product(s)" : "Product"}{" "}
+            added to cart
+          </p>
           <p>
             Quantity:{" "}
             {cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0)}{" "}
