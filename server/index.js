@@ -7,6 +7,7 @@ const config = require("./config/dev");
 const productRoutes = require("./routes/products");
 const userRoutes = require("./routes/users");
 const productCategoryRoutes = require("./routes/productCategories");
+const cartItems = require("./routes/cartItems");
 const { provideErrorHandler } = require("./middlewares/index");
 
 const app = express();
@@ -32,6 +33,7 @@ app.use(provideErrorHandler);
 
 // Routes
 app.use("/api/v1/products", productRoutes);
+app.use("/api/v1/cart", cartItems);
 app.use("/api/v1/product-categories", productCategoryRoutes);
 app.use("/api/v1/users", userRoutes);
 

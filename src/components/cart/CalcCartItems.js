@@ -7,7 +7,7 @@ const CalcCartItems = ({ cartItems }) => {
       <div className="calc">
         <h3 className="cart-totals">
           <p>
-            {cartItems.length} {cartItems.length > 1 ? "Product(s)" : "Product"}{" "}
+            {cartItems.length} {cartItems.length > 1 ? "Products" : "Product"}{" "}
             added to cart
           </p>
           <p>
@@ -19,7 +19,7 @@ const CalcCartItems = ({ cartItems }) => {
             {NumWithComma(cartItems.reduce((a, c) => a + c.qty * c.price, 0))}
           </p>
         </h3>
-        <button className="btn btn-success">Place Order</button>
+        <button className="btn btn-success">Proceed</button>
       </div>
     </div>
   );
