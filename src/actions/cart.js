@@ -1,4 +1,7 @@
 import Cookie from "js-cookie";
+import axiosService from "../services/AxiosServices";
+
+const { AgricAxios } = axiosService;
 export const addToCart = (product, productId, qty = 1) => (
   dispatch,
   getState
@@ -35,4 +38,20 @@ export const removeFromCart = (productId) => (dispatch, getState) => {
     cart: { cartItems },
   } = getState();
   Cookie.set("cartItems", JSON.stringify(cartItems));
+};
+
+export const getCartItems = () => (dispatch) => {
+  return AgricAxios.get("/cart/get-cart-items")
+    .then(({ data }) => {
+      dispatch({
+        type: "GET_CART_ITEMS_SUCCESS",
+        data,
+      });
+    })
+    .catch(({ message }) => {
+      dispatch({
+        type: "GET_CART_ITEMS_FAIL",
+        message,
+      });
+    });
 };

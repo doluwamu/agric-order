@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { addToCart } from "actions";
+import { addToCart, getCartItems } from "actions";
 import CartItem from "components/cart/CartItem";
 import CalcCartItems from "components/cart/CalcCartItems";
 

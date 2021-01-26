@@ -2,10 +2,14 @@ const CartItem = require("../models/cartItem");
 const Product = require("../models/product");
 
 exports.addToCart = async (req, res) => {
+  const { quantity } = req.body;
   const { productId } = req.params;
   const { user } = res.locals;
   try {
-    const foundProduct = await Product.findById(productId).populate("owner");
+    const foundProduct = await Product.findById(productId).populate(
+      "owner",
+      "-password"
+    );
     if (!foundProduct) {
       return res.sendApiError({
         title: "Unexisting data!",
@@ -16,6 +20,7 @@ exports.addToCart = async (req, res) => {
     const newCartItem = new CartItem({
       product: foundProduct,
       owner: user,
+      quantity,
     });
 
     try {
