@@ -288,3 +288,33 @@ const userNotAuthorized = (res) => {
     ],
   });
 };
+
+exports.changePasswordVerification = async (req, res) => {
+  const { email } = req.body;
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.sendApiError({
+        title: "Invalid user!",
+        detail: "User does not exist",
+      });
+    }
+    const token = jwt.sign(
+      {
+        sub: user.id,
+        email: user.email,
+        username: user.username,
+      },
+      JWT_SECRET,
+      { expiresIn: "2h" }
+    );
+    user.resetToken = token;
+    
+    await user.save();
+    await sendVerifyPasswordMail({ toUser: user });
+    return res.json({ message: "check your email" });
+  } catch (error) {
+    return res.mongoError(error);
+  }
+  });
+};

@@ -7,7 +7,7 @@ const {
   register,
   changePassword,
   getUsers,
-  // changePasswordVerification,
+  changePasswordVerification,
   deleteAccount,
   onlyAuthenticatedUser,
   getUserByEmail,
@@ -20,8 +20,8 @@ router.post("/login", login);
 router.post("/register", register);
 
 // Reseting Password
+router.post("/password-reset-verification", changePasswordVerification);
 router.post("/:userId/password-reset", changePassword);
-// router.post("/password-reset-verification", changePasswordVerification);
 
 // Deleting account
 router.delete("/:userId/delete-account", onlyAuthenticatedUser, deleteAccount);

@@ -22,13 +22,13 @@ const sendMail = (message) => {
     }
     transporter.close();
 
-    // await transporter.sendMail(message, function (err, info) {
-    //   if (err) {
-    //     rej(err);
-    //   } else {
-    //     res(info);
-    //   }
-    // });
+    transporter.sendMail(message, function (err, info) {
+      if (err) {
+        rej(err);
+      } else {
+        res(info);
+      }
+    });
   });
 };
 
