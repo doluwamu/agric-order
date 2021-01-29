@@ -50,7 +50,7 @@ body {
   flex-wrap: wrap;
   flex-direction: row;
   background: var(--mainGrey);
-  z-index: 111;
+  // z-index: 111;
   width: 100%;
   height: 5rem;
   padding: 0.2rem 0;
@@ -132,22 +132,24 @@ body {
 
 /* Styling for the nav bar ends */
 
-@media screen and (max-width: 1360px) {
+@media screen and (max-width: 1150px) {
   .open {
     display: block !important;
     transform: translateY(0) !important;
+    z-index: -111;
   }
 
-  @keyframes navTransition {
-    from {
-      opacity: 0.5;
-    }
-    to {
-      opacity: 0.9;
-    }
-  }
+  // @keyframes navTransition {
+  //   from {
+  //     opacity: 0.5;
+  //   }
+  //   to {
+  //     opacity: 0.9;
+  //   }
+  // }
 
   .nav-section {
+    z-index: 111;
     header {
       margin-top: -1rem;
       padding-top: 1rem;
@@ -168,15 +170,18 @@ body {
     }
 
     .nav-ul {
-      max-height: 40%;
-      width: 100%;
+      padding-top: -4rem !important;
+      display: block;
+      max-height: 35%;
+      width: 100% !important;
       overflow-y: scroll;
       background: var(--mainGrey);
       transform: translateY(-90rem);
       opacity: 0.9;
       overflow-y: scroll;
       position: fixed;
-      top: 3.5rem;
+      top: 5.4rem;
+      // left: 0.5rem;
       transition: all 0.5s !important;
 
       li {

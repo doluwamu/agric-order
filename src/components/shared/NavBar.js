@@ -12,9 +12,9 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
   const toggleAside = () => {
     document.querySelector(".nav-ul").classList.toggle("open");
   };
-  const removeAside = () => {
-    document.querySelector(".nav-ul").classList.remove("open");
-  };
+  // const removeAside = () => {
+  //   document.querySelector(".nav-ul").classList.remove("open");
+  // };
 
   const logOut = () => {
     const permission = window.confirm("Are you sure you want to sign out?");
@@ -33,7 +33,7 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
         &#9776;
       </button>
 
-      <ul className="nav-ul" onClick={removeAside}>
+      <ul className="nav-ul">
         {isAuthenticated && (
           <li className="nav_li">
             <div className="user" style={{ color: "#fff" }}>
