@@ -138,14 +138,14 @@ body {
     transform: translateY(0) !important;
   }
 
-  @keyframes navTransition {
-    from {
-      opacity: 0.5;
-    }
-    to {
-      opacity: 0.9;
-    }
-  }
+  // @keyframes navTransition {
+  //   from {
+  //     opacity: 0.5;
+  //   }
+  //   to {
+  //     opacity: 0.9;
+  //   }
+  // }
 
   .nav-section {
     header {
@@ -168,7 +168,8 @@ body {
     }
 
     .nav-ul {
-      max-height: 40%;
+      display: block !important;
+      height: 15rem;
       width: 100%;
       overflow-y: scroll;
       background: var(--mainGrey);
@@ -176,11 +177,11 @@ body {
       opacity: 0.9;
       overflow-y: scroll;
       position: fixed;
-      top: 3.5rem;
+      top: 5.3rem;
       transition: all 0.5s !important;
 
       li {
-        margin-top: 1.3rem !important;
+        margin-top: 1rem !important;
         margin-left: -1rem !important;
         // background: red;
 
