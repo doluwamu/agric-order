@@ -1,4 +1,4 @@
-export const BreakWordFragment = (word, limit = 200) => {
+export const BreakWordFragment = (word, limit = 20) => {
   if (!word || word.length === 0) return "";
   if (word.length > limit) {
     const wordArray = word.split("");

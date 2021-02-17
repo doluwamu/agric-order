@@ -44,7 +44,7 @@ function ProductDetails({ product, dispatch }) {
             </p>
             {product.owner && (
               <div className="product-owner detail">
-                <b>Owner: </b>
+                <b>Seller: </b>
                 <span>{capitalize(product.owner.username) || ""}</span>
                 <div>{product.owner.email || ""}</div>
               </div>

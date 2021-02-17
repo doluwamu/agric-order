@@ -17,7 +17,9 @@ const ProductCard = ({ products, dispatch }) => {
           <img src={product.image} alt="product" />
         </Link>
         <div className="product-details">
-          <p className="product_name">Name: {capitalize(product.name)}</p>
+          <p className="product_name">
+            <b>Name:</b> {capitalize(product.name)}
+          </p>
           <p className="product_category">
             <b>Category:</b> <span>{capitalize(product.category)}</span>
           </p>
@@ -28,7 +30,7 @@ const ProductCard = ({ products, dispatch }) => {
             </span>
           </p>
           <p className="product_price">
-            Price: &#x20A6;{NumWithComma(product.price)}
+            <b>Price:</b> &#x20A6;{NumWithComma(product.price)}
           </p>
           <p style={{ marginTop: "0.5rem" }}>
             <Link
