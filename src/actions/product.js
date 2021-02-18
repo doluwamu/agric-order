@@ -9,11 +9,12 @@ export const fetchProducts = (category) => (dispatch) => {
   dispatch({
     type: "REQUEST_DATA",
   });
+
   return AgricAxios.get(query)
-    .then((res) => {
+    .then(({ data }) => {
       dispatch({
         type: "REQUEST_DATA_COMPLETE",
-        products: res.data,
+        products: data,
         resource: "fetch-products",
       });
     })

@@ -14,11 +14,21 @@ import CreateProductPage from "pages/CreateProductPage";
 import NewProductCategoryPage from "pages/NewProductCategoryPage";
 import ProductSearchPage from "pages/ProductSearchPage";
 import GetUserPage from "pages/GetUserPage";
+import HomePage from "pages/HomePage";
+import PageNotFound from "pages/PageNotFound";
 
 function Routes() {
   return (
     <Switch>
+      <Route path="/products/:category">
+        <ProductSearchPage />
+      </Route>
+
       <Route path="/" exact={true}>
+        <HomePage />
+      </Route>
+
+      <Route path="/products">
         <ProductPage />
       </Route>
 
@@ -58,8 +68,8 @@ function Routes() {
         <CartPage />
       </Route>
 
-      <Route path="/:category">
-        <ProductSearchPage />
+      <Route path="/:page">
+        <PageNotFound />
       </Route>
     </Switch>
   );

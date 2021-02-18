@@ -7,6 +7,7 @@ import ProductCard from "components/products/ProductCard";
 
 import Loading from "helpers/Loading";
 import ConnectionError from "errors/ConnectionError";
+import HeadImage from "components/shared/HeadImage";
 
 class ProductPage extends Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class ProductPage extends Component {
 
   render() {
     const { products, isFetching, dataFetchingFail } = this.props;
+
     if (isFetching) {
       return <Loading />;
     }
@@ -25,6 +27,7 @@ class ProductPage extends Component {
 
     return (
       <div className="all_products">
+        <HeadImage heading={"Our Products"} />
         <div className="all_products_body">
           <header className="products_header">Check out our animals</header>
           <div className="products">
@@ -39,7 +42,6 @@ class ProductPage extends Component {
 const mapStateToProps = ({
   products: { dataFetched, fetchingData, dataFetchingFail },
 }) => {
-  // debugger;
   return {
     isFetching: fetchingData,
     products: dataFetched,

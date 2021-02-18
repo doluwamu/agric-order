@@ -12,9 +12,9 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
   const toggleAside = () => {
     document.querySelector(".nav-ul").classList.toggle("open");
   };
-  const removeAside = () => {
-    document.querySelector(".nav-ul").classList.remove("open");
-  };
+  // const removeAside = () => {
+  //   document.querySelector(".nav-ul").classList.remove("open");
+  // };
 
   const logOut = () => {
     const permission = window.confirm("Are you sure you want to sign out?");
@@ -26,14 +26,14 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
   return (
     <nav className="nav-section">
       <header className="nav_header">
-        <Link to="/">AgricOrder</Link>
+        <Link to="/products">AgricOrder</Link>
       </header>
 
       <button className="nav-btn" onClick={toggleAside}>
         &#9776;
       </button>
 
-      <ul className="nav-ul" onClick={removeAside}>
+      <ul className="nav-ul">
         {isAuthenticated && (
           <li className="nav_li">
             <div className="user" style={{ color: "#fff" }}>
@@ -44,13 +44,13 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
         )}
 
         <li className="nav_li">
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li className="nav_li">
           <a href="#">About</a>
         </li>
         <li className="nav_li">
-          <Link to="/">Products</Link>
+          <Link to="/products">Products</Link>
         </li>
         <li className="nav_li">
           <a href="#">Contact</a>

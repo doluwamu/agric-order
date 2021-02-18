@@ -1,0 +1,21 @@
+.main-bg-img {
+  background-blend-mode: multiply;
+  background: url("/images/background.jpg") rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: scroll;
+  height: 35rem;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.bg-texts {
+  padding: 200px;
+  .main-bg-text {
+    //   background-color: green;
+    text-align: center;
+    color: var(--mainWhite);
+    padding: 10px 0 0;
+  }
+}

@@ -2,12 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
-const ProductSearch = () => {
+const ProductSearch = (props) => {
   const history = useHistory();
   const [category, setCategory] = useState("");
 
   const handleSearch = () => {
-    category && history.push(`/${category}`);
+    category && history.push(`/products/${category}`);
+
     setCategory("");
   };
 
@@ -25,7 +26,9 @@ const ProductSearch = () => {
             onKeyPress={handleKeyPress}
             type="text"
             value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            onChange={(e) => {
+              setCategory(e.target.value);
+            }}
             placeholder="Search by category..."
           />
           <button onClick={handleSearch} style={{ marginRight: "2rem" }}>
