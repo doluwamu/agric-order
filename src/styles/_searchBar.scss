@@ -3,7 +3,7 @@
   z-index: 11;
   .search_section {
     display: flex;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--mainBlack);
     padding: 1rem;
 
     div {

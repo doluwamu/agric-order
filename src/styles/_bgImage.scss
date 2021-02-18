@@ -5,17 +5,42 @@
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: scroll;
-  height: 35rem;
+  height: 32rem;
   width: 100%;
   margin-bottom: 50px;
+
+  .bg-texts {
+    padding: 200px 0 0;
+    .main-bg-text {
+      // background-color: green;
+      text-align: center;
+      color: var(--mainWhite);
+      padding: 10px 0 0;
+      width: 100%;
+    }
+  }
 }
 
-.bg-texts {
-  padding: 200px;
-  .main-bg-text {
-    //   background-color: green;
-    text-align: center;
-    color: var(--mainWhite);
-    padding: 10px 0 0;
+@media screen and (max-height: 500px) {
+  .main-bg-img {
+    height: 0 !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main-bg-img {
+    height: 20rem !important;
+    // background: green !important;
+
+    .bg-texts {
+      padding: 100px 0;
+    }
+  }
+}
+
+@media screen and (max-width: 205px) {
+  .main-bg-img {
+    margin-bottom: 0;
+    height: 0 !important;
   }
 }

@@ -26,15 +26,17 @@ class ProductPage extends Component {
     }
 
     return (
-      <div className="all_products">
+      <>
         <HeadImage heading={"Our Products"} />
-        <div className="all_products_body">
-          <header className="products_header">Check out our animals</header>
-          <div className="products">
-            <ProductCard products={products} dispatch={this.props.dispatch} />
+        <div className="all_products">
+          <div className="all_products_body">
+            <header className="products_header">Check out our animals</header>
+            <div className="products">
+              <ProductCard products={products} dispatch={this.props.dispatch} />
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
