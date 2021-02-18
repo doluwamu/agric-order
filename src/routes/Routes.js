@@ -68,7 +68,7 @@ function Routes() {
         <CartPage />
       </Route>
 
-      <Route path="/:page">
+      <Route path="/:noPage">
         <PageNotFound />
       </Route>
     </Switch>

@@ -27,7 +27,7 @@ class ProductPage extends Component {
 
     return (
       <>
-        <HeadImage heading={"Our Products"} />
+        <HeadImage heading={"We hope you enjoy shopping with us"} />
         <div className="all_products">
           <div className="all_products_body">
             <header className="products_header">Check out our animals</header>
