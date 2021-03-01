@@ -12,9 +12,9 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
   const toggleAside = () => {
     document.querySelector(".nav-ul").classList.toggle("open");
   };
-  // const removeAside = () => {
-  //   document.querySelector(".nav-ul").classList.remove("open");
-  // };
+  const closeAside = () => {
+    document.querySelector(".nav-ul").classList.remove("open");
+  };
 
   const logOut = () => {
     const permission = window.confirm("Are you sure you want to sign out?");
@@ -33,7 +33,7 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
         &#9776;
       </button>
 
-      <ul className="nav-ul">
+      <ul className="nav-ul" onClick={closeAside}>
         {isAuthenticated && (
           <li className="nav_li">
             <div className="user" style={{ color: "#fff" }}>
@@ -65,9 +65,9 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
               <Link to="/login">Log-in</Link>
             </li>
 
-            {/* <li className="nav_li" onClick={() => history.push("/login")}>
+            <li className="nav_li" onClick={() => history.push("/login")}>
               <p
-                title="Please login to see the items you added to the cart"
+                title="Please login to view your cart"
                 className="logout_text"
               >
                 Cart{" "}
@@ -81,7 +81,7 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
                   0
                 </span>
               </p>
-            </li> */}
+            </li>
           </>
         )}
 
@@ -90,9 +90,8 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
             <li className="nav_li" onClick={logOut}>
               <p className="logout_text">Log-out</p>
             </li>
-          </>
-        )}
-        <li className="nav_li">
+
+             <li className="nav_li">
           <Link to="/cart" className="cart_text">
             Cart{" "}
             <span
@@ -107,6 +106,9 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
             </span>
           </Link>
         </li>
+          </>
+        )}
+       
       </ul>
     </nav>
   );
