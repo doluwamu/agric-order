@@ -24,14 +24,18 @@
         overflow: hidden;
         box-shadow: 0 0 0.2rem var(--mainBlack);
         background: #eee;
-        // transition: all 0.4s;
+        transition: all 0.5s ease-in;
+
+        &:hover {
+          transform: scale(1.02);
+        }
 
         img {
-          background-color: green;
-          margin: 15px 5%;
+          margin: 12px 5% 5px;
           margin-right: 0;
           width: 90%;
           height: 20rem;
+          border-radius: 5px;
         }
 
         .product-details {

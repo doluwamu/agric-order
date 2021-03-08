@@ -1,39 +1,16 @@
 import { combineReducers } from "redux";
+import {
+  fetchingFailReducer,
+  fetchingReducer,
+  fetchingSuccessReducer,
+} from "./productsCommon";
 const initProductIdReducer = () => {
-  const fetchedData = (state = [], action) => {
-    switch (action.type) {
-      case "REQUEST_PRODUCT":
-        return [];
-      case "REQUEST_PRODUCT_COMPLETE":
-        return action.data;
-      default:
-        return state;
-    }
-  };
+  const fetchProductById = "fetch-product-by-id";
+  const fetchedData = fetchingSuccessReducer(fetchProductById);
 
-  const dataFetchingFail = (state = [], action) => {
-    switch (action.type) {
-      case "REQUEST_PRODUCT":
-        return [];
-      case "REQUEST_PRODUCT_FAILED":
-        return action.message;
-      default:
-        return state;
-    }
-  };
+  const dataFetchingFail = fetchingFailReducer(fetchProductById);
 
-  const datafetching = (state = false, action) => {
-    switch (action.type) {
-      case "REQUEST_PRODUCT":
-        return true;
-
-      case "REQUEST_PRODUCT_FAILED":
-      case "REQUEST_PRODUCT_COMPLETE":
-        return false;
-      default:
-        return state;
-    }
-  };
+  const datafetching = fetchingReducer(fetchProductById);
 
   return combineReducers({ fetchedData, datafetching, dataFetchingFail });
 };

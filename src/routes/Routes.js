@@ -20,6 +20,10 @@ import PageNotFound from "pages/PageNotFound";
 function Routes() {
   return (
     <Switch>
+      <LogoutRoute path="/logout">
+        <LogoutPage />
+      </LogoutRoute>
+
       <Route path="/products/:category">
         <ProductSearchPage />
       </Route>
@@ -52,10 +56,6 @@ function Routes() {
         <LoginPage />
       </GuestRoute>
 
-      <LogoutRoute path="/logout">
-        <LogoutPage />
-      </LogoutRoute>
-
       <GuestRoute path="/signup">
         <SignUp />
       </GuestRoute>
@@ -64,9 +64,9 @@ function Routes() {
         <ProductDetail />
       </Route>
 
-      <Route path="/cart">
+      <AuthRoute path="/cart">
         <CartPage />
-      </Route>
+      </AuthRoute>
 
       <Route path="/:noPage">
         <PageNotFound />
