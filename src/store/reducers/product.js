@@ -18,14 +18,3 @@ const initProductIdReducer = () => {
 const product = initProductIdReducer();
 
 export default product;
-
-// const product = (state = [], action) => {
-//   switch (action.type) {
-//     case "REQUEST_PRODUCT":
-//       return [];
-//     case "REQUEST_PRODUCT_COMPLETE":
-//       return action.product;
-//     default:
-//       return state;
-//   }
-// };
