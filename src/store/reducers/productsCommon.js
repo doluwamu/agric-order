@@ -1,16 +1,12 @@
-const checkResource = (resource) => {
-  return (state, action) => {
-    if (resource !== action.resource) {
-      debugger;
-      return state;
-    }
-  };
+const checkResource = (state, action, resource) => {
+  if (resource !== action.resource) {
+    return state;
+  }
 };
 
 export const fetchingReducer = (resource) => {
-  debugger;
   return (state = false, action) => {
-    checkResource(resource);
+    checkResource(state, action, resource);
     switch (action.type) {
       case "REQUEST_DATA":
         return true;
@@ -25,9 +21,7 @@ export const fetchingReducer = (resource) => {
 
 export const fetchingFailReducer = (resource) => {
   return (state = [], action) => {
-    if (resource !== action.resource) {
-      return state;
-    }
+    checkResource(state, action, resource);
     switch (action.type) {
       case "REQUEST_DATA":
         return [];
@@ -41,9 +35,7 @@ export const fetchingFailReducer = (resource) => {
 
 export const fetchingSuccessReducer = (resource) => {
   return (state = [], action) => {
-    if (resource !== action.resource) {
-      return state;
-    }
+    checkResource(state, action, resource);
     switch (action.type) {
       case "REQUEST_DATA":
         return [];
