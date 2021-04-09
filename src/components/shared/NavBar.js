@@ -11,6 +11,7 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
 
   const toggleAside = () => {
     document.querySelector(".nav-ul").classList.toggle("open");
+    // document.querySelector(".nav-ul").classList.toggle()
   };
   const closeAside = () => {
     document.querySelector(".nav-ul").classList.remove("open");
@@ -66,10 +67,7 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
             </li>
 
             <li className="nav_li" onClick={() => history.push("/login")}>
-              <p
-                title="Please login to view your cart"
-                className="logout_text"
-              >
+              <p title="Please login to view your cart" className="logout_text">
                 Cart{" "}
                 <span
                   style={{
@@ -88,27 +86,29 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
         {isAuthenticated && (
           <>
             <li className="nav_li" onClick={logOut}>
-              <p className="logout_text">Log-out</p>
+              <p className="logout_text">Logout</p>
             </li>
 
-             <li className="nav_li">
-          <Link to="/cart" className="cart_text">
-            Cart{" "}
-            <span
-              style={{
-                background: "#000",
-                padding: "3px 5px",
-                borderRadius: "5px",
-              }}
-            >
-              {cartItems &&
-                cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0)}
-            </span>
-          </Link>
-        </li>
+            <li className="nav_li">
+              <Link to="/cart" className="cart_text">
+                Cart{" "}
+                <span
+                  style={{
+                    background: "#000",
+                    padding: "3px 5px",
+                    borderRadius: "5px",
+                  }}
+                >
+                  {cartItems &&
+                    cartItems.reduce(
+                      (a, c) => parseInt(a) + parseInt(c.qty),
+                      0
+                    )}
+                </span>
+              </Link>
+            </li>
           </>
         )}
-       
       </ul>
     </nav>
   );

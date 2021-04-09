@@ -8,7 +8,7 @@ import SignUp from "pages/SignUp";
 import LogoutPage from "pages/LogoutPage";
 import GuestRoute from "components/auth/GuestRoute";
 import AuthRoute from "components/auth/AuthRoute";
-import LogoutRoute from "components/auth/LogoutRoute";
+// import LogoutRoute from "components/auth/LogoutRoute";
 import ResetPassword from "pages/ResetPassword";
 import CreateProductPage from "pages/CreateProductPage";
 import NewProductCategoryPage from "pages/NewProductCategoryPage";
@@ -20,10 +20,6 @@ import PageNotFound from "pages/PageNotFound";
 function Routes() {
   return (
     <Switch>
-      <LogoutRoute path="/logout">
-        <LogoutPage />
-      </LogoutRoute>
-
       <Route path="/products/:category">
         <ProductSearchPage />
       </Route>
@@ -43,6 +39,10 @@ function Routes() {
       <GuestRoute path="/get-user">
         <GetUserPage />
       </GuestRoute>
+
+      <AuthRoute path="/logout">
+        <LogoutPage />
+      </AuthRoute>
 
       <AuthRoute path="/product-create">
         <CreateProductPage />

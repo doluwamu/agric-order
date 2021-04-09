@@ -14,7 +14,7 @@ const LogoutRoute = ({ children, ...rest }) => {
         authService.isAuthenticated() ? (
           React.cloneElement(child, { ...rest, ...props })
         ) : (
-          <Redirect to={{ pathname: "/logout" }} />
+          <Redirect to={{ pathname: "/login" }} />
         )
       }
     />

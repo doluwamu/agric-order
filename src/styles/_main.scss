@@ -138,6 +138,10 @@ body {
     transform: translateY(0) !important;
   }
 
+  // .hideDisplay {
+  //   display: none;
+  // }
+
   // @keyframes navTransition {
   //   from {
   //     opacity: 0.5;
@@ -172,7 +176,7 @@ body {
     .nav-ul {
       display: block !important;
       height: 15rem;
-      width: 100%;
+      max-width: 1500px !important;
       overflow-y: scroll;
       background: var(--mainGrey);
       transform: translateY(-90rem);
@@ -180,6 +184,8 @@ body {
       overflow-y: scroll;
       position: fixed;
       top: 5.3rem;
+      left: 10%;
+      right: 10%;
       transition: all 0.5s !important;
 
       li {

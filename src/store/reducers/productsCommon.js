@@ -1,9 +1,3 @@
-// const checkResource = (state, action, resource) => {
-//   if (resource !== action.resource) {
-//     return state;
-//   }
-// };
-
 export const fetchingReducer = (resource) => {
   return (state = false, action) => {
     if (resource !== action.resource) {
@@ -54,3 +48,9 @@ export const fetchingSuccessReducer = (resource) => {
     }
   };
 };
+
+// const checkResource = (state, action, resource) => {
+//   if (resource !== action.resource) {
+//     return state;
+//   }
+// };
