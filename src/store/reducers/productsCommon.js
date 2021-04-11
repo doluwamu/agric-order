@@ -1,5 +1,3 @@
-// import { combineReducers } from "redux";
-
 import { combineReducers } from "redux";
 
 export const fetchingReducer = (resource) => {
@@ -64,9 +62,3 @@ export const createList = (resource) => {
     errors,
   });
 };
-
-// const checkResource = (state, action, resource) => {
-//   if (resource !== action.resource) {
-//     return state;
-//   }
-// };

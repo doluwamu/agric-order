@@ -1,19 +1,11 @@
 import { combineReducers } from "redux";
-import {
-  fetchingFailReducer,
-  fetchingReducer,
-  fetchingSuccessReducer,
-} from "./productsCommon";
+import { createList } from "./productsCommon";
 
 const initProductReducer = () => {
-  const fetchProducts = "fetch-products";
-  const dataFetched = fetchingSuccessReducer(fetchProducts);
-
-  const dataFetchingFail = fetchingFailReducer(fetchProducts);
-
-  const fetchingData = fetchingReducer(fetchProducts);
-
-  return combineReducers({ dataFetched, fetchingData, dataFetchingFail });
+  return combineReducers({
+    allProducts: createList("fetch-products"),
+    selectedProduct: createList("fetch-product-by-id"),
+  });
 };
 
 const products = initProductReducer();

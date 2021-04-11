@@ -39,22 +39,13 @@ const ProductSearchPage = (props) => {
   );
 };
 
-const mapStateToProps = ({ products: { dataFetched, fetchingData } }) => {
+const mapStateToProps = ({ products: { allProducts } }) => {
   return {
-    products: dataFetched,
-    isFetching: fetchingData,
+    products: allProducts.items,
+    isFetching: allProducts.isFetching,
   };
 };
 
 const ProductSearchPageWithRouter = withRouter(ProductSearchPage);
 
 export default connect(mapStateToProps)(ProductSearchPageWithRouter);
-
-// {
-//   dispatch,
-//   match: {
-//     params: { category },
-//   },
-//   products,
-//   isFetching,
-// }

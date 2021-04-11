@@ -41,13 +41,11 @@ class ProductPage extends Component {
   }
 }
 
-const mapStateToProps = ({
-  products: { dataFetched, fetchingData, dataFetchingFail },
-}) => {
+const mapStateToProps = ({ products: { allProducts } }) => {
   return {
-    isFetching: fetchingData,
-    products: dataFetched,
-    dataFetchingFail,
+    isFetching: allProducts.isFetching,
+    products: allProducts.items,
+    dataFetchingFail: allProducts.errors,
   };
 };
 

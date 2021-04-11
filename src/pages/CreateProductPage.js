@@ -17,7 +17,7 @@ class CreateProductPage extends Component {
   render() {
     const { shouldRedirect, error } = this.state;
     if (shouldRedirect) {
-      return <Redirect to={{ pathname: "/" }} />;
+      return <Redirect to={{ pathname: "/products" }} />;
     }
     return (
       <div className="form-section">
