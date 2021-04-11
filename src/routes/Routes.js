@@ -16,6 +16,7 @@ import ProductSearchPage from "pages/ProductSearchPage";
 import GetUserPage from "pages/GetUserPage";
 import HomePage from "pages/HomePage";
 import PageNotFound from "pages/PageNotFound";
+import MyProductsPage from "pages/MyProductsPage";
 
 function Routes() {
   return (
@@ -39,6 +40,10 @@ function Routes() {
       <GuestRoute path="/get-user">
         <GetUserPage />
       </GuestRoute>
+
+      <AuthRoute path="/manage/my-products">
+        <MyProductsPage />
+      </AuthRoute>
 
       <AuthRoute path="/logout">
         <LogoutPage />

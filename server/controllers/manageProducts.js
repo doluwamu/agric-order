@@ -3,8 +3,8 @@ const Product = require("../models/product");
 exports.getUserProducts = async (req, res) => {
   const { user } = res.locals;
   try {
-    const foundProducts = await Product.find({ owner: user });
-    return res.json(foundProducts);
+    const products = await Product.find({ owner: user });
+    return res.json(products);
   } catch (error) {
     return res.mongoError(error);
   }

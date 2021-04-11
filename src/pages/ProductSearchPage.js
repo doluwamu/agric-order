@@ -11,8 +11,6 @@ const ProductSearchPage = (props) => {
   const { dispatch, isFetching, products } = props;
   useEffect(() => {
     dispatch(fetchProducts(category));
-
-    console.log(category);
   }, [dispatch, category]);
 
   if (isFetching || !category) {

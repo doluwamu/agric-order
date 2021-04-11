@@ -1,3 +1,7 @@
+// import { combineReducers } from "redux";
+
+import { combineReducers } from "redux";
+
 export const fetchingReducer = (resource) => {
   return (state = false, action) => {
     if (resource !== action.resource) {
@@ -47,6 +51,18 @@ export const fetchingSuccessReducer = (resource) => {
         return state;
     }
   };
+};
+
+export const createList = (resource) => {
+  const items = fetchingSuccessReducer(resource);
+  const isFetching = fetchingReducer(resource);
+  const errors = fetchingFailReducer(resource);
+
+  return combineReducers({
+    items,
+    isFetching,
+    errors,
+  });
 };
 
 // const checkResource = (state, action, resource) => {

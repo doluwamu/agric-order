@@ -74,3 +74,29 @@ export const createProductCategory = (categoryData) => {
     .then(({ data }) => data)
     .catch((errors) => Promise.reject(extractServerError(errors.response)));
 };
+
+export const getUserProducts = () => (dispatch) => {
+  debugger;
+  dispatch({
+    type: "REQUEST_DATA",
+    resource: "fetch-my-products",
+  });
+  debugger;
+  return AgricAxios.get("/manage/my-products")
+    .then(({ data }) => data)
+    .then((products) => {
+      debugger;
+      dispatch({
+        type: "REQUEST_DATA_COMPLETE",
+        data: products,
+        resource: "fetch-my-products",
+      });
+    })
+    .catch(({ message }) => {
+      dispatch({
+        type: "REQUEST_DATA_FAILED",
+        message,
+        resource: "fetch-my-products",
+      });
+    });
+};

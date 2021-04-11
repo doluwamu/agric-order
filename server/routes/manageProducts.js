@@ -11,6 +11,6 @@ router.delete(
   onlyAuthenticatedUser,
   deleteUserProduct
 );
-router.get("/my-products/", onlyAuthenticatedUser, getUserProducts);
+router.get("/my-products", onlyAuthenticatedUser, getUserProducts);
 
 module.exports = router;
