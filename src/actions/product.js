@@ -79,7 +79,7 @@ export const createProductCategory = (categoryData) => {
 export const getUserProducts = () => (dispatch) => {
   dispatch({
     type: "REQUEST_DATA",
-    resource: "fetch-my-products",
+    resource: "manage-products",
   });
 
   return AgricAxios.get("/manage/my-products")
@@ -88,14 +88,36 @@ export const getUserProducts = () => (dispatch) => {
       dispatch({
         type: "REQUEST_DATA_COMPLETE",
         data: products,
-        resource: "fetch-my-products",
+        resource: "manage-products",
       });
     })
     .catch(({ message }) => {
       dispatch({
         type: "REQUEST_DATA_FAILED",
         message,
-        resource: "fetch-my-products",
+        resource: "manage-products",
+      });
+    });
+};
+
+export const deleteProduct = (productId) => (dispatch) => {
+  debugger;
+
+  return AgricAxios.delete(`/manage/delete-product/${productId}`)
+    .then((res) => res.data)
+    .then(({ id }) => {
+      debugger;
+      dispatch({
+        type: "DELETE_RESOURCE",
+        id,
+        resource: "manage-products",
+      });
+    })
+    .catch((error) => {
+      dispatch({
+        type: "REQUEST_ERROR",
+        errors: extractServerError(error.response || []),
+        resource: "manage-products",
       });
     });
 };

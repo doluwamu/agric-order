@@ -3,11 +3,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getUserProducts } from "actions";
-import ProductCard from "components/products/ProductCard";
+import ProductManageCard from "components/products/ProductManageCard";
 
 import Loading from "helpers/Loading";
 import ConnectionError from "errors/ConnectionError";
-import HeadImage from "components/shared/HeadImage";
 
 class MyProductsPage extends Component {
   componentDidMount() {
@@ -26,17 +25,17 @@ class MyProductsPage extends Component {
     }
 
     return (
-      <>
-        <HeadImage heading={"We hope you enjoy shopping with us"} />
-        <div className="all_products">
-          <div className="all_products_body">
-            <header className="products_header">My Products</header>
-            <div className="products">
-              <ProductCard products={products} dispatch={this.props.dispatch} />
-            </div>
+      <div className="all_products">
+        <div className="all_products_body">
+          <header className="products_header">My Products</header>
+          <div className="products">
+            <ProductManageCard
+              products={products}
+              dispatch={this.props.dispatch}
+            />
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

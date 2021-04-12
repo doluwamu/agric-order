@@ -3,7 +3,7 @@ import { createList } from "./productsCommon";
 
 const initManageReducer = () => {
   return combineReducers({
-    products: createList("fetch-my-products"),
+    products: createList("manage-products"),
   });
 };
 

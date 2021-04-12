@@ -8,6 +8,7 @@ export const fetchingReducer = (resource) => {
     switch (action.type) {
       case "REQUEST_DATA":
         return true;
+      case "DELETE_RESOURCE":
       case "REQUEST_DATA_FAILED":
       case "REQUEST_DATA_COMPLETE":
         return false;
@@ -27,6 +28,8 @@ export const fetchingFailReducer = (resource) => {
         return [];
       case "REQUEST_DATA_FAILED":
         return action.message;
+      case "REQUEST_ERROR":
+        return action.errors;
       default:
         return state;
     }
@@ -45,6 +48,9 @@ export const fetchingSuccessReducer = (resource) => {
         return action.data;
       case "FETCHED_PRODUCT_CATEGORIES":
         return action.categories;
+      case "DELETE_RESOURCE":
+        const index = state.findIndex((i) => i._id === action.id);
+        return state.filter((item, itemIndex) => index !== itemIndex);
       default:
         return state;
     }
