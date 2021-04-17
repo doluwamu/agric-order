@@ -51,14 +51,23 @@ const ProductManageCard = ({ products, dispatch }) => {
 
         <div
           className="delete-product"
-          style={{ width: "40%", margin: "10px 5px" }}
+          style={{ width: "100%", margin: "10px 5px" }}
         >
           <button
+            style={{ margin: "5px" }}
             type="button"
             className="btn btn-primary"
             onClick={handleDelete}
           >
             Delete
+          </button>
+
+          <button
+            style={{ margin: "5px" }}
+            type="button"
+            className="btn btn-secondary"
+          >
+            Edit
           </button>
         </div>
 

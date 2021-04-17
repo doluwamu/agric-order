@@ -5,10 +5,10 @@ import ProductDetail from "../pages/ProductDetail";
 import LoginPage from "../pages/LoginPage";
 import CartPage from "pages/CartPage";
 import SignUp from "pages/SignUp";
-import LogoutPage from "pages/LogoutPage";
+// import LogoutPage from "pages/LogoutPage";
+// import LogoutRoute from "components/auth/LogoutRoute";
 import GuestRoute from "components/auth/GuestRoute";
 import AuthRoute from "components/auth/AuthRoute";
-// import LogoutRoute from "components/auth/LogoutRoute";
 import ResetPassword from "pages/ResetPassword";
 import CreateProductPage from "pages/CreateProductPage";
 import NewProductCategoryPage from "pages/NewProductCategoryPage";
@@ -45,9 +45,9 @@ function Routes() {
         <MyProductsPage />
       </AuthRoute>
 
-      <AuthRoute path="/logout">
+      {/* <AuthRoute path="/logout">
         <LogoutPage />
-      </AuthRoute>
+      </AuthRoute> */}
 
       <AuthRoute path="/product-create">
         <CreateProductPage />

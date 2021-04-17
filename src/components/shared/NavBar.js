@@ -18,11 +18,8 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
   };
 
   const logOut = () => {
-    const permission = window.confirm("Are you sure you want to sign out?");
-    if (!permission) return;
-
     logout();
-    return history.push("/logout");
+    return history.push("/login");
   };
   return (
     <nav className="nav-section">

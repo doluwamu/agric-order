@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-export const fetchingReducer = (resource) => {
+export const isFetchingReducer = (resource) => {
   return (state = false, action) => {
     if (resource !== action.resource) {
       return state;
@@ -8,7 +8,6 @@ export const fetchingReducer = (resource) => {
     switch (action.type) {
       case "REQUEST_DATA":
         return true;
-      case "DELETE_RESOURCE":
       case "REQUEST_DATA_FAILED":
       case "REQUEST_DATA_COMPLETE":
         return false;
@@ -18,7 +17,7 @@ export const fetchingReducer = (resource) => {
   };
 };
 
-export const fetchingFailReducer = (resource) => {
+export const errorsReducer = (resource) => {
   return (state = [], action) => {
     if (resource !== action.resource) {
       return state;
@@ -36,7 +35,7 @@ export const fetchingFailReducer = (resource) => {
   };
 };
 
-export const fetchingSuccessReducer = (resource) => {
+export const successReducer = (resource) => {
   return (state = [], action) => {
     if (resource !== action.resource) {
       return state;
@@ -51,6 +50,7 @@ export const fetchingSuccessReducer = (resource) => {
       case "DELETE_RESOURCE":
         const index = state.findIndex((i) => i._id === action.id);
         return state.filter((item, itemIndex) => index !== itemIndex);
+
       default:
         return state;
     }
@@ -58,9 +58,9 @@ export const fetchingSuccessReducer = (resource) => {
 };
 
 export const createList = (resource) => {
-  const items = fetchingSuccessReducer(resource);
-  const isFetching = fetchingReducer(resource);
-  const errors = fetchingFailReducer(resource);
+  const items = successReducer(resource);
+  const isFetching = isFetchingReducer(resource);
+  const errors = errorsReducer(resource);
 
   return combineReducers({
     items,

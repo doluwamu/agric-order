@@ -36,3 +36,7 @@ export const removeFromCart = (productId) => (dispatch, getState) => {
   } = getState();
   Cookie.set("cartItems", JSON.stringify(cartItems));
 };
+
+export const clearCart = () => (dispatch, getState) => {
+  return Cookie.remove("cartItems");
+};
