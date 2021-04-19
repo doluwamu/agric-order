@@ -16,6 +16,12 @@ exports.addToCart = async (req, res) => {
         detail: `No product with id of ${productId} found!`,
       });
     }
+    if (foundProduct.owner.id === user.id) {
+      return res.sendApiError({
+        title: "Your product!",
+        detail: "You cannot add your own product to your cart!",
+      });
+    }
 
     const newCartItem = new CartItem({
       product: foundProduct,
