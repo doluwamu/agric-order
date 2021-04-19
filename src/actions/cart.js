@@ -55,3 +55,7 @@ export const getCartItems = () => (dispatch) => {
       });
     });
 };
+
+export const clearCart = () => (dispatch, getState) => {
+  return Cookie.remove("cartItems");
+};

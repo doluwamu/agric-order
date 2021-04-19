@@ -19,9 +19,7 @@ const AgApp = () => {
   return (
     <Router>
       <NavBar logout={authService.logOut} />
-
       <ProductSearch />
-
       <Routes />
     </Router>
   );

@@ -13,7 +13,7 @@ const LoginForm = ({ onSubmit, error }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
       <div className="form_header">
-        <h2>Log-In</h2>
+        <h2>Login</h2>
       </div>
 
       <div className="email form_part">
@@ -60,7 +60,7 @@ const LoginForm = ({ onSubmit, error }) => {
 
       <div className="form_button">
         <button type="submit" className="btn btn-secondary">
-          Log-in
+          Login
         </button>
       </div>
 

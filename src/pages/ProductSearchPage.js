@@ -6,14 +6,9 @@ import ProductCard from "components/products/ProductCard";
 import { capitalize } from "helpers/Capitalize";
 import Loading from "helpers/Loading";
 
-const ProductSearchPage = ({
-  dispatch,
-  match: {
-    params: { category },
-  },
-  products,
-  isFetching,
-}) => {
+const ProductSearchPage = (props) => {
+  const { category } = props.match.params;
+  const { dispatch, isFetching, products } = props;
   useEffect(() => {
     dispatch(fetchProducts(category));
   }, [dispatch, category]);
@@ -35,7 +30,7 @@ const ProductSearchPage = ({
             <h2
               style={{ textAlign: "center", marginTop: "3rem", color: "red" }}
             >
-              There is no product or page of "{capitalize(category)}" found
+              There is no product of "{capitalize(category)}" found
             </h2>
           )}
         </div>
@@ -44,10 +39,10 @@ const ProductSearchPage = ({
   );
 };
 
-const mapStateToProps = ({ products: { dataFetched, fetchingData } }) => {
+const mapStateToProps = ({ products: { allProducts } }) => {
   return {
-    products: dataFetched,
-    isFetching: fetchingData,
+    products: allProducts.items,
+    isFetching: allProducts.isFetching,
   };
 };
 

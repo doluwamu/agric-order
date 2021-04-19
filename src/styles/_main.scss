@@ -138,16 +138,22 @@ body {
     transform: translateY(0) !important;
   }
 
-  @keyframes navTransition {
-    from {
-      opacity: 0.5;
-    }
-    to {
-      opacity: 0.9;
-    }
-  }
+  // .hideDisplay {
+  //   display: none;
+  // }
+
+  // @keyframes navTransition {
+  //   from {
+  //     opacity: 0.5;
+  //   }
+  //   to {
+  //     opacity: 0.9;
+  //   }
+  // }
 
   .nav-section {
+    z-index: 1111;
+
     header {
       margin-top: -1rem;
       padding-top: 1rem;
@@ -168,19 +174,22 @@ body {
     }
 
     .nav-ul {
-      max-height: 40%;
-      width: 100%;
+      display: block !important;
+      height: 15rem;
+      max-width: 1500px !important;
       overflow-y: scroll;
       background: var(--mainGrey);
       transform: translateY(-90rem);
       opacity: 0.9;
       overflow-y: scroll;
       position: fixed;
-      top: 3.5rem;
+      top: 5.3rem;
+      left: 10%;
+      right: 10%;
       transition: all 0.5s !important;
 
       li {
-        margin-top: 1.3rem !important;
+        margin-top: 1rem !important;
         margin-left: -1rem !important;
         // background: red;
 

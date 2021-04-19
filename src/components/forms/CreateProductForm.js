@@ -156,7 +156,7 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
         />
         <span className="privacy">
           <label style={{ fontSize: "19px", textDecoration: "none" }}>
-            Confirm that product is available
+            Confirm product
           </label>
         </span>
 

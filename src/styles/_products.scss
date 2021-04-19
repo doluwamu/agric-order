@@ -10,41 +10,47 @@
       justify-content: left;
       align-items: flex-start;
       flex-flow: row wrap;
-      padding: 2rem 0;
+      padding: 0.5rem 0 2rem;
       margin: 0 auto;
-      width: 100%;
+      width: 62rem;
       // background: #002;
 
       .product {
-        display: flex;
-        justify-content: left;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        margin: 1.2rem 0.5rem;
-        padding: 2rem 1rem;
-        width: 40rem;
-        max-width: 80rem;
-        border-bottom: 1px solid var(--mainBlack);
+        margin: 1.2rem auto;
+        padding-bottom: 1rem;
+        // width: 70rem;
+        border-bottom: 0.1rem solid var(--mainBlack);
         border-radius: 3px;
         overflow: hidden;
-        // box-shadow: 0 0 0.2rem var(--mainBlack);
+        box-shadow: 0 0 0.2rem var(--mainBlack);
         background: #eee;
-        transition: all 0.2s;
+        transition: all 0.5s ease-in;
+
+        &:hover {
+          transform: scale(1.02);
+        }
 
         img {
-          width: 20rem;
-          height: 25rem;
+          margin: 12px 5% 5px;
+          margin-right: 0;
+          width: 90%;
+          height: 20rem;
+          border-radius: 5px;
         }
 
         .product-details {
-          min-height: 6rem;
+          width: 90%;
+          margin: 0 auto;
           .product_name,
           .product_category,
           .product_detail,
           .product_price {
-            font-weight: bold;
-            padding: 0.2rem 0;
+            padding: 0.2rem;
             font-size: 1rem;
+
+            b {
+              font-weight: 700;
+            }
           }
 
           .product_category {
@@ -54,6 +60,7 @@
           .product_price {
             color: var(--subBlue);
             font-size: 1.1rem;
+            font-weight: 600;
           }
         }
       }
@@ -61,20 +68,43 @@
   }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 1023px) {
   .products {
+    max-width: 41.3rem !important;
+
     .product {
-      max-width: 30rem !important;
+      margin: 1rem 1.3rem !important;
+      width: 18rem !important;
 
       img {
-        width: 100% !important;
+        width: 100%;
+        height: 15rem !important;
       }
     }
   }
 }
 
-@media screen and (max-width: 300px) {
+@media screen and (max-width: 650px) {
   .products {
+    max-width: 490px !important;
+    .product {
+      margin: 1rem 1.3rem !important;
+      width: 100% !important;
+
+      &:first-child {
+        margin-left: 1.3rem !important;
+      }
+
+      img {
+        height: 13rem !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .products {
+    width: 100% !important;
     .product {
       img {
         height: 13rem !important;
@@ -83,47 +113,44 @@
   }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (max-width: 250px) {
   .products {
     .product {
-      flex-wrap: nowrap !important;
-
-      .product-details {
-        padding: 2rem 0 !important;
-        margin: 70px 5px !important;
-        width: 100% !important;
-        text-align: left !important;
-        // background-color: green;
+      img {
+        height: 8rem !important;
       }
     }
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) {
   .products {
+    width: 62rem;
+
     .product {
-      margin: 1.2rem !important;
-      margin-left: 1.7rem !important;
-      margin-right: 1rem !important;
-      width: 45rem !important;
+      margin: 1rem 1.3rem !important;
+      width: 18rem !important;
+
+      img {
+        width: 100%;
+        height: 15rem !important;
+      }
     }
   }
 }
 
-@media screen and (max-width: 1650px) {
+@media screen and (min-width: 1350px) {
   .products {
-    .product {
-      width: 100rem !important;
-      margin: 1.2rem auto !important;
-    }
-  }
-}
+    width: 83rem !important;
 
-@media screen and (max-width: 1100px) {
-  .products {
     .product {
-      width: 90% !important;
-      margin: 1.2rem auto !important;
+      margin: 1rem 1.3rem !important;
+      width: 18rem !important;
+
+      img {
+        width: 100%;
+        height: 15rem !important;
+      }
     }
   }
 }

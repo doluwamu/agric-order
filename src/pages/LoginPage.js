@@ -23,7 +23,7 @@ class LoginPage extends Component {
     const { error, shouldRedirect } = this.state;
 
     if (shouldRedirect) {
-      return <Redirect to={{ pathname: "/" }} />;
+      return <Redirect to={{ pathname: "/products" }} />;
     }
 
     return (

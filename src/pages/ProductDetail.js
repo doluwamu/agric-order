@@ -36,14 +36,11 @@ export class ProductDetail extends Component {
   }
 }
 
-const mapStateToProps = ({
-  product: { fetchedData, datafetching, dataFetchingFail },
-}) => {
-  // console.log(fetchedData);
+const mapStateToProps = ({ products: { selectedProduct } }) => {
   return {
-    product: fetchedData,
-    isFetching: datafetching,
-    dataFetchingFail,
+    product: selectedProduct.items,
+    isFetching: selectedProduct.isFetching,
+    dataFetchingFail: selectedProduct.errors,
   };
 };
 

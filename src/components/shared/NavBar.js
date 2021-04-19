@@ -11,29 +11,27 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
 
   const toggleAside = () => {
     document.querySelector(".nav-ul").classList.toggle("open");
+    // document.querySelector(".nav-ul").classList.toggle()
   };
-  const removeAside = () => {
+  const closeAside = () => {
     document.querySelector(".nav-ul").classList.remove("open");
   };
 
   const logOut = () => {
-    const permission = window.confirm("Are you sure you want to sign out?");
-    if (!permission) return;
-
     logout();
-    return history.push("/logout");
+    return history.push("/login");
   };
   return (
     <nav className="nav-section">
       <header className="nav_header">
-        <Link to="/">AgricOrder</Link>
+        <Link to="/products">AgricOrder</Link>
       </header>
 
       <button className="nav-btn" onClick={toggleAside}>
         &#9776;
       </button>
 
-      <ul className="nav-ul" onClick={removeAside}>
+      <ul className="nav-ul" onClick={closeAside}>
         {isAuthenticated && (
           <li className="nav_li">
             <div className="user" style={{ color: "#fff" }}>
@@ -44,13 +42,13 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
         )}
 
         <li className="nav_li">
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li className="nav_li">
           <a href="#">About</a>
         </li>
         <li className="nav_li">
-          <Link to="/">Products</Link>
+          <Link to="/products">Products</Link>
         </li>
         <li className="nav_li">
           <a href="#">Contact</a>
@@ -65,11 +63,8 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
               <Link to="/login">Log-in</Link>
             </li>
 
-            {/* <li className="nav_li" onClick={() => history.push("/login")}>
-              <p
-                title="Please login to see the items you added to the cart"
-                className="logout_text"
-              >
+            <li className="nav_li" onClick={() => history.push("/login")}>
+              <p title="Please login to view your cart" className="logout_text">
                 Cart{" "}
                 <span
                   style={{
@@ -81,32 +76,36 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
                   0
                 </span>
               </p>
-            </li> */}
+            </li>
           </>
         )}
 
         {isAuthenticated && (
           <>
             <li className="nav_li" onClick={logOut}>
-              <p className="logout_text">Log-out</p>
+              <p className="logout_text">Logout</p>
+            </li>
+
+            <li className="nav_li">
+              <Link to="/cart" className="cart_text">
+                Cart{" "}
+                <span
+                  style={{
+                    background: "#000",
+                    padding: "3px 5px",
+                    borderRadius: "5px",
+                  }}
+                >
+                  {cartItems &&
+                    cartItems.reduce(
+                      (a, c) => parseInt(a) + parseInt(c.qty),
+                      0
+                    )}
+                </span>
+              </Link>
             </li>
           </>
         )}
-        <li className="nav_li">
-          <Link to="/cart" className="cart_text">
-            Cart{" "}
-            <span
-              style={{
-                background: "#000",
-                padding: "3px 5px",
-                borderRadius: "5px",
-              }}
-            >
-              {cartItems &&
-                cartItems.reduce((a, c) => parseInt(a) + parseInt(c.qty), 0)}
-            </span>
-          </Link>
-        </li>
       </ul>
     </nav>
   );

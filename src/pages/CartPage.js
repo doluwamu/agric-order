@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { addToCart, getCartItems } from "actions";
+// <<<<<<< HEAD
+// import { addToCart, getCartItems } from "actions";
+// =======
+import { addToCart, clearCart } from "actions";
+// >>>>>>> master
 import CartItem from "components/cart/CartItem";
 import CalcCartItems from "components/cart/CalcCartItems";
 
@@ -20,6 +24,15 @@ class CartPage extends Component {
   render() {
     const { cart } = this.props;
     const { cartItems } = cart;
+    // debugger;
+
+    const handleClearCart = () => {
+      const permission = window.confirm("Do you want to clear your cart?");
+      if (!permission) return;
+      this.props.dispatch(clearCart());
+      window.location.reload();
+    };
+
     return (
       <>
         <header
@@ -38,6 +51,19 @@ class CartPage extends Component {
           <CartItem cartItems={cartItems} dispatch={this.props.dispatch} />
           <CalcCartItems cartItems={cartItems} />
         </div>
+        {cartItems && cartItems.length > 0 ? (
+          <div style={{ width: "30%", margin: "0 auto" }}>
+            <button
+              className="btn btn-primary"
+              type="button"
+              onClick={handleClearCart}
+            >
+              Clear cart
+            </button>
+          </div>
+        ) : (
+          <h3 style={{ textAlign: "center" }}>Your cart is empty</h3>
+        )}
       </>
     );
   }

@@ -7,6 +7,7 @@ import ProductCard from "components/products/ProductCard";
 
 import Loading from "helpers/Loading";
 import ConnectionError from "errors/ConnectionError";
+import HeadImage from "components/shared/HeadImage";
 
 class ProductPage extends Component {
   componentDidMount() {
@@ -15,6 +16,7 @@ class ProductPage extends Component {
 
   render() {
     const { products, isFetching, dataFetchingFail } = this.props;
+
     if (isFetching) {
       return <Loading />;
     }
@@ -24,26 +26,34 @@ class ProductPage extends Component {
     }
 
     return (
-      <div className="all_products">
-        <div className="all_products_body">
-          <header className="products_header">Check out our animals</header>
-          <div className="products">
-            <ProductCard products={products} dispatch={this.props.dispatch} />
+      <>
+        <HeadImage heading={"We hope you enjoy shopping with us"} />
+        <div className="all_products">
+          <div className="all_products_body">
+            <header className="products_header">Check out our animals</header>
+            <div className="products">
+              <ProductCard products={products} dispatch={this.props.dispatch} />
+            </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 }
 
-const mapStateToProps = ({
-  products: { dataFetched, fetchingData, dataFetchingFail },
-}) => {
+const mapStateToProps = ({ products: { allProducts } }) => {
+  // >>>>>>> master
   return {
-    isFetching: fetchingData,
-    products: dataFetched,
-    dataFetchingFail,
+    isFetching: allProducts.isFetching,
+    products: allProducts.items,
+    dataFetchingFail: allProducts.errors,
   };
 };
 
 export default connect(mapStateToProps)(ProductPage);
+
+// <<<<<<< HEAD
+// const mapStateToProps = ({
+//   products: { dataFetched, fetchingData, dataFetchingFail },
+// }) => {
+// =======

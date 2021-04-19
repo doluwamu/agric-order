@@ -1,7 +1,10 @@
 const cart = (state = { cartItems: [] }, action) => {
+  // debugger;
   switch (action.type) {
     case "ADD_ITEM_TO_CART":
       const item = action.item;
+
+      // const isCartItem = state.cartItems && state.cartItems !== undefined;
 
       const product = state.cartItems.find(
         (cartItem) => cartItem.product === item.product

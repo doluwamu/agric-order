@@ -1,7 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import products from "./reducers/products";
-import product from "./reducers/product";
+import manage from "./reducers/manage";
 import cart from "./reducers/cart";
 import auth from "./reducers/auth";
 import register from "./reducers/registerStatus";
@@ -13,7 +13,7 @@ export function initStore() {
   const initialState = { cart: { cartItems } };
   const reducers = combineReducers({
     products,
-    product,
+    manage,
     register,
     cart,
     auth,

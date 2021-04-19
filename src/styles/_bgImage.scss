@@ -1,0 +1,42 @@
+.main-bg-img {
+  background-blend-mode: multiply;
+  background: url("/images/background.jpg") rgba(0, 0, 0, 0.5) top no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 32rem;
+  width: 100%;
+  margin-bottom: 50px;
+
+  .bg-texts {
+    padding: 200px 0 0;
+    .main-bg-text {
+      text-align: center;
+      color: var(--mainWhite);
+      padding: 10px 0 0;
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .main-bg-img {
+    height: 0 !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .main-bg-img {
+    height: 20rem !important;
+
+    .bg-texts {
+      padding: 100px 0;
+    }
+  }
+}
+
+@media screen and (max-width: 205px) {
+  .main-bg-img {
+    margin-bottom: 0;
+    height: 0 !important;
+  }
+}

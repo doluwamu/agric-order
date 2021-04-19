@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const config = require("./config/dev");
 
 const productRoutes = require("./routes/products");
+const manageRoutes = require("./routes/manageProducts");
 const userRoutes = require("./routes/users");
 const productCategoryRoutes = require("./routes/productCategories");
 const cartItems = require("./routes/cartItems");
@@ -34,6 +35,7 @@ app.use(provideErrorHandler);
 // Routes
 app.use("/api/v1/products", productRoutes);
 app.use("/api/v1/cart", cartItems);
+app.use("/api/v1/manage", manageRoutes);
 app.use("/api/v1/product-categories", productCategoryRoutes);
 app.use("/api/v1/users", userRoutes);
 

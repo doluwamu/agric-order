@@ -5,12 +5,21 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { BreakWordFragment } from "helpers/WordLimits";
+import { deleteProduct } from "actions";
 
-const ProductCard = ({ products, dispatch }) => {
+const ProductManageCard = ({ products, dispatch }) => {
   return products.map((product) => {
     // const handleAddToCart = () => {
     //   dispatch(addToCart(product, product._id));
     // };
+
+    const handleDelete = () => {
+      const confirmDelete = window.confirm(
+        "Are you sure you want to delete this product?"
+      );
+      if (!confirmDelete) return;
+      dispatch(deleteProduct(product._id));
+    };
     return (
       <div className="product" key={product._id}>
         <Link to={`/product/${product._id}`}>
@@ -39,6 +48,29 @@ const ProductCard = ({ products, dispatch }) => {
             </Link>
           </p>
         </div>
+
+        <div
+          className="delete-product"
+          style={{ width: "100%", margin: "10px 5px" }}
+        >
+          <button
+            style={{ margin: "5px" }}
+            type="button"
+            className="btn btn-primary"
+            onClick={handleDelete}
+          >
+            Delete
+          </button>
+
+          <button
+            style={{ margin: "5px" }}
+            type="button"
+            className="btn btn-secondary"
+          >
+            Edit
+          </button>
+        </div>
+
         {/* <div className="add-to-cart" style={{ width: "90%", margin: "0 auto" }}>
           <button
             className="btn btn-secondary"
@@ -58,4 +90,4 @@ const ProductCard = ({ products, dispatch }) => {
   });
 };
 
-export default ProductCard;
+export default ProductManageCard;

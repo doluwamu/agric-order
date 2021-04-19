@@ -5,20 +5,31 @@ import ProductDetail from "../pages/ProductDetail";
 import LoginPage from "../pages/LoginPage";
 import CartPage from "pages/CartPage";
 import SignUp from "pages/SignUp";
-import LogoutPage from "pages/LogoutPage";
+// import LogoutPage from "pages/LogoutPage";
+// import LogoutRoute from "components/auth/LogoutRoute";
 import GuestRoute from "components/auth/GuestRoute";
 import AuthRoute from "components/auth/AuthRoute";
-import LogoutRoute from "components/auth/LogoutRoute";
 import ResetPassword from "pages/ResetPassword";
 import CreateProductPage from "pages/CreateProductPage";
 import NewProductCategoryPage from "pages/NewProductCategoryPage";
 import ProductSearchPage from "pages/ProductSearchPage";
 import GetUserPage from "pages/GetUserPage";
+import HomePage from "pages/HomePage";
+import PageNotFound from "pages/PageNotFound";
+import MyProductsPage from "pages/MyProductsPage";
 
 function Routes() {
   return (
     <Switch>
+      <Route path="/products/:category">
+        <ProductSearchPage />
+      </Route>
+
       <Route path="/" exact={true}>
+        <HomePage />
+      </Route>
+
+      <Route path="/products">
         <ProductPage />
       </Route>
 
@@ -29,6 +40,14 @@ function Routes() {
       <GuestRoute path="/get-user">
         <GetUserPage />
       </GuestRoute>
+
+      <AuthRoute path="/manage/my-products">
+        <MyProductsPage />
+      </AuthRoute>
+
+      {/* <AuthRoute path="/logout">
+        <LogoutPage />
+      </AuthRoute> */}
 
       <AuthRoute path="/product-create">
         <CreateProductPage />
@@ -42,10 +61,6 @@ function Routes() {
         <LoginPage />
       </GuestRoute>
 
-      <LogoutRoute path="/logout">
-        <LogoutPage />
-      </LogoutRoute>
-
       <GuestRoute path="/signup">
         <SignUp />
       </GuestRoute>
@@ -54,12 +69,12 @@ function Routes() {
         <ProductDetail />
       </Route>
 
-      <Route path="/cart">
+      <AuthRoute path="/cart">
         <CartPage />
-      </Route>
+      </AuthRoute>
 
-      <Route path="/:category">
-        <ProductSearchPage />
+      <Route path="/:noPage">
+        <PageNotFound />
       </Route>
     </Switch>
   );
