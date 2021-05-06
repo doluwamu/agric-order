@@ -52,7 +52,7 @@ exports.getCartItems = async (req, res) => {
   if (!user) {
     return res.sendApiError({
       title: "Missing Data!",
-      detail: "There is no user",
+      detail: "There is no user!",
     });
   }
 
@@ -60,6 +60,30 @@ exports.getCartItems = async (req, res) => {
     const cartItem = await CartItem.find({ owner: user });
 
     res.json(cartItem);
+  } catch (error) {
+    return res.mongoError(error);
+  }
+};
+
+exports.clearCart = async (req, res) => {
+  const { user } = res.locals;
+  try {
+    const foundItems = await CartItem.find({ owner: user });
+    if (foundItems.length === 0) {
+      return res.sendApiError({
+        title: "Invalid deletion!",
+        detail: "There is no product in your cart!",
+      });
+    }
+
+    foundItems.forEach(async (item) => {
+      try {
+        await item.remove();
+        return res.json("Your cart has successfully been cleared!");
+      } catch (error) {
+        return res.mongoError(error);
+      }
+    });
   } catch (error) {
     return res.mongoError(error);
   }
