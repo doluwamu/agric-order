@@ -50,8 +50,12 @@ export const getCartItems = () => (dispatch) => {
     });
 };
 
-export const addToCart = (productId) => (dispatch) => {
-  return AgricAxios.post(`/cart/${productId}/add-to-cart`)
+export const addToCart = (productId, quantity) => (dispatch) => {
+  // debugger;
+  const query = quantity
+    ? `/cart/${productId}/add-to-cart?quantity=${parseInt(quantity)}`
+    : `/cart/${productId}/add-to-cart`;
+  return AgricAxios.post(query)
     .then((res) => res.data)
     .catch((error) => {
       console.log(error);

@@ -13,11 +13,12 @@ function ProductDetails({ product, dispatch }) {
   const [qty, setQty] = useState(1);
 
   const handleQtyChange = (event) => {
+    // debugger;
     setQty(event.target.value);
   };
 
   const handleAddToCart = () => {
-    dispatch(addToCart(product._id));
+    dispatch(addToCart(product._id, qty));
     // history.push("/cart");
     return window.location.reload();
   };
@@ -67,7 +68,10 @@ function ProductDetails({ product, dispatch }) {
             </p>
 
             <b>Qty</b>
-            <select value={qty} onChange={handleQtyChange}>
+
+            <input type="number" value={qty} onChange={handleQtyChange} />
+
+            {/* <select value={qty} onChange={handleQtyChange}>
               {[...Array(product.quantityInStock).keys()].map((x) => {
                 return (
                   <option key={x + 1} value={x + 1}>
@@ -75,19 +79,19 @@ function ProductDetails({ product, dispatch }) {
                   </option>
                 );
               })}
-            </select>
+            </select> */}
           </div>
 
-          {product.quantityInStock > 0 && (
-            <div className="buttons">
-              <button
-                onClick={handleAddToCart}
-                className="btn btn-secondary add_to_cart"
-              >
-                Add to cart <FontAwesomeIcon icon="shopping-cart" />
-              </button>
-            </div>
-          )}
+          {/* {product.quantityInStock > 0 && ( */}
+          <div className="buttons">
+            <button
+              onClick={handleAddToCart}
+              className="btn btn-secondary add_to_cart"
+            >
+              Add to cart <FontAwesomeIcon icon="shopping-cart" />
+            </button>
+          </div>
+          {/* )} */}
         </div>
       </div>
     </div>

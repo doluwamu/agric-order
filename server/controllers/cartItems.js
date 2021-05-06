@@ -2,7 +2,7 @@ const CartItem = require("../models/cartItem");
 const Product = require("../models/product");
 
 exports.addToCart = async (req, res) => {
-  const { quantity } = req.body;
+  const { quantity } = req.query;
   const { productId } = req.params;
   const { user } = res.locals;
   try {
