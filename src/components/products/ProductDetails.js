@@ -5,11 +5,11 @@ import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
 // import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { addToCart } from "actions";
 
 function ProductDetails({ product, dispatch }) {
-  // const history = useHistory();
+  const history = useHistory();
   const [qty, setQty] = useState(1);
 
   const handleQtyChange = (event) => {
@@ -19,7 +19,7 @@ function ProductDetails({ product, dispatch }) {
 
   const handleAddToCart = () => {
     dispatch(addToCart(product._id, qty));
-    // history.push("/cart");
+    history.push("/cart");
     return window.location.reload();
   };
 
@@ -82,16 +82,16 @@ function ProductDetails({ product, dispatch }) {
             </select> */}
           </div>
 
-          {/* {product.quantityInStock > 0 && ( */}
-          <div className="buttons">
-            <button
-              onClick={handleAddToCart}
-              className="btn btn-secondary add_to_cart"
-            >
-              Add to cart <FontAwesomeIcon icon="shopping-cart" />
-            </button>
-          </div>
-          {/* )} */}
+          {product.quantityInStock > 0 && (
+            <div className="buttons">
+              <button
+                onClick={handleAddToCart}
+                className="btn btn-secondary add_to_cart"
+              >
+                Add to cart <FontAwesomeIcon icon="shopping-cart" />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

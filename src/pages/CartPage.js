@@ -48,7 +48,7 @@ class CartPage extends Component {
           Your cart
         </header>
         <div className="cart-items">
-          <CartItem cartItems={cart} dispatch={this.props.dispatch} />
+          <CartItem dispatch={this.props.dispatch} />
           <CalcCartItems cartItems={cart} />
         </div>
         {cart && cart.length > 0 ? (

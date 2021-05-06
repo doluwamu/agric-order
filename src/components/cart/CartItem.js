@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { NumWithComma } from "helpers/NumberHelpers";
-import { removeFromCart } from "actions";
+import { changeCartQuantity, removeFromCart } from "actions";
 import { capitalize } from "helpers/Capitalize";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { connect } from "react-redux";
 
 const CartItem = ({ cartItems, dispatch }) => {
   const handleRemoveItemFromCart = (id) => {
     dispatch(removeFromCart(id));
     return window.location.reload();
+  };
+
+  const [qty, setQty] = useState("");
+
+  const handleChange = (id) => {
+    dispatch(changeCartQuantity(id, qty));
+    return window.location.reload();
+    // setTimeout(() => , 7000);
   };
 
   return (
@@ -31,7 +40,29 @@ const CartItem = ({ cartItems, dispatch }) => {
                 <span>&#x20A6;{NumWithComma(item.product.price)}</span>
               </div>
 
-              <div className="item item-qty">Qty: {item.quantity}</div>
+              <div className="item item-qty">
+                Qty:
+                <input
+                  style={{ width: "3rem" }}
+                  type="number"
+                  defaultValue={item.quantity}
+                  onChange={(e) => setQty(e.target.value)}
+                />
+                <button type="button" onClick={() => handleChange(item._id)}>
+                  Change
+                </button>
+              </div>
+
+              {/* <div>
+                <input
+                  type="number"
+                  defaultValue={item.quantity}
+                  onChange={(e) => setQty(e.target.value)}
+                />
+                <button type="button" onClick={() => handleChange(item._id)}>
+                  Change
+                </button>
+              </div> */}
 
               <div className="item item-button">
                 <button
@@ -48,4 +79,10 @@ const CartItem = ({ cartItems, dispatch }) => {
   );
 };
 
-export default CartItem;
+const mapStateToProps = ({ cart }) => {
+  return {
+    cartItems: cart,
+  };
+};
+
+export default connect(mapStateToProps)(CartItem);

@@ -106,3 +106,24 @@ exports.clearCart = async (req, res) => {
     return res.mongoError(error);
   }
 };
+
+exports.changeQuantityInCart = async (req, res) => {
+  const { id } = req.params;
+  const { quantity } = req.query;
+
+  try {
+    if (!quantity) {
+      return res.sendApiError({
+        title: "Missing data!",
+        detail: "Please provide a quantity!",
+      });
+    }
+    const foundProduct = await CartItem.findByIdAndUpdate(
+      { _id: id },
+      { quantity }
+    );
+    return res.json({ foundProduct });
+  } catch (error) {
+    return res.mongoError(error);
+  }
+};

@@ -77,3 +77,13 @@ export const clearCart = () => () => {
       console.log(error);
     });
 };
+
+export const changeCartQuantity = (productId, quantity) => (dispatch) => {
+  return AgricAxios.patch(
+    `/cart/${productId}/change-quantity-in-cart?quantity=${parseInt(quantity)}`
+  )
+    .then(({ data }) => data)
+    .catch((error) => {
+      debugger;
+    });
+};
