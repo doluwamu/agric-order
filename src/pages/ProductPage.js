@@ -42,7 +42,7 @@ class ProductPage extends Component {
 }
 
 const mapStateToProps = ({ products: { allProducts } }) => {
-  // >>>>>>> master
+  debugger;
   return {
     isFetching: allProducts.isFetching,
     products: allProducts.items,
@@ -51,9 +51,3 @@ const mapStateToProps = ({ products: { allProducts } }) => {
 };
 
 export default connect(mapStateToProps)(ProductPage);
-
-// <<<<<<< HEAD
-// const mapStateToProps = ({
-//   products: { dataFetched, fetchingData, dataFetchingFail },
-// }) => {
-// =======

@@ -1,12 +1,17 @@
 /*eslint-disable  jsx-a11y/anchor-is-valid */
 
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { capitalize } from "helpers/Capitalize";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { getCartItems } from "actions";
 
-const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
+const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
+  // debugger;
+  useEffect(() => {
+    dispatch(getCartItems());
+  }, [dispatch]);
   const history = useHistory();
 
   const toggleAside = () => {
@@ -96,11 +101,13 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
                     borderRadius: "5px",
                   }}
                 >
-                  {cartItems &&
+                  {cartItems && cartItems.length}
+                  {/* {(cartItems &&
                     cartItems.reduce(
-                      (a, c) => parseInt(a) + parseInt(c.qty),
+                      (a, c) => parseInt(a) + parseInt(c.quantity),
                       0
-                    )}
+                    )) ||
+                    0} */}
                 </span>
               </Link>
             </li>
@@ -111,16 +118,12 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems }) => {
   );
 };
 
-const mapStateToProps = ({
-  auth: { isAuthenticated, username },
-  cart: { cartItems },
-}) => {
-  // debugger;
+const mapStateToProps = ({ cart, auth: { isAuthenticated, username } }) => {
   return {
     isAuthenticated,
     username,
-    cartItems,
+    cartItems: cart,
   };
 };
-
+// const NavBarWithRouter = withRouter(NavBar);
 export default connect(mapStateToProps)(NavBar);

@@ -1,29 +1,26 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-// <<<<<<< HEAD
 // import { addToCart, getCartItems } from "actions";
-// =======
-import { addToCart, clearCart } from "actions";
-// >>>>>>> master
+import { clearCart, getCartItems } from "actions";
 import CartItem from "components/cart/CartItem";
 import CalcCartItems from "components/cart/CalcCartItems";
 
 class CartPage extends Component {
   componentDidMount() {
-    const { id } = this.props.match.params;
-    const qty = this.props.location.search
-      ? Number(this.props.location.search.split("=")[1])
-      : 1;
+    // const { id } = this.props.match.params;
+    // const qty = this.props.location.search
+    //   ? Number(this.props.location.search.split("=")[1])
+    //   : 1;
 
-    if (id) {
-      this.props.dispatch(addToCart(id, qty));
-    }
+    // if (id) {
+    this.props.dispatch(getCartItems());
+    // }
   }
 
   render() {
     const { cart } = this.props;
-    const { cartItems } = cart;
+    // const { cartItems } = cart;
     // debugger;
 
     const handleClearCart = () => {
@@ -48,10 +45,10 @@ class CartPage extends Component {
           Your cart
         </header>
         <div className="cart-items">
-          <CartItem cartItems={cartItems} dispatch={this.props.dispatch} />
-          <CalcCartItems cartItems={cartItems} />
+          <CartItem cartItems={cart} dispatch={this.props.dispatch} />
+          <CalcCartItems cartItems={cart} />
         </div>
-        {cartItems && cartItems.length > 0 ? (
+        {cart && cart.length > 0 ? (
           <div style={{ width: "30%", margin: "0 auto" }}>
             <button
               className="btn btn-primary"
@@ -69,6 +66,7 @@ class CartPage extends Component {
   }
 }
 const mapStateToProps = ({ cart }) => {
+  debugger;
   return {
     cart,
   };

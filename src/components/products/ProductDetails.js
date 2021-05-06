@@ -4,9 +4,10 @@ import { withRouter } from "react-router-dom";
 import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
-import { addToCart } from "actions";
+// import { addToCart } from "actions";
 // import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { addToCart } from "actions";
 
 function ProductDetails({ product, dispatch }) {
   const history = useHistory();
@@ -17,7 +18,7 @@ function ProductDetails({ product, dispatch }) {
   };
 
   const handleAddToCart = () => {
-    dispatch(addToCart(product, product._id, qty));
+    dispatch(addToCart(product._id));
     return history.push("/cart");
   };
 
