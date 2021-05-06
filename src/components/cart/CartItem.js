@@ -1,13 +1,14 @@
 import React from "react";
 import { NumWithComma } from "helpers/NumberHelpers";
-// import { removeFromCart } from "actions";
+import { removeFromCart } from "actions";
 import { capitalize } from "helpers/Capitalize";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 const CartItem = ({ cartItems, dispatch }) => {
-  // const handleRemoveItemFromCart = (id) => {
-  //   dispatch(removeFromCart(id));
-  // };
+  const handleRemoveItemFromCart = (id) => {
+    dispatch(removeFromCart(id));
+    return window.location.reload();
+  };
 
   return (
     <div className="cart">
@@ -32,14 +33,14 @@ const CartItem = ({ cartItems, dispatch }) => {
 
               <div className="item item-qty">Qty: {item.quantity}</div>
 
-              {/* <div className="item item-button">
+              <div className="item item-button">
                 <button
                   className="btn btn-primary"
-        => handleRemoveItemFromCart(item.product)}
+                  onClick={() => handleRemoveItemFromCart(item._id)}
                 >
                   Remove
                 </button>
-              </div> */}
+              </div>
             </div>
           );
         })}

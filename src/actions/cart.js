@@ -1,4 +1,4 @@
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
 import axiosService from "../services/AxiosServices";
 
 const { AgricAxios } = axiosService;
@@ -29,17 +29,6 @@ const { AgricAxios } = axiosService;
 //   Cookie.set("cartItems", JSON.stringify(cartItems));
 // };
 
-export const removeFromCart = (productId) => (dispatch, getState) => {
-  dispatch({
-    type: "REMOVE_CART_ITEM",
-    product: productId,
-  });
-  const {
-    cart: { cartItems },
-  } = getState();
-  Cookie.set("cartItems", JSON.stringify(cartItems));
-};
-
 export const getCartItems = () => (dispatch) => {
   // dispatch({
   //   type: "REQUEST_DATA",
@@ -61,18 +50,26 @@ export const getCartItems = () => (dispatch) => {
     });
 };
 
-export const clearCart = () => (dispatch, getState) => {
-  return AgricAxios.delete("/cart/clear-cart")
+export const addToCart = (productId) => (dispatch) => {
+  return AgricAxios.post(`/cart/${productId}/add-to-cart`)
+    .then((res) => res.data)
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+export const removeFromCart = (id) => () => {
+  return AgricAxios.delete(`/cart/remove-cart-item/${id}`)
     .then(({ data }) => data)
     .catch((error) => {
       console.log(error);
     });
 };
 
-export const addToCart = (productId) => (dispatch) => {
-  return AgricAxios.post(`/cart/${productId}/add-to-cart`)
-    .then((res) => res.data)
+export const clearCart = () => () => {
+  return AgricAxios.delete("/cart/clear-cart")
+    .then(({ data }) => data)
     .catch((error) => {
-      debugger;
+      console.log(error);
     });
 };

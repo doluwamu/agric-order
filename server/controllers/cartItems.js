@@ -65,6 +65,29 @@ exports.getCartItems = async (req, res) => {
   }
 };
 
+exports.removeProduct = async (req, res) => {
+  const { id } = req.params;
+  const { user } = res.locals;
+  try {
+    const foundProduct = await CartItem.findById(id).populate(
+      "owner",
+      "-password"
+    );
+    if (foundProduct.owner.id !== user.id) {
+      return res.sendApiError({
+        title: "Invalid user!",
+        detail: "This is not your cart!",
+      });
+    }
+    await foundProduct.remove();
+    return res.json(
+      "This product has successfully been removed from your cart!"
+    );
+  } catch (error) {
+    return res.mongoError(error);
+  }
+};
+
 exports.clearCart = async (req, res) => {
   const { user } = res.locals;
   try {
@@ -75,15 +98,10 @@ exports.clearCart = async (req, res) => {
         detail: "There is no product in your cart!",
       });
     }
-
-    foundItems.forEach(async (item) => {
-      try {
-        await item.remove();
-        return res.json("Your cart has successfully been cleared!");
-      } catch (error) {
-        return res.mongoError(error);
-      }
+    await foundItems.forEach((item) => {
+      item.remove();
     });
+    return res.json("Your cart has successfully been cleared!");
   } catch (error) {
     return res.mongoError(error);
   }
