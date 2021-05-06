@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import LoginForm from "components/forms/LoginForm";
 import { withAuth } from "services/AuthService";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 class LoginPage extends Component {
   state = {
@@ -21,9 +20,11 @@ class LoginPage extends Component {
 
   render() {
     const { error, shouldRedirect } = this.state;
+    const { history } = this.props;
 
     if (shouldRedirect) {
-      return <Redirect to={{ pathname: "/products" }} />;
+      history.push("/products");
+      return window.location.reload();
     }
 
     return (

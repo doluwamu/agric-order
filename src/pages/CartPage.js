@@ -14,12 +14,15 @@ class CartPage extends Component {
     //   : 1;
 
     // if (id) {
+
     this.props.dispatch(getCartItems());
+
     // }
   }
 
   render() {
     const { cart } = this.props;
+
     // const { cartItems } = cart;
     // debugger;
 
