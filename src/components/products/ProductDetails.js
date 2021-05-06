@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
-// import { addToCart } from "actions";
 // import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 // import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { addToCart } from "actions";
