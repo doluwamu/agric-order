@@ -45,6 +45,7 @@ const CartItem = ({ cartItems, dispatch }) => {
                 <input
                   style={{ width: "3rem" }}
                   type="number"
+                  min={1}
                   defaultValue={item.quantity}
                   onChange={(e) => setQty(e.target.value)}
                 />
