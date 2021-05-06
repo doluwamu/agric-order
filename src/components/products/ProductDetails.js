@@ -6,11 +6,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
 // import { addToCart } from "actions";
 // import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+// import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { addToCart } from "actions";
 
 function ProductDetails({ product, dispatch }) {
-  const history = useHistory();
+  // const history = useHistory();
   const [qty, setQty] = useState(1);
 
   const handleQtyChange = (event) => {
@@ -19,7 +19,7 @@ function ProductDetails({ product, dispatch }) {
 
   const handleAddToCart = () => {
     dispatch(addToCart(product._id));
-    history.push("/cart");
+    // history.push("/cart");
     return window.location.reload();
   };
 
