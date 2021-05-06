@@ -69,7 +69,6 @@ class CartPage extends Component {
   }
 }
 const mapStateToProps = ({ cart }) => {
-  debugger;
   return {
     cart,
   };

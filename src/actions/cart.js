@@ -62,7 +62,11 @@ export const getCartItems = () => (dispatch) => {
 };
 
 export const clearCart = () => (dispatch, getState) => {
-  return Cookie.remove("cartItems");
+  return AgricAxios.delete("/cart/clear-cart")
+    .then(({ data }) => data)
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
 export const addToCart = (productId) => (dispatch) => {

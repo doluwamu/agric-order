@@ -42,7 +42,6 @@ class ProductPage extends Component {
 }
 
 const mapStateToProps = ({ products: { allProducts } }) => {
-  debugger;
   return {
     isFetching: allProducts.isFetching,
     products: allProducts.items,
