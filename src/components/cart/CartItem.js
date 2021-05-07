@@ -3,7 +3,7 @@ import { NumWithComma } from "helpers/NumberHelpers";
 import { changeCartQuantity, removeFromCart } from "actions";
 import { capitalize } from "helpers/Capitalize";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 
 const CartItem = ({ cartItems, dispatch }) => {
   const handleRemoveItemFromCart = (id) => {
@@ -80,10 +80,10 @@ const CartItem = ({ cartItems, dispatch }) => {
   );
 };
 
-const mapStateToProps = ({ cart }) => {
-  return {
-    cartItems: cart,
-  };
-};
+// const mapStateToProps = ({ cart }) => {
+//   return {
+//     cartItems: cart,
+//   };
+// };
 
-export default connect(mapStateToProps)(CartItem);
+export default CartItem;

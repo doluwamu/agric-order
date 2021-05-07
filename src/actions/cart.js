@@ -30,10 +30,9 @@ const { AgricAxios } = axiosService;
 // };
 
 export const getCartItems = () => (dispatch) => {
-  // dispatch({
-  //   type: "REQUEST_DATA",
-  //   resource: "fetch-cart-items",
-  // });
+  dispatch({
+    type: "GETTING_CART_ITEMS",
+  });
   return AgricAxios.get("/cart/get-cart-items")
     .then(({ data }) => {
       // debugger;
@@ -84,6 +83,6 @@ export const changeCartQuantity = (productId, quantity) => (dispatch) => {
   )
     .then(({ data }) => data)
     .catch((error) => {
-      debugger;
+      console.log(error);
     });
 };

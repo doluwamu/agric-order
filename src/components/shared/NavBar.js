@@ -7,7 +7,7 @@ import { capitalize } from "helpers/Capitalize";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getCartItems } from "actions";
 
-const NavBar = ({ isAuthenticated, username, logout, cart, dispatch }) => {
+const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
   // debugger;
   useEffect(() => {
     dispatch(getCartItems());
@@ -101,8 +101,8 @@ const NavBar = ({ isAuthenticated, username, logout, cart, dispatch }) => {
                     borderRadius: "5px",
                   }}
                 >
-                  {cart && cart.length > 0
-                    ? cart.reduce(
+                  {cartItems && cartItems.length > 0
+                    ? cartItems.reduce(
                         (a, c) => parseInt(a) + parseInt(c.quantity),
                         0
                       )
@@ -126,12 +126,15 @@ const NavBar = ({ isAuthenticated, username, logout, cart, dispatch }) => {
   );
 };
 
-const mapStateToProps = ({ cart, auth: { isAuthenticated, username } }) => {
+const mapStateToProps = ({
+  cart: { getCartItemsSuccess },
+  auth: { isAuthenticated, username },
+}) => {
   // debugger;
   return {
     isAuthenticated,
     username,
-    cart,
+    cartItems: getCartItemsSuccess,
   };
 };
 // const NavBarWithRouter = withRouter(NavBar);
