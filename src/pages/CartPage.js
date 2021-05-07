@@ -6,6 +6,7 @@ import { clearCart, getCartItems } from "actions";
 import CartItem from "components/cart/CartItem";
 import CalcCartItems from "components/cart/CalcCartItems";
 import Loading from "helpers/Loading";
+import ConnectionError from "errors/ConnectionError";
 
 class CartPage extends Component {
   componentDidMount() {
@@ -22,10 +23,14 @@ class CartPage extends Component {
   }
 
   render() {
-    const { cart, isFetching } = this.props;
+    const { cartItems, isFetching, fetchingFail } = this.props;
 
     if (isFetching) {
       return <Loading />;
+    }
+
+    if (fetchingFail.length > 0) {
+      return <ConnectionError />;
     }
 
     // const { cartItems } = cart;
@@ -53,10 +58,10 @@ class CartPage extends Component {
           Your cart
         </header>
         <div className="cart-items">
-          <CartItem cartItems={cart} dispatch={this.props.dispatch} />
-          <CalcCartItems cartItems={cart} />
+          <CartItem cartItems={cartItems} dispatch={this.props.dispatch} />
+          <CalcCartItems cartItems={cartItems} />
         </div>
-        {cart && cart.length > 0 ? (
+        {cartItems && cartItems.length > 0 ? (
           <div style={{ width: "30%", margin: "0 auto" }}>
             <button
               className="btn btn-primary"
@@ -74,11 +79,12 @@ class CartPage extends Component {
   }
 }
 const mapStateToProps = ({
-  cart: { getCartItemsSuccess, gettingCartItems },
+  cart: { getCartItemsSuccess, gettingCartItems, getCartItemsFail },
 }) => {
   return {
-    cart: getCartItemsSuccess,
+    cartItems: getCartItemsSuccess,
     isFetching: gettingCartItems,
+    fetchingFail: getCartItemsFail,
   };
 };
 

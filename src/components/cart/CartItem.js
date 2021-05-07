@@ -5,7 +5,7 @@ import { capitalize } from "helpers/Capitalize";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 // import { connect } from "react-redux";
 
-const CartItem = ({ cartItems, dispatch }) => {
+const CartItem = ({ cartItems, dispatch, isFetching, changedCartItem }) => {
   const handleRemoveItemFromCart = (id) => {
     dispatch(removeFromCart(id));
     return window.location.reload();
@@ -54,17 +54,6 @@ const CartItem = ({ cartItems, dispatch }) => {
                 </button>
               </div>
 
-              {/* <div>
-                <input
-                  type="number"
-                  defaultValue={item.quantity}
-                  onChange={(e) => setQty(e.target.value)}
-                />
-                <button type="button" onClick={() => handleChange(item._id)}>
-                  Change
-                </button>
-              </div> */}
-
               <div className="item item-button">
                 <button
                   className="btn btn-primary"
@@ -79,11 +68,5 @@ const CartItem = ({ cartItems, dispatch }) => {
     </div>
   );
 };
-
-// const mapStateToProps = ({ cart }) => {
-//   return {
-//     cartItems: cart,
-//   };
-// };
 
 export default CartItem;

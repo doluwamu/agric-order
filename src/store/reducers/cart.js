@@ -5,6 +5,7 @@ const InitCartReducer = () => {
     switch (action.type) {
       case "GETTING_CART_ITEMS":
         return true;
+      case "CHANGE_CART_QUANTITY":
       case "GET_CART_ITEMS_FAIL":
       case "GET_CART_ITEMS_SUCCESS":
         return false;
@@ -24,9 +25,34 @@ const InitCartReducer = () => {
         return state;
     }
   };
+
+  const getCartItemsFail = (state = [], action) => {
+    switch (action.type) {
+      case "GETTING_CART_ITEMS":
+        return [];
+      case "GET_CART_ITEMS_FAIL":
+        return action.message;
+      default:
+        return state;
+    }
+  };
+
+  const changeCartQuantity = (state = [], action) => {
+    switch (action.type) {
+      case "GETTING_CART_ITEMS":
+        return [];
+      case "CHANGE_CART_QUANTITY":
+        return action.data;
+      default:
+        return state;
+    }
+  };
+
   return combineReducers({
-    getCartItemsSuccess,
     gettingCartItems,
+    getCartItemsSuccess,
+    getCartItemsFail,
+    changeCartQuantity,
   });
 };
 

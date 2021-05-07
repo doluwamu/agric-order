@@ -6,11 +6,11 @@ import cart from "./reducers/cart";
 import auth from "./reducers/auth";
 import register from "./reducers/registerStatus";
 import productCategories from "./reducers/productCategories";
-import Cookie from "js-cookie";
+// import Cookie from "js-cookie";
 
-const cartItems = Cookie.getJSON("cartItems") || [];
+// const cartItems = Cookie.getJSON("cartItems") || [];
 export function initStore() {
-  const initialState = { cart: { cartItems } };
+  // const initialState = { cart: { cartItems } };
   const reducers = combineReducers({
     products,
     manage,
@@ -25,7 +25,7 @@ export function initStore() {
 
   const store = createStore(
     reducers,
-    initialState,
+    // initialState,
     composeEnhancers(applyMiddleware(thunk))
   );
 

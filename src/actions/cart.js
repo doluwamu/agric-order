@@ -81,7 +81,12 @@ export const changeCartQuantity = (productId, quantity) => (dispatch) => {
   return AgricAxios.patch(
     `/cart/${productId}/change-quantity-in-cart?quantity=${parseInt(quantity)}`
   )
-    .then(({ data }) => data)
+    .then(({ data }) => {
+      dispatch({
+        type: "CHANGE_CART_QUANTITY",
+        data,
+      });
+    })
     .catch((error) => {
       console.log(error);
     });
