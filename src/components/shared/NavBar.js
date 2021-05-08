@@ -8,7 +8,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { getCartItems } from "actions";
 
 const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
-  // debugger;
   useEffect(() => {
     dispatch(getCartItems());
   }, [dispatch]);
@@ -16,7 +15,6 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
 
   const toggleAside = () => {
     document.querySelector(".nav-ul").classList.toggle("open");
-    // document.querySelector(".nav-ul").classList.toggle()
   };
   const closeAside = () => {
     document.querySelector(".nav-ul").classList.remove("open");
@@ -107,15 +105,6 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
                         0
                       )
                     : 0}
-                  {/* {cart.reduce(
-                    (a, c) => parseInt(a) + parseInt(c.quantity),
-                    0
-                  ) || 0} */}
-                  {/* {(cartItems &&
-                    cartItems.reduce(
-                      (a, c) => parseInt(a) + parseInt(c.quantity),
-                      0
-                    )) } */}
                 </span>
               </Link>
             </li>

@@ -10,16 +10,7 @@ import ConnectionError from "errors/ConnectionError";
 
 class CartPage extends Component {
   componentDidMount() {
-    // const { id } = this.props.match.params;
-    // const qty = this.props.location.search
-    //   ? Number(this.props.location.search.split("=")[1])
-    //   : 1;
-
-    // if (id) {
-
     this.props.dispatch(getCartItems());
-
-    // }
   }
 
   render() {

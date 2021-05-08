@@ -31,7 +31,6 @@ const CalcCartItems = ({ cartItems }) => {
           <button className="btn btn-success">Check out</button>
         </div>
       )}
-      {/* >>>>>>> master */}
     </div>
   );
 };

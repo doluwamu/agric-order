@@ -3,32 +3,6 @@ import { extractServerError } from "actions";
 import axiosService from "../services/AxiosServices";
 
 const { AgricAxios } = axiosService;
-// export const addToCart = (product, productId, qty = 1) => (
-//   dispatch,
-//   getState
-// ) => {
-//   const productData = [{ ...product }];
-//   const data = productData.find((prod) => prod._id === productId);
-
-//   dispatch({
-//     type: "ADD_ITEM_TO_CART",
-//     item: {
-//       product: data._id,
-//       name: data.name,
-//       image: data.image,
-//       price: data.price,
-//       quantityInStock: data.quantityInStock,
-//       category: data.category,
-//       ratings: data.ratings,
-//       owner: data.owner,
-//       qty,
-//     },
-//   });
-//   const {
-//     cart: { cartItems },
-//   } = getState();
-//   Cookie.set("cartItems", JSON.stringify(cartItems));
-// };
 
 export const getCartItems = () => (dispatch) => {
   dispatch({

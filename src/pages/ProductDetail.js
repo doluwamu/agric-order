@@ -15,7 +15,6 @@ export class ProductDetail extends Component {
 
   render() {
     const { product, isFetching, dataFetchingFail } = this.props;
-    // console.log(product);
     if (isFetching) {
       return <Loading />;
     }

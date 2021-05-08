@@ -12,11 +12,9 @@ import { ServerError } from "errors/Server";
 function ProductDetails({ product, dispatch }) {
   const history = useHistory();
   const [qty, setQty] = useState(1);
-  // const [shouldRedirect, setShouldRedirect] = useState(false)
   const [error, setError] = useState([]);
 
   const handleQtyChange = (event) => {
-    // debugger;
     setQty(event.target.value);
   };
 
@@ -84,16 +82,6 @@ function ProductDetails({ product, dispatch }) {
               value={qty}
               onChange={handleQtyChange}
             />
-
-            {/* <select value={qty} onChange={handleQtyChange}>
-              {[...Array(product.quantityInStock).keys()].map((x) => {
-                return (
-                  <option key={x + 1} value={x + 1}>
-                    {x + 1}
-                  </option>
-                );
-              })}
-            </select> */}
           </div>
 
           {product.quantityInStock > 0 && (
