@@ -1,4 +1,5 @@
 // import Cookie from "js-cookie";
+import { extractServerError } from "actions";
 import axiosService from "../services/AxiosServices";
 
 const { AgricAxios } = axiosService;
@@ -49,16 +50,14 @@ export const getCartItems = () => (dispatch) => {
     });
 };
 
-export const addToCart = (productId, quantity) => (dispatch) => {
+export const addToCart = (productId, quantity) => {
   // debugger;
   const query = quantity
     ? `/cart/${productId}/add-to-cart?quantity=${parseInt(quantity)}`
     : `/cart/${productId}/add-to-cart`;
   return AgricAxios.post(query)
-    .then((res) => res.data)
-    .catch((error) => {
-      console.log(error);
-    });
+    .then(({ data }) => data)
+    .catch((error) => Promise.reject(extractServerError(error.response) || []));
 };
 
 export const removeFromCart = (id) => () => {

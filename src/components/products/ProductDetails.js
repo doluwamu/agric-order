@@ -7,10 +7,13 @@ import { connect } from "react-redux";
 // import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { addToCart } from "actions";
+import { ServerError } from "errors/Server";
 
 function ProductDetails({ product, dispatch }) {
   const history = useHistory();
   const [qty, setQty] = useState(1);
+  // const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [error, setError] = useState([]);
 
   const handleQtyChange = (event) => {
     // debugger;
@@ -18,9 +21,15 @@ function ProductDetails({ product, dispatch }) {
   };
 
   const handleAddToCart = () => {
-    dispatch(addToCart(product._id, qty));
-    history.push("/cart");
-    return window.location.reload();
+    // debugger;
+    return addToCart(product._id, qty)
+      .then((_) => {
+        history.push("/cart");
+        return window.location.reload();
+      })
+      .catch((error) => {
+        return setError(error);
+      });
   };
 
   return (
@@ -67,9 +76,14 @@ function ProductDetails({ product, dispatch }) {
               <span>{firstLetterCapitalize(product.details)}</span>
             </p>
 
-            <b>Qty</b>
+            <b>Qty: </b>
 
-            <input type="number" value={qty} onChange={handleQtyChange} />
+            <input
+              style={{ width: "3rem" }}
+              type="number"
+              value={qty}
+              onChange={handleQtyChange}
+            />
 
             {/* <select value={qty} onChange={handleQtyChange}>
               {[...Array(product.quantityInStock).keys()].map((x) => {
@@ -83,14 +97,18 @@ function ProductDetails({ product, dispatch }) {
           </div>
 
           {product.quantityInStock > 0 && (
-            <div className="buttons">
-              <button
-                onClick={handleAddToCart}
-                className="btn btn-secondary add_to_cart"
-              >
-                Add to cart <FontAwesomeIcon icon="shopping-cart" />
-              </button>
-            </div>
+            <>
+              <div className="buttons">
+                <button
+                  onClick={handleAddToCart}
+                  className="btn btn-secondary add_to_cart"
+                >
+                  Add to cart <FontAwesomeIcon icon="shopping-cart" />
+                </button>
+              </div>
+
+              {error && <ServerError error={error} />}
+            </>
           )}
         </div>
       </div>
