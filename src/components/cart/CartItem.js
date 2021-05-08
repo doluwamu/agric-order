@@ -11,19 +11,20 @@ const CartItem = ({ cartItems, dispatch }) => {
     return window.location.reload();
   };
 
-  const handleKeyDown = (e) => {
-    if (e.keyCode > 186) {
-      return false;
-    }
-  };
+  // const handleKeyDown = (e) => {
+  //   if (e.keyCode > 186) {
+  //     return false;
+  //   }
+  // };
 
   const [qty, setQty] = useState("");
 
   const handleChange = (id) => {
+    // debugger;
     if (qty < 1) return;
     dispatch(changeCartQuantity(id, qty));
+    // debugger;
     return window.location.reload();
-    // setTimeout(() => , 7000);
   };
 
   return (
@@ -54,13 +55,17 @@ const CartItem = ({ cartItems, dispatch }) => {
                   type="number"
                   min="1"
                   defaultValue={item.quantity}
-                  onChange={(e) => setQty(e.target.value)}
-                  onKeyDown={handleKeyDown}
+                  onChange={(e) => {
+                    setQty(e.target.value);
+                  }}
+                  onKeyDown={(e) => {
+                    if (e.key === "." || e.key === "e") return "";
+                  }}
                 />
                 <button
                   type="button"
                   onClick={
-                    item.quantity !== qty ? () => handleChange(item._id) : null
+                    item.quantity === qty ? null : () => handleChange(item._id)
                   }
                 >
                   Change

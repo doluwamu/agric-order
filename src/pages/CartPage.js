@@ -55,6 +55,7 @@ class CartPage extends Component {
         {cartItems && cartItems.length > 0 ? (
           <div style={{ width: "30%", margin: "0 auto" }}>
             <button
+              style={{ marginBottom: "1rem" }}
               className="btn btn-primary"
               type="button"
               onClick={handleClearCart}
