@@ -5,15 +5,22 @@ import { capitalize } from "helpers/Capitalize";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 // import { connect } from "react-redux";
 
-const CartItem = ({ cartItems, dispatch, isFetching, changedCartItem }) => {
+const CartItem = ({ cartItems, dispatch }) => {
   const handleRemoveItemFromCart = (id) => {
     dispatch(removeFromCart(id));
     return window.location.reload();
   };
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode > 186) {
+      return false;
+    }
+  };
+
   const [qty, setQty] = useState("");
 
   const handleChange = (id) => {
+    if (qty < 1) return;
     dispatch(changeCartQuantity(id, qty));
     return window.location.reload();
     // setTimeout(() => , 7000);
@@ -45,9 +52,10 @@ const CartItem = ({ cartItems, dispatch, isFetching, changedCartItem }) => {
                 <input
                   style={{ width: "3rem" }}
                   type="number"
-                  min={1}
+                  min="1"
                   defaultValue={item.quantity}
                   onChange={(e) => setQty(e.target.value)}
+                  onKeyDown={handleKeyDown}
                 />
                 <button type="button" onClick={() => handleChange(item._id)}>
                   Change
