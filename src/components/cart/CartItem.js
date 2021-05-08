@@ -57,7 +57,12 @@ const CartItem = ({ cartItems, dispatch }) => {
                   onChange={(e) => setQty(e.target.value)}
                   onKeyDown={handleKeyDown}
                 />
-                <button type="button" onClick={() => handleChange(item._id)}>
+                <button
+                  type="button"
+                  onClick={
+                    item.quantity !== qty ? () => handleChange(item._id) : null
+                  }
+                >
                   Change
                 </button>
               </div>
