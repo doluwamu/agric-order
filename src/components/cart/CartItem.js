@@ -33,7 +33,7 @@ const CartItem = ({ cartItems, dispatch }) => {
         cartItems.length > 0 &&
         cartItems.map((item) => {
           return (
-            <div className="cart-item" key={item.product._id}>
+            <div className="cart-item" key={item._id}>
               <Link to={`/product/${item.product._id}`}>
                 <div className="item item-image">
                   <img src={item.product.image} alt={item.product.name} />
