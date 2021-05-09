@@ -51,98 +51,107 @@ function ProductDetails({ product, dispatch, cartItem }) {
   };
 
   return (
-    <div className="container">
-      <header className="products_header" style={{ marginBottom: "1rem" }}>
-        {capitalize(product.name)}
-      </header>
-      <div className="elements">
-        <div className="image-detail">
-          <img
-            className="product-image"
-            src={product.image}
-            alt={product.name}
-          />
-        </div>
-        <div className="product-details">
-          <div className="main-details">
-            <p className="product-name detail">
-              <b>Name:</b> <span>{capitalize(product.name)}</span>
-            </p>
-            <p className="product-category detail">
-              <b>Category:</b> <span>{capitalize(product.category)}</span>
-            </p>
-            {product.owner && (
-              <div className="product-owner detail">
-                <b>Seller: </b>
-                <span>{capitalize(product.owner.username) || ""}</span>
-                <div>{product.owner.email || ""}</div>
-              </div>
-            )}
-            <p className="product-price detail">
-              <b>Price:</b> <span>&#x20A6;{NumWithComma(product.price)}</span>
-            </p>
-            <b className="status detail">
-              Status:{" "}
-              {product.quantityInStock > 0 ? (
-                <span className="status_available">In stock</span>
-              ) : (
-                <span className="status_unavailable">Out of stock</span>
-              )}
-            </b>
-            <p className="product-description detail">
-              <b>Details:</b>{" "}
-              <span>{firstLetterCapitalize(product.details)}</span>
-            </p>
-
-            <b>Qty: </b>
-
-            <input
-              style={{ width: "3rem" }}
-              type="number"
-              min={1}
-              value={qty}
-              onChange={handleQtyChange}
-              onKeyDown={(e) => handleQtyKeyDown(e)}
+    <>
+      <div className="container">
+        <div className="elements">
+          <div className="image-detail">
+            <img
+              className="product-image"
+              src={product.image}
+              alt={product.name}
             />
           </div>
+          <div className="product-details">
+            <div className="main-details">
+              <p className="product-name detail">
+                <b>Name:</b> <span>{capitalize(product.name)}</span>
+              </p>
+              <p className="product-category detail">
+                <b>Category:</b> <span>{capitalize(product.category)}</span>
+              </p>
+              {product.owner && (
+                <div className="product-owner detail">
+                  <b>Seller: </b>
+                  <span>{capitalize(product.owner.username) || ""}</span>
+                  <div>{product.owner.email || ""}</div>
+                </div>
+              )}
+              <p className="product-price detail">
+                <b>Price:</b> <span>&#x20A6;{NumWithComma(product.price)}</span>
+              </p>
+              <b className="status detail">
+                Status:{" "}
+                {product.quantityInStock > 0 ? (
+                  <span className="status_available">In stock</span>
+                ) : (
+                  <span className="status_unavailable">Out of stock</span>
+                )}
+              </b>
+              <p className="product-description detail">
+                <b>Available Quantity: </b>
+                <span>{product.quantityInStock}</span>
+              </p>
 
-          {cartItem &&
-          cartItem.length > 0 &&
-          cartItem.includes(
-            cartItem.find((item) => item.product._id === product._id)
-          ) ? (
-            cartItem.map((item) => {
-              if (item.product._id === product._id) {
-                return (
-                  <div>
-                    <button
-                      type="button"
-                      className="btn btn-secondary add_to_cart"
-                      onClick={() => handleChangeInCartQty(item._id)}
-                    >
-                      Change Qty
-                    </button>
-                  </div>
-                );
-              } else return null;
-            })
-          ) : (
-            <>
-              <div className="buttons">
-                <button
-                  onClick={handleAddToCart}
-                  className="btn btn-secondary add_to_cart"
-                >
-                  Add to cart <FontAwesomeIcon icon="shopping-cart" />
-                </button>
-              </div>
+              <p className="product-description detail">
+                <b>Details:</b>{" "}
+                <span>{firstLetterCapitalize(product.details)}</span>
+              </p>
 
-              {error && <ServerError error={error} />}
-            </>
-          )}
+              <b>Qty: </b>
+
+              <input
+                style={{ width: "3rem" }}
+                type="number"
+                min={1}
+                value={qty}
+                onChange={handleQtyChange}
+                onKeyDown={(e) => handleQtyKeyDown(e)}
+              />
+            </div>
+
+            {cartItem &&
+            cartItem.length > 0 &&
+            cartItem.includes(
+              cartItem.find((item) => item.product._id === product._id)
+            ) ? (
+              cartItem.map((item) => {
+                if (item.product._id === product._id) {
+                  return (
+                    <div key={product._id}>
+                      <div>
+                        <b>Product in cart</b>
+                      </div>
+                      <div>
+                        <button
+                          type="button"
+                          className="btn btn-secondary add_to_cart"
+                          onClick={() => handleChangeInCartQty(item._id)}
+                        >
+                          Change Qty
+                        </button>
+                      </div>
+                    </div>
+                  );
+                } else return null;
+              })
+            ) : (
+              <>
+                <div className="buttons">
+                  <button
+                    onClick={handleAddToCart}
+                    className="btn btn-secondary add_to_cart"
+                  >
+                    Add to cart <FontAwesomeIcon icon="shopping-cart" />
+                  </button>
+                </div>
+
+                {error && <ServerError error={error} />}
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

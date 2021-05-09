@@ -101,6 +101,7 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
           name="price"
           className="price_input"
           id="price"
+          min={1}
           placeholder="Enter product's price..."
         />
         {errors.price && (
@@ -139,6 +140,7 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
         <input
           ref={register({ required: false })}
           type="number"
+          min="1"
           name="quantityInStock"
           className="quantityInStock_input"
           id="image"
