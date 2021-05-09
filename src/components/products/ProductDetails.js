@@ -99,6 +99,7 @@ function ProductDetails({ product, dispatch, cartItem }) {
             <input
               style={{ width: "3rem" }}
               type="number"
+              min={1}
               value={qty}
               onChange={handleQtyChange}
               onKeyDown={(e) => handleQtyKeyDown(e)}
@@ -148,21 +149,3 @@ function ProductDetails({ product, dispatch, cartItem }) {
 const ProductDetailsWithRouter = withRouter(ProductDetails);
 
 export default connect()(ProductDetailsWithRouter);
-
-// .map((item) => {
-//               if (item.product._id === product._id) {
-//                 return (
-// <div key={product._id}>
-//   <button
-//     key={item._id}
-//     type="button"
-//     className="btn btn-secondary add_to_cart"
-//     onClick={() => handleChangeInCartQty(item._id)}
-//   >
-//     Change Qty
-//   </button>
-// </div>
-//                 );
-//               }
-
-//               return null;
