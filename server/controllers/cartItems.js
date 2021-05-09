@@ -10,6 +10,7 @@ exports.addToCart = async (req, res) => {
       "owner",
       "-password"
     );
+
     if (!foundProduct) {
       return res.sendApiError({
         title: "Unexisting data!",
@@ -31,12 +32,14 @@ exports.addToCart = async (req, res) => {
 
     try {
       const cartItem = await newCartItem.save();
+
       if (!cartItem) {
         return res.sendApiError({
           title: "Error in creating!",
           detail: "Unable to create cart item",
         });
       }
+
       return res.json({ cartItem });
     } catch (error) {
       return res.mongoError(error);

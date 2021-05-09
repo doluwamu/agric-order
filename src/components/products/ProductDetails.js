@@ -6,20 +6,29 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
 // import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { addToCart } from "actions";
+import { addToCart, changeCartQuantity } from "actions";
 import { ServerError } from "errors/Server";
 
-function ProductDetails({ product, dispatch }) {
+function ProductDetails({ product, dispatch, cartItem }) {
   const history = useHistory();
   const [qty, setQty] = useState(1);
   const [error, setError] = useState([]);
+
+  const isCartItem = cartItem && cartItem.length > 0;
+
+  // const quant =
+  //   isCartItem &&
+  //   cartItem.map((item) => {
+  //     return item.product._id === product._id && item.quantity;
+  //   });
+
+  // const [cartQty, setCartQty] = useState(quant);
 
   const handleQtyChange = (event) => {
     setQty(event.target.value);
   };
 
   const handleAddToCart = () => {
-    // debugger;
     return addToCart(product._id, qty)
       .then((_) => {
         history.push("/cart");
@@ -28,6 +37,17 @@ function ProductDetails({ product, dispatch }) {
       .catch((error) => {
         return setError(error);
       });
+  };
+
+  const handleChangeInCartQty = (id) => {
+    if (qty < 1) return;
+    dispatch(changeCartQuantity(id, qty));
+    history.push("/cart");
+    return window.location.reload();
+  };
+
+  const handleQtyKeyDown = (e) => {
+    if (e.key === "." || e.key === "e") return;
   };
 
   return (
@@ -81,10 +101,26 @@ function ProductDetails({ product, dispatch }) {
               type="number"
               value={qty}
               onChange={handleQtyChange}
+              onKeyDown={(e) => handleQtyKeyDown(e)}
             />
           </div>
 
-          {product.quantityInStock > 0 && (
+          {isCartItem ? (
+            cartItem.map((item) => {
+              return (
+                item.product._id === product._id && (
+                  <button
+                    key={item.product._id}
+                    type="button"
+                    className="btn btn-secondary add_to_cart"
+                    onClick={() => handleChangeInCartQty(item._id)}
+                  >
+                    Change Qty
+                  </button>
+                )
+              );
+            })
+          ) : (
             <>
               <div className="buttons">
                 <button

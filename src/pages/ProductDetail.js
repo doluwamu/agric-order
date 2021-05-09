@@ -14,7 +14,7 @@ export class ProductDetail extends Component {
   }
 
   render() {
-    const { product, isFetching, dataFetchingFail } = this.props;
+    const { product, isFetching, dataFetchingFail, cartItem } = this.props;
     if (isFetching) {
       return <Loading />;
     }
@@ -27,7 +27,7 @@ export class ProductDetail extends Component {
       product && (
         <div className="selected product-detail">
           <div className="details-page display">
-            <ProductDetails product={product} />
+            <ProductDetails product={product} cartItem={cartItem} />
           </div>
         </div>
       )
@@ -35,11 +35,15 @@ export class ProductDetail extends Component {
   }
 }
 
-const mapStateToProps = ({ products: { selectedProduct } }) => {
+const mapStateToProps = ({
+  cart: { getCartItemsSuccess },
+  products: { selectedProduct },
+}) => {
   return {
     product: selectedProduct.items,
     isFetching: selectedProduct.isFetching,
     dataFetchingFail: selectedProduct.errors,
+    cartItem: getCartItemsSuccess,
   };
 };
 
