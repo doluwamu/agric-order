@@ -22,7 +22,7 @@ const CalcCartItems = ({ cartItems }) => {
               ) || 0}
             </p>
             <p>
-              Total cost: &#x20A6;
+              Subtotal: &#x20A6;
               {NumWithComma(
                 cartItems.reduce((a, c) => a + c.quantity * c.product.price, 0)
               )}

@@ -77,7 +77,7 @@ const CartItem = ({ cartItems, dispatch }) => {
                   className="btn btn-primary"
                   onClick={() => handleRemoveItemFromCart(item._id)}
                 >
-                  Remove
+                  Remove from cart
                 </button>
               </div>
             </div>

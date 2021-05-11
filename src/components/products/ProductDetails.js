@@ -14,17 +14,20 @@ function ProductDetails({ product, dispatch, cartItem }) {
   const [qty, setQty] = useState(1);
   const [error, setError] = useState([]);
 
-  // const isCartItem = cartItem && cartItem.length > 0;
+  const itemInCart = cartItem.find((item) => item.product._id === product._id);
 
-  // const quant =
-  //   isCartItem &&
-  //   cartItem.map((item) => {
-  //     return item.product._id === product._id && item.quantity;
-  //   });
+  let quant = 0;
 
-  // const [cartQty, setCartQty] = useState(quant);
+  if (cartItem.includes(itemInCart)) {
+    quant = itemInCart.quantity;
+  }
+
+  const [cartQty, setCartQty] = useState(quant);
 
   const handleQtyChange = (event) => {
+    if (cartQty) {
+      setCartQty(event.target.value);
+    }
     setQty(event.target.value);
   };
 
@@ -103,7 +106,7 @@ function ProductDetails({ product, dispatch, cartItem }) {
                 style={{ width: "3rem" }}
                 type="number"
                 min={1}
-                value={qty}
+                value={cartQty ? cartQty : qty}
                 onChange={handleQtyChange}
                 onKeyDown={(e) => handleQtyKeyDown(e)}
               />
