@@ -34,17 +34,27 @@ export const addToCart = (productId, quantity) => {
     .catch((error) => Promise.reject(extractServerError(error.response) || []));
 };
 
-export const removeFromCart = (id) => () => {
+export const removeFromCart = (id) => (dispatch) => {
   return AgricAxios.delete(`/cart/remove-cart-item/${id}`)
-    .then(({ data }) => data)
+    .then(({ data }) => {
+      dispatch({
+        type: "REMOVE_CART_ITEM",
+        product: data,
+      });
+    })
     .catch((error) => {
       console.log(error);
     });
 };
 
-export const clearCart = () => () => {
+export const clearCart = () => (dispatch) => {
   return AgricAxios.delete("/cart/clear-cart")
-    .then(({ data }) => data)
+    .then(({ data }) => {
+      dispatch({
+        type: "CLEAR_CART",
+        products: data,
+      });
+    })
     .catch((error) => {
       console.log(error);
     });

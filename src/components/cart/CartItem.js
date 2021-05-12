@@ -8,22 +8,13 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 const CartItem = ({ cartItems, dispatch }) => {
   const handleRemoveItemFromCart = (id) => {
     dispatch(removeFromCart(id));
-    return window.location.reload();
   };
-
-  // const handleKeyDown = (e) => {
-  //   if (e.keyCode > 186) {
-  //     return false;
-  //   }
-  // };
 
   const [qty, setQty] = useState("");
 
   const handleChange = (id) => {
-    // debugger;
     if (qty < 1) return;
     dispatch(changeCartQuantity(id, qty));
-    // debugger;
     return window.location.reload();
   };
 
@@ -77,7 +68,7 @@ const CartItem = ({ cartItems, dispatch }) => {
                   className="btn btn-primary"
                   onClick={() => handleRemoveItemFromCart(item._id)}
                 >
-                  Remove from cart
+                  Remove
                 </button>
               </div>
             </div>

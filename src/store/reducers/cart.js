@@ -15,12 +15,20 @@ const InitCartReducer = () => {
   };
 
   const getCartItemsSuccess = (state = [], action) => {
-    // debugger;
+    debugger;
     switch (action.type) {
       case "GETTING_CART_ITEMS":
         return [];
       case "GET_CART_ITEMS_SUCCESS":
         return action.data;
+      case "REMOVE_CART_ITEM":
+        return state.filter(
+          (cartItem) => cartItem.product._id !== action.product.product._id
+        );
+      case "CLEAR_CART":
+        // const cartItems = [...state];
+        state.slice(0, state.length);
+        return [];
       default:
         return state;
     }

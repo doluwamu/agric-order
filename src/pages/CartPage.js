@@ -23,15 +23,10 @@ class CartPage extends Component {
     if (fetchingFail.length > 0) {
       return <ConnectionError />;
     }
-
-    // const { cartItems } = cart;
-    // debugger;
-
     const handleClearCart = () => {
       const permission = window.confirm("Do you want to clear your cart?");
       if (!permission) return;
       this.props.dispatch(clearCart());
-      window.location.reload();
     };
 
     return (

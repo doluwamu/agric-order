@@ -16,20 +16,20 @@ function ProductDetails({ product, dispatch, cartItem }) {
 
   const itemInCart = cartItem.find((item) => item.product._id === product._id);
 
-  let quant = 0;
+  // let quant = 0;
 
-  if (cartItem.includes(itemInCart)) {
-    // debugger;
-    quant = itemInCart.quantity;
-  }
+  // if (cartItem.includes(itemInCart)) {
+  //   // debugger;
+  //   quant = itemInCart.quantity;
+  // }
 
-  const [cartQty, setCartQty] = useState(quant);
-  // console.log(cartQty);
+  // const [cartQty, setCartQty] = useState(quant);
+  // console.log(cartQty, qty);
 
   const handleQtyChange = (event) => {
-    if (cartQty) {
-      setCartQty(event.target.value);
-    }
+    // if (cartQty) {
+    //   setCartQty(event.target.value);
+    // }
     setQty(event.target.value);
   };
 
@@ -109,7 +109,7 @@ function ProductDetails({ product, dispatch, cartItem }) {
                 style={{ width: "3rem" }}
                 type="number"
                 min={1}
-                value={cartQty ? cartQty : qty}
+                value={qty}
                 onChange={handleQtyChange}
                 onKeyDown={(e) => handleQtyKeyDown(e)}
               />
@@ -117,9 +117,7 @@ function ProductDetails({ product, dispatch, cartItem }) {
 
             {cartItem &&
             cartItem.length > 0 &&
-            cartItem.includes(
-              cartItem.find((item) => item.product._id === product._id)
-            ) ? (
+            cartItem.includes(itemInCart) ? (
               cartItem.map((item) => {
                 if (item.product._id === product._id) {
                   return (

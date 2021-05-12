@@ -83,9 +83,7 @@ exports.removeProduct = async (req, res) => {
       });
     }
     await foundProduct.remove();
-    return res.json(
-      "This product has successfully been removed from your cart!"
-    );
+    return res.json(foundProduct);
   } catch (error) {
     return res.mongoError(error);
   }
@@ -104,7 +102,7 @@ exports.clearCart = async (req, res) => {
     await foundItems.forEach((item) => {
       item.remove();
     });
-    return res.json("Your cart has successfully been cleared!");
+    return res.json(foundItems);
   } catch (error) {
     return res.mongoError(error);
   }
