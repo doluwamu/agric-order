@@ -11,11 +11,13 @@ export class ProductDetail extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
 
+    // this.props.dispatch(getCartItems());
     this.props.dispatch(fetchProductById(id));
   }
 
   render() {
     const { product, isFetching, dataFetchingFail, cartItem } = this.props;
+
     if (isFetching) {
       return <Loading />;
     }

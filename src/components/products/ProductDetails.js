@@ -19,10 +19,12 @@ function ProductDetails({ product, dispatch, cartItem }) {
   let quant = 0;
 
   if (cartItem.includes(itemInCart)) {
+    // debugger;
     quant = itemInCart.quantity;
   }
 
   const [cartQty, setCartQty] = useState(quant);
+  // console.log(cartQty);
 
   const handleQtyChange = (event) => {
     if (cartQty) {
@@ -32,7 +34,7 @@ function ProductDetails({ product, dispatch, cartItem }) {
   };
 
   const handleAddToCart = () => {
-    return addToCart(product._id, qty)
+    addToCart(product._id, qty)
       .then((_) => {
         history.push("/cart");
         return window.location.reload();
@@ -40,6 +42,7 @@ function ProductDetails({ product, dispatch, cartItem }) {
       .catch((error) => {
         return setError(error);
       });
+    return (document.getElementById("add-to-cart-btn").disabled = true);
   };
 
   const handleChangeInCartQty = (id) => {
@@ -142,7 +145,9 @@ function ProductDetails({ product, dispatch, cartItem }) {
                 <div className="buttons">
                   <button
                     onClick={handleAddToCart}
+                    onDoubleClick={handleAddToCart}
                     className="btn btn-secondary add_to_cart"
+                    id="add-to-cart-btn"
                   >
                     Add to cart <FontAwesomeIcon icon="shopping-cart" />
                   </button>
