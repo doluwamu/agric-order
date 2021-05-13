@@ -82,37 +82,42 @@ function ProductDetails({ product, dispatch, cartItem }) {
                   <div>{product.owner.email || ""}</div>
                 </div>
               )}
-              <p className="product-price detail">
+              <div className="product-price detail">
                 <b>Price:</b> <span>&#x20A6;{NumWithComma(product.price)}</span>
-              </p>
-              <b className="status detail">
-                Status:{" "}
-                {product.quantityInStock > 0 ? (
-                  <span className="status_available">In stock</span>
-                ) : (
-                  <span className="status_unavailable">Out of stock</span>
-                )}
-              </b>
-              <p className="product-description detail">
+              </div>
+              <div className="status detail">
+                <b>
+                  Status:{" "}
+                  {product.quantityInStock > 0 ? (
+                    <span className="status_available">In stock</span>
+                  ) : (
+                    <span className="status_unavailable">Out of stock</span>
+                  )}
+                </b>
+              </div>
+
+              <div className="product-description detail">
                 <b>Available Quantity: </b>
                 <span>{product.quantityInStock}</span>
-              </p>
+              </div>
 
-              <p className="product-description detail">
+              <div className="product-description detail">
                 <b>Details:</b>{" "}
                 <span>{firstLetterCapitalize(product.details)}</span>
-              </p>
+              </div>
 
-              <b>Qty: </b>
+              <div>
+                <b>Qty: </b>
 
-              <input
-                style={{ width: "3rem" }}
-                type="number"
-                min={1}
-                value={qty}
-                onChange={handleQtyChange}
-                onKeyDown={(e) => handleQtyKeyDown(e)}
-              />
+                <input
+                  style={{ width: "3rem" }}
+                  type="number"
+                  min={1}
+                  value={qty}
+                  onChange={handleQtyChange}
+                  onKeyDown={(e) => handleQtyKeyDown(e)}
+                />
+              </div>
             </div>
 
             {cartItem &&

@@ -63,7 +63,7 @@ const CartItem = ({ cartItems, dispatch }) => {
                 </button>
               </div>
 
-              <div className="item item-button">
+              <div className="item item-button" style={{ marginTop: "20px" }}>
                 <button
                   className="btn btn-primary"
                   onClick={() => handleRemoveItemFromCart(item._id)}
