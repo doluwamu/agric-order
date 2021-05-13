@@ -40,6 +40,10 @@ function ProductDetails({ product, dispatch, cartItem }) {
 
   const handleChangeInCartQty = (id) => {
     if (qty < 1) return;
+    if (qty > product.quantityInStock) {
+      setOpenQtyError(true);
+      return;
+    }
     dispatch(changeCartQuantity(id, qty));
     history.push("/cart");
     return window.location.reload();
@@ -113,6 +117,7 @@ function ProductDetails({ product, dispatch, cartItem }) {
                 {openQtyError && (
                   <AlertErrors
                     error={`There is only ${product.quantityInStock} available`}
+                    setOpenQtyError={setOpenQtyError}
                   />
                 )}
               </div>
