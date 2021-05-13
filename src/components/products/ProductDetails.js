@@ -5,7 +5,7 @@ import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
 // import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { addToCart, changeCartQuantity } from "actions";
 import { ServerError } from "errors/Server";
 
@@ -123,15 +123,20 @@ function ProductDetails({ product, dispatch, cartItem }) {
                   return (
                     <div key={product._id}>
                       <div>
-                        <b>Product in cart</b>
+                        <b>
+                          Product in{" "}
+                          <Link to="/cart" style={{ textDecoration: "none" }}>
+                            cart
+                          </Link>{" "}
+                        </b>
                       </div>
-                      <div>
+                      <div className="buttons">
                         <button
                           type="button"
                           className="btn btn-secondary add_to_cart"
                           onClick={() => handleChangeInCartQty(item._id)}
                         >
-                          Change Qty
+                          Add to cart <FontAwesomeIcon icon="shopping-cart" />
                         </button>
                       </div>
                     </div>
