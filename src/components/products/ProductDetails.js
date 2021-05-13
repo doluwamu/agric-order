@@ -116,8 +116,10 @@ function ProductDetails({ product, dispatch, cartItem }) {
                 />
                 {openQtyError && (
                   <AlertErrors
-                    error={`There is only ${product.quantityInStock} available`}
-                    setOpenQtyError={setOpenQtyError}
+                    error={`There ${
+                      product.quantityInStock > 1 ? "are" : "is"
+                    } only ${product.quantityInStock} available`}
+                    setOpenError={setOpenQtyError}
                   />
                 )}
               </div>

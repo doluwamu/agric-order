@@ -15,7 +15,6 @@ const InitCartReducer = () => {
   };
 
   const getCartItemsSuccess = (state = [], action) => {
-    debugger;
     switch (action.type) {
       case "GETTING_CART_ITEMS":
         return [];

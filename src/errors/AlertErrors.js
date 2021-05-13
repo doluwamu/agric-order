@@ -1,13 +1,13 @@
 import React from "react";
 
-const AlertErrors = ({ error, setOpenQtyError }) => {
+const AlertErrors = ({ error, setOpenError }) => {
   return (
     <div className="alert alert-danger">
       <b>{error}</b>
       <span
         style={{ marginLeft: "50%", cursor: "pointer" }}
         onClick={() => {
-          setOpenQtyError(false);
+          setOpenError(false);
         }}
       >
         x
