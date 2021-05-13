@@ -8,32 +8,25 @@ import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { addToCart, changeCartQuantity } from "actions";
 import { ServerError } from "errors/Server";
+import AlertErrors from "errors/AlertErrors";
 
 function ProductDetails({ product, dispatch, cartItem }) {
   const history = useHistory();
   const [qty, setQty] = useState(1);
   const [error, setError] = useState([]);
+  const [openQtyError, setOpenQtyError] = useState(false);
 
   const itemInCart = cartItem.find((item) => item.product._id === product._id);
 
-  // let quant = 0;
-
-  // if (cartItem.includes(itemInCart)) {
-  //   // debugger;
-  //   quant = itemInCart.quantity;
-  // }
-
-  // const [cartQty, setCartQty] = useState(quant);
-  // console.log(cartQty, qty);
-
   const handleQtyChange = (event) => {
-    // if (cartQty) {
-    //   setCartQty(event.target.value);
-    // }
     setQty(event.target.value);
   };
 
   const handleAddToCart = () => {
+    if (qty > product.quantityInStock) {
+      setOpenQtyError(true);
+      return;
+    }
     addToCart(product._id, qty)
       .then((_) => {
         history.push("/cart");
@@ -117,6 +110,11 @@ function ProductDetails({ product, dispatch, cartItem }) {
                   onChange={handleQtyChange}
                   onKeyDown={(e) => handleQtyKeyDown(e)}
                 />
+                {openQtyError && (
+                  <AlertErrors
+                    error={`There is only ${product.quantityInStock} available`}
+                  />
+                )}
               </div>
             </div>
 
