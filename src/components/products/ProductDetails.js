@@ -120,6 +120,7 @@ function ProductDetails({ product, dispatch, cartItem }) {
                       product.quantityInStock > 1 ? "are" : "is"
                     } only ${product.quantityInStock} available`}
                     setOpenError={setOpenQtyError}
+                    marginLeft={"50%"}
                   />
                 )}
               </div>

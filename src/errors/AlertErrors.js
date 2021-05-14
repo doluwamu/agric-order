@@ -1,11 +1,11 @@
 import React from "react";
 
-const AlertErrors = ({ error, setOpenError }) => {
+const AlertErrors = ({ error, setOpenError, marginLeft }) => {
   return (
     <div className="alert alert-danger">
       <b>{error}</b>
       <span
-        style={{ marginLeft: "50%", cursor: "pointer" }}
+        style={{ marginLeft, cursor: "pointer" }}
         onClick={() => {
           setOpenError(false);
         }}

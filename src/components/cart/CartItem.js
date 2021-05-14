@@ -3,6 +3,7 @@ import { NumWithComma } from "helpers/NumberHelpers";
 import { changeCartQuantity, removeFromCart } from "actions";
 import { capitalize } from "helpers/Capitalize";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import AlertErrors from "errors/AlertErrors";
 // import { connect } from "react-redux";
 
 const CartItem = ({ cartItems, dispatch }) => {
@@ -11,9 +12,16 @@ const CartItem = ({ cartItems, dispatch }) => {
   };
 
   const [qty, setQty] = useState("");
+  const [showQtyError, setShowQtyError] = useState(false);
 
-  const handleChange = (id) => {
+  const handleChange = (id, productId) => {
+    const itemInCart = cartItems.find((item) => item.product._id === productId);
+    debugger;
     if (qty < 1) return;
+    if (qty > itemInCart.quantity) {
+      setShowQtyError(true);
+      return;
+    }
     dispatch(changeCartQuantity(id, qty));
     return window.location.reload();
   };
@@ -56,13 +64,22 @@ const CartItem = ({ cartItems, dispatch }) => {
                 <button
                   type="button"
                   onClick={
-                    item.quantity === qty ? null : () => handleChange(item._id)
+                    item.quantity === qty
+                      ? null
+                      : () => handleChange(item._id, item.product._id)
                   }
                 >
                   Change
                 </button>
               </div>
 
+              {showQtyError && (
+                <AlertErrors
+                  error={`There are only ${item.product.quantityInStock} available`}
+                  setOpenError={setShowQtyError}
+                  marginLeft={"70%"}
+                />
+              )}
               <div className="item item-button" style={{ marginTop: "20px" }}>
                 <button
                   className="btn btn-primary"
