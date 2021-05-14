@@ -16,9 +16,8 @@ const CartItem = ({ cartItems, dispatch }) => {
 
   const handleChange = (id, productId) => {
     const itemInCart = cartItems.find((item) => item.product._id === productId);
-    debugger;
     if (qty < 1) return;
-    if (qty > itemInCart.quantity) {
+    if (qty > itemInCart.product.quantityInStock) {
       setShowQtyError(true);
       return;
     }
