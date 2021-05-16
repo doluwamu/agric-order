@@ -35,6 +35,7 @@ const productSchema = new Schema({
   },
   quantityInStock: {
     type: Number,
+    default: 1,
   },
   available: {
     type: Boolean,

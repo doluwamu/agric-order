@@ -44,9 +44,12 @@ function ProductDetails({ product, dispatch, cartItem }) {
       setOpenQtyError(true);
       return;
     }
-    dispatch(changeCartQuantity(id, qty));
-    history.push("/cart");
-    return window.location.reload();
+    changeCartQuantity(id, qty)
+      .then((_) => {
+        history.push("/cart");
+        return window.location.reload();
+      })
+      .catch((error) => setError(error));
   };
 
   const handleQtyKeyDown = (e) => {
