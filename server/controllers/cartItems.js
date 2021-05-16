@@ -68,7 +68,7 @@ exports.getCartItems = async (req, res) => {
   }
 };
 
-exports.removeProduct = async (req, res) => {
+exports.removeCartItem = async (req, res) => {
   const { id } = req.params;
   const { user } = res.locals;
   try {
@@ -119,11 +119,21 @@ exports.changeQuantityInCart = async (req, res) => {
         detail: "Please provide a quantity!",
       });
     }
-    const foundProduct = await CartItem.findByIdAndUpdate(
+    const cartItem = await CartItem.findById({ _id: id });
+
+    if (cartItem.product.quantityInStock < quantity) {
+      return res.sendApiError({
+        title: "Not enough quantity!",
+        detail: `There are only ${cartItem.product.quantityInStock} available`,
+      });
+    }
+
+    const foundCartItem = await CartItem.findByIdAndUpdate(
       { _id: id },
       { quantity }
     );
-    return res.json({ foundProduct });
+
+    return res.json({ foundCartItem });
   } catch (error) {
     return res.mongoError(error);
   }

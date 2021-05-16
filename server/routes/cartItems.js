@@ -6,7 +6,7 @@ const {
   addToCart,
   getCartItems,
   clearCart,
-  removeProduct,
+  removeCartItem,
   changeQuantityInCart,
 } = require("../controllers/cartItems");
 
@@ -19,7 +19,7 @@ router.patch(
   onlyAuthenticatedUser,
   changeQuantityInCart
 );
-router.delete("/remove-cart-item/:id", onlyAuthenticatedUser, removeProduct);
+router.delete("/remove-cart-item/:id", onlyAuthenticatedUser, removeCartItem);
 router.delete("/clear-cart", onlyAuthenticatedUser, clearCart);
 
 module.exports = router;

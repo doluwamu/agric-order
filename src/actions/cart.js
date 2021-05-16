@@ -60,19 +60,11 @@ export const clearCart = () => (dispatch) => {
     });
 };
 
-export const changeCartQuantity = (productId, quantity) => (dispatch) => {
+export const changeCartQuantity = (productId, quantity) => {
   // debugger;
   return AgricAxios.patch(
     `/cart/${productId}/change-quantity-in-cart?quantity=${parseInt(quantity)}`
   )
-    .then(({ data }) => {
-      dispatch({
-        type: "CHANGE_CART_QUANTITY",
-        data,
-      });
-    })
-    .catch((error) => {
-      // debugger;
-      console.log(error);
-    });
+    .then(({ data }) => data)
+    .catch((error) => Promise.reject(extractServerError(error.response) || []));
 };

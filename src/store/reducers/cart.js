@@ -5,7 +5,6 @@ const InitCartReducer = () => {
     switch (action.type) {
       case "GETTING_CART_ITEMS":
         return true;
-      case "CHANGE_CART_QUANTITY":
       case "GET_CART_ITEMS_FAIL":
       case "GET_CART_ITEMS_SUCCESS":
         return false;
@@ -48,8 +47,6 @@ const InitCartReducer = () => {
     switch (action.type) {
       case "GETTING_CART_ITEMS":
         return [];
-      case "CHANGE_CART_QUANTITY":
-        return action.data;
       default:
         return state;
     }

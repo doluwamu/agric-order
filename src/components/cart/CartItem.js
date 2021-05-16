@@ -3,7 +3,6 @@ import { NumWithComma } from "helpers/NumberHelpers";
 import { changeCartQuantity, removeFromCart } from "actions";
 import { capitalize } from "helpers/Capitalize";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import AlertErrors from "errors/AlertErrors";
 // import { connect } from "react-redux";
 
 const CartItem = ({ cartItems, dispatch }) => {
@@ -12,17 +11,15 @@ const CartItem = ({ cartItems, dispatch }) => {
   };
 
   const [qty, setQty] = useState("");
-  const [showQtyError, setShowQtyError] = useState(false);
+
+  // const reload = window.location.reload();
 
   const handleChange = (id, productId) => {
-    const itemInCart = cartItems.find((item) => item.product._id === productId);
+    // const itemInCart = cartItems.find((item) => item.product._id === productId);
     if (qty < 1) return;
-    if (qty > itemInCart.product.quantityInStock) {
-      setShowQtyError(true);
-      return;
-    }
-    dispatch(changeCartQuantity(id, qty));
-    return window.location.reload();
+    return changeCartQuantity(id, qty)
+      .then((_) => window.location.reload())
+      .catch((error) => window.location.reload());
   };
 
   return (
@@ -45,7 +42,6 @@ const CartItem = ({ cartItems, dispatch }) => {
                 <b>Price: </b>
                 <span>&#x20A6;{NumWithComma(item.product.price)}</span>
               </div>
-
               <div className="item item-qty">
                 Qty:
                 <input
@@ -72,13 +68,6 @@ const CartItem = ({ cartItems, dispatch }) => {
                 </button>
               </div>
 
-              {showQtyError && (
-                <AlertErrors
-                  error={`There are only ${item.product.quantityInStock} available`}
-                  setOpenError={setShowQtyError}
-                  marginLeft={"70%"}
-                />
-              )}
               <div className="item item-button" style={{ marginTop: "20px" }}>
                 <button
                   className="btn btn-primary"
@@ -86,6 +75,10 @@ const CartItem = ({ cartItems, dispatch }) => {
                 >
                   Remove
                 </button>
+              </div>
+
+              <div style={{ marginLeft: "3rem" }}>
+                <small>Available qty: {item.product.quantityInStock}</small>
               </div>
             </div>
           );
