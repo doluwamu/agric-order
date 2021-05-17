@@ -6,7 +6,7 @@ const DisplayStars = ({ likes }) => {
   const star = <FontAwesomeIcon icon={faStar} />;
   return (
     <div>
-      {likes <= 200 && (
+      {likes > 0 && likes <= 200 && (
         <span role="img" aria-label="stars">
           {star}
         </span>
