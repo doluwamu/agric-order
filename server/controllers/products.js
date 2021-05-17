@@ -35,3 +35,20 @@ exports.createProduct = async (req, res) => {
     return res.mongoError(error);
   }
 };
+
+exports.addLike = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const foundProduct = await Product.findById(id);
+    const likes = foundProduct.likes + 1;
+
+    const likedToProduct = await Product.findByIdAndUpdate(
+      { _id: id },
+      { likes }
+    );
+    return res.json(likedToProduct);
+    // return res.json(rating);
+  } catch (error) {
+    return res.mongoError(error);
+  }
+};

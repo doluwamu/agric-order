@@ -121,3 +121,11 @@ export const deleteProduct = (productId) => (dispatch) => {
       });
     });
 };
+
+export const addLike = (productId) => () => {
+  return AgricAxios.post(`/products/${productId}/add-like`)
+    .then(({ data }) => data)
+    .catch((error) => {
+      console.log(error);
+    });
+};

@@ -5,12 +5,26 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { BreakWordFragment } from "helpers/WordLimits";
+import { addLike } from "actions";
+import DisplayStars from "./DisplayStars";
 
 const ProductCard = ({ products, dispatch }) => {
   return products.map((product) => {
     // const handleAddToCart = () => {
     //   dispatch(addToCart(product, product._id));
     // };
+
+    const likeProduct = () => {
+      const productInLocalStorage = localStorage.getItem(
+        `${product.name}-liked`
+      );
+      if (productInLocalStorage) {
+        return localStorage.removeItem(`${product.name}-liked`);
+      }
+      dispatch(addLike(product._id));
+      return localStorage.setItem(`${product.name}-liked`, product._id);
+    };
+
     return (
       <div className="product" key={product._id}>
         <Link to={`/product/${product._id}`}>
@@ -27,6 +41,8 @@ const ProductCard = ({ products, dispatch }) => {
             </span>
           </p>
 
+          <DisplayStars likes={product.likes} />
+
           <p style={{ marginTop: "0.5rem" }}>
             <Link
               style={{
@@ -38,7 +54,15 @@ const ProductCard = ({ products, dispatch }) => {
               See more details <FontAwesomeIcon icon="arrow-right" />
             </Link>
           </p>
+          <p>
+            <FontAwesomeIcon
+              onClick={likeProduct}
+              icon={["fas", "heart"]}
+              style={{ margin: "5px 5px 0" }}
+            />
+          </p>
         </div>
+
         {/* <div className="add-to-cart" style={{ width: "90%", margin: "0 auto" }}>
           <button
             className="btn btn-secondary"

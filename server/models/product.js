@@ -22,9 +22,9 @@ const productSchema = new Schema({
     type: Number,
     required: ["Price is a required field"],
   },
-  ratings: {
+  likes: {
     type: Number,
-    // required: ["Ratings is a required field"],
+    default: 0,
   },
   details: {
     type: String,

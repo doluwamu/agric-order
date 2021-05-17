@@ -35,7 +35,7 @@ exports.products = [
       "https://images.unsplash.com/photo-1569400355630-c7ff53413b21?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
     category: "cow",
     price: 150000,
-    ratings: 4.5,
+    likes: 450,
     details:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, modi, quo",
     quantityInStock: 7,
@@ -48,7 +48,7 @@ exports.products = [
       "https://images.unsplash.com/photo-1588466585717-f8041aec7875?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
     category: "goat",
     price: 30000,
-    ratings: 4.0,
+    likes: 40,
     details:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, modi, quo",
     quantityInStock: 7,
@@ -60,7 +60,7 @@ exports.products = [
     image: "https://i.ytimg.com/vi/BFMpZB88hho/maxresdefault.jpg",
     category: "sheep",
     price: 45000,
-    ratings: 4.2,
+    likes: 200,
     details:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, modi, quo",
     quantityInStock: 7,
