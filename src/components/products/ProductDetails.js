@@ -9,6 +9,7 @@ import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { addToCart, changeCartQuantity } from "actions";
 import { ServerError } from "errors/Server";
 import AlertErrors from "errors/AlertErrors";
+import DisplayStars from "./DisplayStars";
 
 function ProductDetails({ product, dispatch, cartItem }) {
   const history = useHistory();
@@ -99,6 +100,10 @@ function ProductDetails({ product, dispatch, cartItem }) {
               <div className="product-description detail">
                 <b>Available Quantity: </b>
                 <span>{product.quantityInStock}</span>
+              </div>
+
+              <div className="product-description detail">
+                <DisplayStars likes={product.likes} />
               </div>
 
               <div className="product-description detail">
