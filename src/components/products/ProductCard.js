@@ -35,13 +35,13 @@ const ProductCard = ({ products, dispatch }) => {
 
           <p className="product_price">&#x20A6;{NumWithComma(product.price)}</p>
 
+          <DisplayStars likes={product.likes} />
+
           <p className="product_detail">
             <span>
               {BreakWordFragment(firstLetterCapitalize(product.details))}
             </span>
           </p>
-
-          <DisplayStars likes={product.likes} />
 
           <p style={{ marginTop: "0.5rem" }}>
             <Link
