@@ -6,28 +6,24 @@ const DisplayStars = ({ likes }) => {
   const star = <FontAwesomeIcon icon={faStar} />;
   return (
     <div>
-      {likes > 0 && likes <= 200 && (
-        <span role="img" aria-label="stars">
-          {star}
-        </span>
-      )}
+      {likes > 0 && likes <= 200 && <span>{star}</span>}
       {likes > 200 && likes <= 400 && (
-        <span role="img" aria-label="stars">
+        <span>
           {star} {star}
         </span>
       )}
       {likes > 400 && likes <= 550 && (
-        <span role="img" aria-label="stars">
+        <span>
           {star} {star} {star}
         </span>
       )}
       {likes > 550 && likes <= 800 && (
-        <span role="img" aria-label="stars">
+        <span>
           {star} {star} {star} {star}
         </span>
       )}
       {likes > 800 && (
-        <span role="img" aria-label="stars">
+        <span>
           {star} {star} {star} {star} {star}
         </span>
       )}

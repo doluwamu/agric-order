@@ -15,7 +15,7 @@ class ProductPage extends Component {
   }
 
   render() {
-    const { products, isFetching, dataFetchingFail } = this.props;
+    const { products, isFetching, dataFetchingFail, productLike } = this.props;
 
     if (isFetching) {
       return <Loading />;
@@ -32,7 +32,11 @@ class ProductPage extends Component {
           <div className="all_products_body">
             <header className="products_header">Check out our animals</header>
             <div className="products">
-              <ProductCard products={products} dispatch={this.props.dispatch} />
+              <ProductCard
+                products={products}
+                dispatch={this.props.dispatch}
+                likedProduct={productLike}
+              />
             </div>
           </div>
         </div>
@@ -41,11 +45,16 @@ class ProductPage extends Component {
   }
 }
 
-const mapStateToProps = ({ products: { allProducts } }) => {
+const mapStateToProps = ({
+  products: { allProducts },
+  likeProduct: { likeProductSuccess },
+}) => {
+  // debugger;
   return {
     isFetching: allProducts.isFetching,
     products: allProducts.items,
     dataFetchingFail: allProducts.errors,
+    productLike: likeProductSuccess,
   };
 };
 

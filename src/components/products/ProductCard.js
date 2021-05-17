@@ -14,14 +14,18 @@ const ProductCard = ({ products, dispatch }) => {
     //   dispatch(addToCart(product, product._id));
     // };
 
-    const likeProduct = () => {
-      const productInLocalStorage = localStorage.getItem(
-        `${product.name}-liked`
-      );
+    const productInLocalStorage = localStorage.getItem(`${product.name}-liked`);
+
+    const likeProduct = (productId) => {
       if (productInLocalStorage) {
+        dispatch({
+          type: "REMOVE_LIKE",
+          data: product,
+        });
         return localStorage.removeItem(`${product.name}-liked`);
       }
-      dispatch(addLike(product._id));
+      dispatch(addLike(productId));
+      // debugger;
       return localStorage.setItem(`${product.name}-liked`, product._id);
     };
 
@@ -54,13 +58,24 @@ const ProductCard = ({ products, dispatch }) => {
               See more details <FontAwesomeIcon icon="arrow-right" />
             </Link>
           </p>
-          <p>
-            <FontAwesomeIcon
-              onClick={likeProduct}
-              icon={["fas", "heart"]}
-              style={{ margin: "5px 5px 0" }}
-            />
-          </p>
+
+          {!productInLocalStorage ? (
+            <p>
+              <FontAwesomeIcon
+                onClick={() => likeProduct(product._id)}
+                icon={["fas", "heart"]}
+                style={{ margin: "5px 5px 0" }}
+              />
+            </p>
+          ) : (
+            <p>
+              <FontAwesomeIcon
+                onClick={() => likeProduct(product._id)}
+                icon={["fas", "heartbeat"]}
+                style={{ margin: "5px 5px 0" }}
+              />
+            </p>
+          )}
         </div>
 
         {/* <div className="add-to-cart" style={{ width: "90%", margin: "0 auto" }}>

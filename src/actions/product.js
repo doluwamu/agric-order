@@ -122,9 +122,15 @@ export const deleteProduct = (productId) => (dispatch) => {
     });
 };
 
-export const addLike = (productId) => () => {
+export const addLike = (productId) => (dispatch) => {
   return AgricAxios.post(`/products/${productId}/add-like`)
-    .then(({ data }) => data)
+    .then(({ data }) => {
+      // debugger;
+      dispatch({
+        type: "LIKE_PRODUCT",
+        data,
+      });
+    })
     .catch((error) => {
       console.log(error);
     });

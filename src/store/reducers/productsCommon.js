@@ -50,7 +50,6 @@ export const successReducer = (resource) => {
       case "DELETE_RESOURCE":
         const index = state.findIndex((i) => i._id === action.id);
         return state.filter((item, itemIndex) => index !== itemIndex);
-
       default:
         return state;
     }

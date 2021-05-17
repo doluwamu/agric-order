@@ -6,6 +6,7 @@ import cart from "./reducers/cart";
 import auth from "./reducers/auth";
 import register from "./reducers/registerStatus";
 import productCategories from "./reducers/productCategories";
+import likeProduct from "./reducers/likeProduct";
 
 export function initStore() {
   const reducers = combineReducers({
@@ -15,6 +16,7 @@ export function initStore() {
     cart,
     auth,
     productCategories,
+    likeProduct,
   });
 
   const composeEnhancers =
