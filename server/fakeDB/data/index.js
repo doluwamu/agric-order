@@ -48,7 +48,7 @@ exports.products = [
       "https://images.unsplash.com/photo-1588466585717-f8041aec7875?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
     category: "goat",
     price: 30000,
-    likes: 932,
+    likes: 844,
     details:
       "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, modi, quo",
     quantityInStock: 7,

@@ -61,7 +61,7 @@ const ProductCard = ({ products, dispatch }) => {
             <p>
               <FontAwesomeIcon
                 onClick={() => likeProduct(product._id)}
-                icon={["fas", "heart"]}
+                icon="heart"
                 style={{ margin: "5px 5px 0" }}
               />
             </p>
@@ -69,7 +69,7 @@ const ProductCard = ({ products, dispatch }) => {
             <p>
               <FontAwesomeIcon
                 onClick={() => likeProduct(product._id)}
-                icon={["fas", "heartbeat"]}
+                icon="heartbeat"
                 style={{ margin: "5px 5px 0" }}
               />
             </p>
