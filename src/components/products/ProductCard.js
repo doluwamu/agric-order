@@ -21,7 +21,10 @@ const ProductCard = ({ products, dispatch }) => {
         return localStorage.removeItem(`${product.name}-liked`);
       }
       dispatch(addLike(productId));
-      return localStorage.setItem(`${product.name}-liked`, product._id);
+      return localStorage.setItem(
+        `${product.name}-liked`,
+        Math.random() + product._id + Math.random()
+      );
     };
 
     return (
