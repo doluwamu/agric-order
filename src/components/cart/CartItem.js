@@ -12,10 +12,7 @@ const CartItem = ({ cartItems, dispatch }) => {
 
   const [qty, setQty] = useState("");
 
-  // const reload = window.location.reload();
-
   const handleChange = (id, productId) => {
-    // const itemInCart = cartItems.find((item) => item.product._id === productId);
     if (qty < 1) return;
     return changeCartQuantity(id, qty)
       .then((_) => window.location.reload())
@@ -75,10 +72,6 @@ const CartItem = ({ cartItems, dispatch }) => {
                 >
                   Remove
                 </button>
-              </div>
-
-              <div style={{ marginLeft: "3rem" }}>
-                <small>Available qty: {item.product.quantityInStock}</small>
               </div>
             </div>
           );

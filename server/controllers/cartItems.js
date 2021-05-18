@@ -119,14 +119,6 @@ exports.changeQuantityInCart = async (req, res) => {
         detail: "Please provide a quantity!",
       });
     }
-    const cartItem = await CartItem.findById({ _id: id });
-
-    if (cartItem.product.quantityInStock < quantity) {
-      return res.sendApiError({
-        title: "Not enough quantity!",
-        detail: `There are only ${cartItem.product.quantityInStock} available`,
-      });
-    }
 
     const foundCartItem = await CartItem.findByIdAndUpdate(
       { _id: id },

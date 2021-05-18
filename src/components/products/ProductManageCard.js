@@ -1,7 +1,6 @@
 import React from "react";
 import { NumWithComma } from "../../helpers/NumberHelpers";
 import { Link } from "react-router-dom";
-// import { addToCart } from "actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { BreakWordFragment } from "helpers/WordLimits";
@@ -10,10 +9,6 @@ import DisplayStars from "./DisplayStars";
 
 const ProductManageCard = ({ products, dispatch }) => {
   return products.map((product) => {
-    // const handleAddToCart = () => {
-    //   dispatch(addToCart(product, product._id));
-    // };
-
     const handleDelete = () => {
       const confirmDelete = window.confirm(
         "Are you sure you want to delete this product?"
@@ -73,21 +68,6 @@ const ProductManageCard = ({ products, dispatch }) => {
             Edit
           </button>
         </div>
-
-        {/* <div className="add-to-cart" style={{ width: "90%", margin: "0 auto" }}>
-          <button
-            className="btn btn-secondary"
-            style={{
-              padding: "5px",
-              marginTop: "5px",
-              boxShadow: "0 0 3px #61dafb",
-              width: "100%",
-            }}
-            onClick={handleAddToCart}
-          >
-            Add to cart <FontAwesomeIcon icon="shopping-cart" />
-          </button>
-        </div> */}
       </div>
     );
   });

@@ -8,14 +8,12 @@ import { connect } from "react-redux";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { addToCart, changeCartQuantity } from "actions";
 import { ServerError } from "errors/Server";
-import AlertErrors from "errors/AlertErrors";
 import DisplayStars from "./DisplayStars";
 
 function ProductDetails({ product, dispatch, cartItem }) {
   const history = useHistory();
   const [qty, setQty] = useState(1);
   const [error, setError] = useState([]);
-  const [openQtyError, setOpenQtyError] = useState(false);
 
   const itemInCart = cartItem.find((item) => item.product._id === product._id);
 
@@ -24,10 +22,6 @@ function ProductDetails({ product, dispatch, cartItem }) {
   };
 
   const handleAddToCart = () => {
-    if (qty > product.quantityInStock) {
-      setOpenQtyError(true);
-      return;
-    }
     addToCart(product._id, qty)
       .then((_) => {
         history.push("/cart");
@@ -40,11 +34,6 @@ function ProductDetails({ product, dispatch, cartItem }) {
   };
 
   const handleChangeInCartQty = (id) => {
-    if (qty < 1) return;
-    if (qty > product.quantityInStock) {
-      setOpenQtyError(true);
-      return;
-    }
     changeCartQuantity(id, qty)
       .then((_) => {
         history.push("/cart");
@@ -98,11 +87,6 @@ function ProductDetails({ product, dispatch, cartItem }) {
               </div>
 
               <div className="product-description detail">
-                <b>Available Quantity: </b>
-                <span>{product.quantityInStock}</span>
-              </div>
-
-              <div className="product-description detail">
                 <DisplayStars likes={product.likes} />
               </div>
 
@@ -122,15 +106,6 @@ function ProductDetails({ product, dispatch, cartItem }) {
                   onChange={handleQtyChange}
                   onKeyDown={(e) => handleQtyKeyDown(e)}
                 />
-                {openQtyError && (
-                  <AlertErrors
-                    error={`There ${
-                      product.quantityInStock > 1 ? "are" : "is"
-                    } only ${product.quantityInStock} available`}
-                    setOpenError={setOpenQtyError}
-                    marginLeft={"50%"}
-                  />
-                )}
               </div>
             </div>
 

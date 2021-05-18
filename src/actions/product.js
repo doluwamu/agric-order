@@ -125,7 +125,6 @@ export const deleteProduct = (productId) => (dispatch) => {
 export const addLike = (productId) => (dispatch) => {
   return AgricAxios.post(`/products/${productId}/add-like`)
     .then(({ data }) => {
-      // debugger;
       dispatch({
         type: "LIKE_PRODUCT",
         data,

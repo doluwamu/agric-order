@@ -49,7 +49,6 @@ const mapStateToProps = ({
   products: { allProducts },
   likeProduct: { likeProductSuccess },
 }) => {
-  // debugger;
   return {
     isFetching: allProducts.isFetching,
     products: allProducts.items,

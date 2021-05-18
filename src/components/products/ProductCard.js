@@ -10,10 +10,6 @@ import DisplayStars from "./DisplayStars";
 
 const ProductCard = ({ products, dispatch }) => {
   return products.map((product) => {
-    // const handleAddToCart = () => {
-    //   dispatch(addToCart(product, product._id));
-    // };
-
     const productInLocalStorage = localStorage.getItem(`${product.name}-liked`);
 
     const likeProduct = (productId) => {
@@ -25,7 +21,6 @@ const ProductCard = ({ products, dispatch }) => {
         return localStorage.removeItem(`${product.name}-liked`);
       }
       dispatch(addLike(productId));
-      // debugger;
       return localStorage.setItem(`${product.name}-liked`, product._id);
     };
 
@@ -77,21 +72,6 @@ const ProductCard = ({ products, dispatch }) => {
             </p>
           )}
         </div>
-
-        {/* <div className="add-to-cart" style={{ width: "90%", margin: "0 auto" }}>
-          <button
-            className="btn btn-secondary"
-            style={{
-              padding: "5px",
-              marginTop: "5px",
-              boxShadow: "0 0 3px #61dafb",
-              width: "100%",
-            }}
-            onClick={handleAddToCart}
-          >
-            Add to cart <FontAwesomeIcon icon="shopping-cart" />
-          </button>
-        </div> */}
       </div>
     );
   });
