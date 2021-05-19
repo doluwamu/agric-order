@@ -7,7 +7,9 @@ const DisplayStars = ({ likes }) => {
   const halfStar = <FontAwesomeIcon icon={faStarHalf} />;
   return (
     <div>
-      {likes > 0 && likes <= 200 && <span>{star}</span>}
+      {likes <= 20 && null}
+
+      {likes > 20 && likes <= 200 && <span>{star}</span>}
 
       {likes > 200 && likes <= 250 && (
         <span>

@@ -15,7 +15,7 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
   }, [dispatch]);
 
   const { register, errors, handleSubmit } = useForm();
-  const nums = [4, 20];
+  const nums = [3, 20];
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
       <div className="form_header">
