@@ -93,7 +93,7 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
 
       <div className="price form_part">
         <div className="form_label">
-          <label>Product's price:</label>
+          <label>Product's price(&#x20A6;):</label>
         </div>
         <input
           ref={register({ required: true })}
