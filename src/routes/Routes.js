@@ -17,6 +17,7 @@ import GetUserPage from "pages/GetUserPage";
 import HomePage from "pages/HomePage";
 import PageNotFound from "pages/PageNotFound";
 import MyProductsPage from "pages/MyProductsPage";
+import RelatedProductPage from "pages/RelatedProductPage";
 
 function Routes() {
   return (
@@ -67,6 +68,10 @@ function Routes() {
 
       <Route path="/product/:id">
         <ProductDetail />
+      </Route>
+
+      <Route path="/related-product/:id/:owner?">
+        <RelatedProductPage />
       </Route>
 
       <AuthRoute path="/cart">
