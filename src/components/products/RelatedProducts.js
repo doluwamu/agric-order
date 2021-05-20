@@ -93,6 +93,12 @@ const RelatedProducts = ({ products, dispatch, ownerProduct }) => {
 
     return null;
   });
+
+  // if (
+  //   products.includes(products.find((p) => p.owner !== product.owner))
+  //   ) {
+  //     return <h3>No other product by this seller</h3>;
+  //   }
 };
 
 export default RelatedProducts;

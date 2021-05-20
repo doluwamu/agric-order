@@ -55,7 +55,6 @@ export class ProductDetail extends Component {
             <div className="details-page display">
               <ProductDetails product={product} cartItem={cartItem} />
             </div>
-
             <div className="all_products">
               <div className="all_products_body">
                 <header className="products_header">
@@ -71,6 +70,7 @@ export class ProductDetail extends Component {
                 </div>
               </div>
             </div>
+            )
           </div>
         </>
       )
