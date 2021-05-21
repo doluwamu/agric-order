@@ -8,8 +8,10 @@ import Loading from "helpers/Loading";
 
 const ProductSearchPage = (props) => {
   const { category } = props.match.params;
-  const { dispatch, isFetching, products } = props;
+  const { dispatch, isFetching, products, productLike } = props;
+
   useEffect(() => {
+    window.scrollTo(500, 0);
     dispatch(fetchProducts(category));
   }, [dispatch, category]);
 
@@ -24,7 +26,11 @@ const ProductSearchPage = (props) => {
         <div>
           {products.length > 0 && !isFetching ? (
             <div className="products">
-              <ProductCard products={products} />
+              <ProductCard
+                products={products}
+                dispatch={dispatch}
+                likedProduct={productLike}
+              />
             </div>
           ) : (
             <h2
@@ -39,10 +45,14 @@ const ProductSearchPage = (props) => {
   );
 };
 
-const mapStateToProps = ({ products: { allProducts } }) => {
+const mapStateToProps = ({
+  products: { allProducts },
+  likeProduct: { likeProductSuccess },
+}) => {
   return {
     products: allProducts.items,
     isFetching: allProducts.isFetching,
+    productLike: likeProductSuccess,
   };
 };
 

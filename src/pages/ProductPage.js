@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchProducts } from "actions";
 import ProductCard from "components/products/ProductCard";
-
 import Loading from "helpers/Loading";
 import ConnectionError from "errors/ConnectionError";
 import HeadImage from "components/shared/HeadImage";
