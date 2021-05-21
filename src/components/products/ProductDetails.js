@@ -78,7 +78,8 @@ function ProductDetails({ product, dispatch, cartItem }) {
               <div className="status detail">
                 <b>
                   Status:{" "}
-                  {product.quantityInStock > 0 ? (
+                  {product.quantityInStock > 0 ||
+                  product.quantityInStock === null ? (
                     <span className="status_available">In stock</span>
                   ) : (
                     <span className="status_unavailable">Out of stock</span>

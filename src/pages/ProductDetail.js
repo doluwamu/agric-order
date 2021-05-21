@@ -11,6 +11,7 @@ import RelatedProducts from "components/products/RelatedProducts";
 export class ProductDetail extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
+    window.scrollTo(500, 0);
 
     this.props.dispatch(fetchProductById(id));
     this.props.dispatch(fetchProducts());

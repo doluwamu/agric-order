@@ -7,10 +7,11 @@ import ProductCard from "components/products/ProductCard";
 
 import Loading from "helpers/Loading";
 import ConnectionError from "errors/ConnectionError";
-// import HeadImage from "components/shared/HeadImage";
+import HeadImage from "components/shared/HeadImage";
 
 class ProductPage extends Component {
   componentDidMount() {
+    window.scrollTo(500, 0);
     this.props.dispatch(fetchProducts());
   }
 
@@ -27,7 +28,7 @@ class ProductPage extends Component {
 
     return (
       <>
-        {/* <HeadImage heading={"We hope you enjoy shopping with us"} /> */}
+        <HeadImage heading={"We hope you enjoy shopping with us"} />
         <div className="all_products">
           <div className="all_products_body">
             <header className="products_header">Check out our animals</header>
