@@ -1,7 +1,6 @@
 import React from "react";
 import { NumWithComma } from "../../helpers/NumberHelpers";
 import { Link } from "react-router-dom";
-// import { addToCart } from "actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { BreakWordFragment } from "helpers/WordLimits";
@@ -21,10 +20,7 @@ const ProductCard = ({ products, dispatch }) => {
         return localStorage.removeItem(`${product.name}-liked`);
       }
       dispatch(addLike(productId));
-      return localStorage.setItem(
-        `${product.name}-liked`,
-        Math.random() + product._id + Math.random()
-      );
+      return localStorage.setItem(`${product.name}-liked`, product._id);
     };
 
     return (

@@ -48,14 +48,17 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
           <Link to="/">Home</Link>
         </li>
         <li className="nav_li">
-          <a href="#">About</a>
-        </li>
-        <li className="nav_li">
           <Link to="/products">Products</Link>
         </li>
         <li className="nav_li">
-          <a href="#">Contact</a>
+          <Link to="/liked-products">Liked-products</Link>
         </li>
+        {/* <li className="nav_li">
+          <a href="#">About</a>
+        </li>
+        <li className="nav_li">
+          <a href="#">Contact</a>
+        </li> */}
         {!isAuthenticated && (
           <>
             <li className="nav_li">

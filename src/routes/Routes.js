@@ -18,6 +18,7 @@ import HomePage from "pages/HomePage";
 import PageNotFound from "pages/PageNotFound";
 import MyProductsPage from "pages/MyProductsPage";
 import RelatedProductPage from "pages/RelatedProductPage";
+import LikedProductsPage from "pages/LikedProductsPage";
 
 function Routes() {
   return (
@@ -28,6 +29,10 @@ function Routes() {
 
       <Route path="/" exact={true}>
         <HomePage />
+      </Route>
+
+      <Route path="/liked-products">
+        <LikedProductsPage />
       </Route>
 
       <Route path="/products">

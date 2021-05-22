@@ -3,6 +3,10 @@ import LoginForm from "components/forms/LoginForm";
 import { withAuth } from "services/AuthService";
 
 class LoginPage extends Component {
+  componentDidMount() {
+    window.scrollTo(500, 0);
+  }
+
   state = {
     shouldRedirect: false,
     error: [],

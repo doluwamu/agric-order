@@ -1,14 +1,13 @@
 import React from "react";
 import { NumWithComma } from "../../helpers/NumberHelpers";
 import { Link } from "react-router-dom";
-// import { addToCart } from "actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { BreakWordFragment } from "helpers/WordLimits";
 import { addLike } from "actions";
 import DisplayStars from "./DisplayStars";
 
-const RelatedProducts = ({ products, dispatch, ownerProduct }) => {
+const LikedProductCard = ({ products, dispatch }) => {
   return products.map((product) => {
     const productInLocalStorage = localStorage.getItem(`${product.name}-liked`);
 
@@ -24,19 +23,10 @@ const RelatedProducts = ({ products, dispatch, ownerProduct }) => {
       return localStorage.setItem(`${product.name}-liked`, product._id);
     };
 
-    if (
-      ownerProduct &&
-      ownerProduct.owner &&
-      ownerProduct.owner._id &&
-      ownerProduct.owner._id === product.owner &&
-      ownerProduct._id !== product._id
-    ) {
-      // debugger;
+    if (productInLocalStorage) {
       return (
         <div className="product" key={product._id}>
-          <Link
-            to={`/related-product/${product._id}/owner?id=${ownerProduct.owner._id}?name=${ownerProduct.owner.username}`}
-          >
+          <Link to={`/product/${product._id}`}>
             <img src={product.image} alt="product" />
           </Link>
           <div className="product-details">
@@ -90,12 +80,6 @@ const RelatedProducts = ({ products, dispatch, ownerProduct }) => {
 
     return null;
   });
-
-  // if (
-  //   products.includes(products.find((p) => p.owner !== product.owner))
-  //   ) {
-  //     return <h3>No other product by this seller</h3>;
-  //   }
 };
 
-export default RelatedProducts;
+export default LikedProductCard;

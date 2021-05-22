@@ -10,6 +10,7 @@ import ConnectionError from "errors/ConnectionError";
 
 class CartPage extends Component {
   componentDidMount() {
+    window.scrollTo(500, 0);
     this.props.dispatch(getCartItems());
   }
 
