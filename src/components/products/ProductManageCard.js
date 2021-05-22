@@ -4,11 +4,25 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { capitalize, firstLetterCapitalize } from "helpers/Capitalize";
 import { BreakWordFragment } from "helpers/WordLimits";
-import { deleteProduct } from "actions";
+import { addLike, deleteProduct } from "actions";
 import DisplayStars from "./DisplayStars";
 
 const ProductManageCard = ({ products, dispatch }) => {
   return products.map((product) => {
+    const productInLocalStorage = localStorage.getItem(`${product.name}-liked`);
+
+    const likeProduct = (productId) => {
+      if (productInLocalStorage) {
+        dispatch({
+          type: "REMOVE_LIKE",
+          data: product,
+        });
+        return localStorage.removeItem(`${product.name}-liked`);
+      }
+      dispatch(addLike(productId));
+      return localStorage.setItem(`${product.name}-liked`, product._id);
+    };
+
     const handleDelete = () => {
       const confirmDelete = window.confirm(
         "Are you sure you want to delete this product?"
@@ -45,6 +59,24 @@ const ProductManageCard = ({ products, dispatch }) => {
               See more details <FontAwesomeIcon icon="arrow-right" />
             </Link>
           </p>
+
+          {!productInLocalStorage ? (
+            <p>
+              <FontAwesomeIcon
+                onClick={() => likeProduct(product._id)}
+                icon={["fas", "heart"]}
+                style={{ margin: "5px 5px 0" }}
+              />
+            </p>
+          ) : (
+            <p>
+              <FontAwesomeIcon
+                onClick={() => likeProduct(product._id)}
+                icon={["fas", "heartbeat"]}
+                style={{ margin: "5px 5px 0" }}
+              />
+            </p>
+          )}
         </div>
 
         <div

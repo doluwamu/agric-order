@@ -14,7 +14,7 @@ class MyProductsPage extends Component {
   }
 
   render() {
-    const { products, isFetching, dataFetchingFail } = this.props;
+    const { products, isFetching, dataFetchingFail, productLike } = this.props;
 
     if (isFetching) {
       return <Loading />;
@@ -32,6 +32,7 @@ class MyProductsPage extends Component {
             <ProductManageCard
               products={products}
               dispatch={this.props.dispatch}
+              productLike={productLike}
             />
           </div>
         </div>
@@ -40,11 +41,15 @@ class MyProductsPage extends Component {
   }
 }
 
-const mapStateToProps = ({ manage: { products } }) => {
+const mapStateToProps = ({
+  manage: { products },
+  likeProduct: { likeProductSuccess },
+}) => {
   return {
     isFetching: products.isFetching,
     products: products.items,
     dataFetchingFail: products.errors,
+    productLike: likeProductSuccess,
   };
 };
 
