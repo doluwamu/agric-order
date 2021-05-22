@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { MinLength, RequiredField } from "helpers/FormMessage";
 import { ServerError } from "errors/Server";
@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import { fetchProductCategories } from "actions";
 import { capitalize } from "helpers/Capitalize";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+// import Select from "react-select";
 
 // eslint-disable-next-line
 
@@ -14,7 +15,15 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
     dispatch(fetchProductCategories());
   }, [dispatch]);
 
+  const [productCategory, setProductCategory] = useState(null);
+  console.log(productCategory);
+
   const { register, errors, handleSubmit } = useForm();
+
+  const handleChange = (e) => {
+    setProductCategory(e.target.value);
+  };
+
   const nums = [4, 20];
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="login-form forms">
@@ -65,13 +74,21 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
         <div className="form_label">
           <label>Select product category:</label>
         </div>
-        <select ref={register({ required: true })} name="category">
+
+        <select
+          ref={register({ required: true })}
+          name="category"
+          onChange={handleChange}
+        >
+          <option value="">Select...</option>
           {categories &&
             categories.map((category) => {
               return (
-                <option key={category._id}>
-                  {capitalize(category.categoryName)}
-                </option>
+                <>
+                  <option key={category._id} value={category.categoryName}>
+                    {capitalize(category.categoryName)}
+                  </option>
+                </>
               );
             })}
         </select>
