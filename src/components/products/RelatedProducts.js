@@ -21,6 +21,10 @@ const RelatedProducts = ({ products, dispatch, ownerProduct }) => {
         return localStorage.removeItem(`${product.name}-liked`);
       }
       dispatch(addLike(productId));
+      dispatch({
+        type: "LIKE_PRODUCT",
+        data: product._id,
+      });
       return localStorage.setItem(`${product.name}-liked`, product._id);
     };
 
