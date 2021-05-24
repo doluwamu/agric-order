@@ -7,7 +7,7 @@
 
   .elements {
     padding: 2rem;
-    margin: -2rem 1rem;
+    margin: -7rem 1rem;
     // background: green;
     max-width: 500px;
 
@@ -82,6 +82,7 @@
     .elements {
       display: flex;
       max-width: 1000px !important;
+      
     }
   }
 
@@ -110,6 +111,9 @@
 }
 
 @media screen and (max-width: 600px) {
+  .elements {
+    margin: -3rem 1rem !important;
+  }
   .product-image {
     width: 200px !important;
     height: 200px !important;

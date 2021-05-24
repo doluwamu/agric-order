@@ -4,9 +4,10 @@ import ProductCardDisplay from "components/productDisplay/ProductCardDisplay";
 
 const LikedProductCard = ({ products, dispatch }) => {
 
-  return products.map((product) => {
-    const productInLocalStorage = localStorage.getItem(`${product.name}-liked`);
 
+  
+return products.map((product, key) => {
+  const productInLocalStorage = localStorage.getItem(`${product.name}-liked`);
     const likeProduct = (productId) => {
       if (productInLocalStorage) {
         dispatch({
@@ -31,10 +32,13 @@ const LikedProductCard = ({ products, dispatch }) => {
           likeProduct={likeProduct}
         />
       );
-    }
+    } 
 
     return null;
   });
-};
+
+  }
+
+  
 
 export default LikedProductCard;
