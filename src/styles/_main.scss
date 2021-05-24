@@ -152,7 +152,7 @@ body {
   // }
 
   .nav-section {
-    z-index: 1111;
+    // z-index: 1111;
 
     header {
       margin-top: -1rem;
@@ -190,7 +190,8 @@ body {
 
       li {
         margin-top: 1rem !important;
-        margin-left: -1rem !important;
+        margin-left: -2rem !important;
+        // width: 90% !important;
         // background: red;
 
         &:last-child {
@@ -200,6 +201,10 @@ body {
         a {
           font-size: 1.1rem;
           font-weight: 600;
+          // margin-top: 4rem !important;
+          padding-right: 80%;
+          padding-left: 1rem;
+          // background: red;
         }
       }
     }

@@ -16,9 +16,9 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
   const toggleAside = () => {
     document.querySelector(".nav-ul").classList.toggle("open");
   };
-  // const closeAside = () => {
-  //   document.querySelector(".nav-ul").classList.remove("open");
-  // };
+  const closeAside = () => {
+    document.querySelector(".nav-ul").classList.remove("open");
+  };
 
   const logOut = () => {
     logout();
@@ -45,13 +45,13 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
         )}
 
         <li className="nav_li">
-          <Link to="/">Home</Link>
+          <Link to="/" onClick={closeAside}>Home</Link>
         </li>
         <li className="nav_li">
-          <Link to="/products">Products</Link>
+          <Link to="/products" onClick={toggleAside}>Products</Link>
         </li>
         <li className="nav_li">
-          <Link to="/liked-products">Liked-products</Link>
+          <Link to="/liked-products" onClick={toggleAside}>Liked-products</Link>
         </li>
         {/* <li className="nav_li">
           <a href="#">About</a>
@@ -62,11 +62,11 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
         {!isAuthenticated && (
           <>
             <li className="nav_li">
-              <Link to="/signup">Sign-up</Link>
+              <Link to="/signup" onClick={toggleAside}>Sign-up</Link>
             </li>
 
             <li className="nav_li">
-              <Link to="/login">Log-in</Link>
+              <Link to="/login" onClick={toggleAside}>Log-in</Link>
             </li>
 
             <li className="nav_li" onClick={() => history.push("/login")}>
@@ -93,7 +93,7 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
             </li>
 
             <li className="nav_li">
-              <Link to="/cart" className="cart_text">
+              <Link to="/cart" className="cart_text" onClick={toggleAside}>
                 Cart{" "}
                 <span
                   style={{
