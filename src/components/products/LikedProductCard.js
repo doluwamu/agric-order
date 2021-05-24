@@ -3,6 +3,7 @@ import { addLike } from "actions";
 import ProductCardDisplay from "components/productDisplay/ProductCardDisplay";
 
 const LikedProductCard = ({ products, dispatch }) => {
+
   return products.map((product) => {
     const productInLocalStorage = localStorage.getItem(`${product.name}-liked`);
 

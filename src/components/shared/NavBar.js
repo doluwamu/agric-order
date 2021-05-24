@@ -16,9 +16,9 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
   const toggleAside = () => {
     document.querySelector(".nav-ul").classList.toggle("open");
   };
-  const closeAside = () => {
-    document.querySelector(".nav-ul").classList.remove("open");
-  };
+  // const closeAside = () => {
+  //   document.querySelector(".nav-ul").classList.remove("open");
+  // };
 
   const logOut = () => {
     logout();
@@ -34,7 +34,7 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
         &#9776;
       </button>
 
-      <ul className="nav-ul" onClick={closeAside}>
+      <ul className="nav-ul" >
         {isAuthenticated && (
           <li className="nav_li">
             <div className="user" style={{ color: "#fff" }}>

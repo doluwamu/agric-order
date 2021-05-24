@@ -96,7 +96,11 @@
       }
 
       img {
-        height: 13rem !important;
+        margin: 0 !important;
+          // margin-right: 0;
+          width: 100% !important;
+          height: 22rem !important;
+          border-radius: 0 !important;
       }
     }
   }
