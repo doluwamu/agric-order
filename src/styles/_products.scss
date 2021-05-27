@@ -22,20 +22,21 @@
         border-bottom: 0.1rem solid var(--mainBlack);
         border-radius: 3px;
         overflow: hidden;
-        box-shadow: 0 0 0.2rem var(--mainBlack);
+        box-shadow: 0 0 0.3rem var(--mainBlack);
         background: #eee;
         transition: all 0.5s ease-in;
 
         &:hover {
           transform: scale(1.02);
+          box-shadow: 0 0 0.4rem var(--mainBlack);
         }
 
         img {
-          margin: 0 ;
+          margin: 0;
           // margin-right: 0;
-          width: 100% ;
-          height: 20rem ;
-          border-radius: 0 ;
+          width: 100%;
+          height: 20rem;
+          border-radius: 0;
         }
 
         .product-details {
@@ -53,7 +54,7 @@
             }
           }
 
-          .product_name{
+          .product_name {
             font-weight: 600;
           }
 
@@ -100,7 +101,7 @@
       }
 
       img {
-          height: 22rem !important;
+        height: 22rem !important;
       }
     }
   }

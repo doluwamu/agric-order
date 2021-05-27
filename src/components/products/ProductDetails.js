@@ -96,7 +96,7 @@ function ProductDetails({ product, dispatch, cartItem }) {
                 <span>{firstLetterCapitalize(product.details)}</span>
               </div>
 
-              <div>
+              <div style={{ marginTop: "1rem" }}>
                 <b>Qty: </b>
 
                 <input
