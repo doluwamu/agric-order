@@ -7,6 +7,14 @@ const ConnectionError = () => {
       <h3 style={{ marginTop: "15px" }}>
         Check your internet connection or reload the page
       </h3>
+      <div style={{ marginTop: "1rem" }}>
+        <button
+          className="btn btn-secondary"
+          onClick={() => window.location.reload()}
+        >
+          Reload
+        </button>
+      </div>
     </div>
   );
 };
