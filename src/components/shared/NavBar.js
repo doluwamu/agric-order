@@ -34,7 +34,7 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
         &#9776;
       </button>
 
-      <ul className="nav-ul" >
+      <ul className="nav-ul">
         {isAuthenticated && (
           <li className="nav_li">
             <div className="user" style={{ color: "#fff" }}>
@@ -45,13 +45,19 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
         )}
 
         <li className="nav_li">
-          <Link to="/" onClick={closeAside}>Home</Link>
+          <Link to="/" onClick={closeAside}>
+            Home
+          </Link>
         </li>
         <li className="nav_li">
-          <Link to="/products" onClick={toggleAside}>Products</Link>
+          <Link to="/products" onClick={closeAside}>
+            Products
+          </Link>
         </li>
         <li className="nav_li">
-          <Link to="/liked-products" onClick={toggleAside}>Liked-products</Link>
+          <Link to="/liked-products" onClick={closeAside}>
+            Liked-products
+          </Link>
         </li>
         {/* <li className="nav_li">
           <a href="#">About</a>
@@ -62,11 +68,15 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
         {!isAuthenticated && (
           <>
             <li className="nav_li">
-              <Link to="/signup" onClick={toggleAside}>Sign-up</Link>
+              <Link to="/signup" onClick={closeAside}>
+                Sign-up
+              </Link>
             </li>
 
             <li className="nav_li">
-              <Link to="/login" onClick={toggleAside}>Log-in</Link>
+              <Link to="/login" onClick={closeAside}>
+                Log-in
+              </Link>
             </li>
 
             <li className="nav_li" onClick={() => history.push("/login")}>
@@ -93,7 +103,7 @@ const NavBar = ({ isAuthenticated, username, logout, cartItems, dispatch }) => {
             </li>
 
             <li className="nav_li">
-              <Link to="/cart" className="cart_text" onClick={toggleAside}>
+              <Link to="/cart" className="cart_text" onClick={closeAside}>
                 Cart{" "}
                 <span
                   style={{
