@@ -85,7 +85,7 @@ const CreateProductForm = ({ onSubmit, error, categories, dispatch }) => {
             categories.map((category) => {
               return (
                 <>
-                  <option key={category._id} value={category.categoryName}>
+                  <option key={category._id}>
                     {capitalize(category.categoryName)}
                   </option>
                 </>

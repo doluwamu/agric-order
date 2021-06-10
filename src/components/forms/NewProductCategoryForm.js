@@ -42,7 +42,7 @@ const NewProductCategoryForm = ({ onSubmit, error }) => {
           className="category_type_input"
           id="category_type"
         >
-          <option value="">Select</option>
+          <option value="">Select...</option>
           <option>Animal</option>
           <option>Plant</option>
           <option>Egg</option>
