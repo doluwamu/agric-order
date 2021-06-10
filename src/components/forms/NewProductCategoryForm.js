@@ -42,6 +42,7 @@ const NewProductCategoryForm = ({ onSubmit, error }) => {
           className="category_type_input"
           id="category_type"
         >
+          <option value="">Select</option>
           <option>Animal</option>
           <option>Plant</option>
           <option>Egg</option>
@@ -66,14 +67,9 @@ const NewProductCategoryForm = ({ onSubmit, error }) => {
         <ServerError error={error} />
       </div>
 
-      <div style={{ marginTop: "-5px", lineHeight: "23px", fontSize: "17px" }}>
-        <p>
-          Please do not create a category with a similar category already
-          existing.
-        </p>
-        <p>For example, creating cow category when cattle already exists.</p>
-        <p>Thank you.</p>
-      </div>
+      <div
+        style={{ marginTop: "-5px", lineHeight: "23px", fontSize: "17px" }}
+      ></div>
     </form>
   );
 };
