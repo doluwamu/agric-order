@@ -26,6 +26,7 @@ class ProductPage extends Component {
     }
 
     return (
+      products && products.length > 0 ?
       <>
         <HeadImage heading={"We hope you enjoy shopping with us"} />
         <ProductsDisplay
@@ -34,6 +35,8 @@ class ProductPage extends Component {
           productLike={productLike}
         />
       </>
+    :
+    <h2>No product added yet</h2>
     );
   }
 }
