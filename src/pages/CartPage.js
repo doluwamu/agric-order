@@ -54,6 +54,7 @@ class CartPage extends Component {
               style={{ marginBottom: "1rem" }}
               className="btn btn-primary"
               type="button"
+              title="Removes every item in the cart"
               onClick={handleClearCart}
             >
               Clear cart
